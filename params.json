@@ -32,5 +32,6 @@
   "lash_per_ship_event": 6,
   "finish_draw_per_ship": 8,
   "car_jobs_per_ship": 10,
-  "magnet_pref": 0.35
+  "magnet_pref": 0.35,
+  "matson_extra_jobs_per_ship": 75.0
 }

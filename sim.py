@@ -99,12 +99,16 @@ def demand(world, P, delays):
         terms = [outlook.TERMINAL.get(v["terminal"].upper()) for v in here]
         pct, husky = terms.count("PCT"), terms.count("HUSKY")
         hw = [world["hustler_w"].get(t, 0.5) for t in terms]
+        # Matson turns a ship in one day (usually Wed/Fri), so each call means a burst of extra work there.
+        matson = terms.count("MATSON/WST")
+        labor = [P["day_jobs_per_ship"] * w + (P["matson_extra_jobs_per_ship"] if t == "MATSON/WST" else 0)
+                 for w, t in zip(hw, terms)]
         out.append({
             "ships": len(here), "pct": pct, "husky": husky,
             "good_mean": P["good_base"] + pct * P["good_per_pct_ship"] + husky * P["good_per_husky_ship"],
-            "day_mean": P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here),
+            "day_mean": P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here) + P["matson_extra_jobs_per_ship"] * matson,
             "night_mean": P["night_jobs_base"] + P["night_jobs_per_ship"] * len(here),
-            "matson_share": (sum(w for w, t in zip(hw, terms) if t == "MATSON/WST") / sum(hw)) if hw else 0.0,
+            "matson_share": (sum(x for x, t in zip(labor, terms) if t == "MATSON/WST") / sum(labor)) if labor else 0.0,
             "starting": starting, "finishing": finishing, "cars": cars,
             "magnet_mean": (P["lash_per_ship_event"] * (starting + finishing) + P["finish_draw_per_ship"] * finishing
                             + P["car_jobs_per_ship"] * cars),
@@ -241,7 +245,7 @@ def calibrate(P, a):
     best = None
     for kd in (0.6, 0.8, 1.0, 1.3, 1.6, 2.0, 2.5, 3.0, 4.0, 5.0):
         for kg in (0.3, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0):
-            Q = dict(P, **{k: P[k] * kd for k in ("day_jobs_base", "day_jobs_per_ship")},
+            Q = dict(P, **{k: P[k] * kd for k in ("day_jobs_base", "day_jobs_per_ship", "matson_extra_jobs_per_ship")},
                      **{k: P[k] * kg for k in ("good_base", "good_per_pct_ship", "good_per_husky_ship")})
             r = simulate(world, Q, None, 40, random_spin=True, attend=att)
             ws, gs = sum(r["work"]) / max(1, r["shown"]), sum(r["good"]) / max(1, r["shown"])
@@ -251,7 +255,7 @@ def calibrate(P, a):
     err, kd, kg, ws, gs = best
     print(f"best scales: day jobs x{kd}, good jobs x{kg} -> per day shown: work {ws:.0%}, good {gs:.0%} "
           f"(target {tw:.0%}, {tg:.0%})")
-    for k in ("day_jobs_base", "day_jobs_per_ship"):
+    for k in ("day_jobs_base", "day_jobs_per_ship", "matson_extra_jobs_per_ship"):
         P[k] = round(P[k] * kd, 2)
     for k in ("good_base", "good_per_pct_ship", "good_per_husky_ship"):
         P[k] = round(P[k] * kg, 2)
