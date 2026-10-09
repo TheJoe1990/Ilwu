@@ -1,6 +1,6 @@
 // Network-first for everything so new spins and app updates show up right away;
 // falls back to the last cached copy when offline (e.g. no signal on the dock).
-const CACHE = "spin-v2";
+const CACHE = "spin-v1";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icons/icon-192.png", "spins.json"];
 
 self.addEventListener("install", (e) => {
