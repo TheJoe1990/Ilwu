@@ -3,9 +3,9 @@
   "show_rate": 0.75,
   "night_share": 0.3,
   "qualified_share": 0.3,
-  "good_base": 2.0,
-  "good_per_pct_ship": 8.0,
-  "good_per_husky_ship": 4.0,
+  "good_base": 1.5,
+  "good_per_pct_ship": 6.0,
+  "good_per_husky_ship": 3.0,
   "day_jobs_base": 90.0,
   "day_jobs_per_ship": 36.0,
   "night_jobs_base": 15,
@@ -28,5 +28,9 @@
   "eta_slip_sd_h": 18,
   "berth_slip_sd_h": 8,
   "vessel_miss_prob": 0.07,
-  "show_concentration": 2.0
+  "show_concentration": 2.0,
+  "lash_per_ship_event": 6,
+  "finish_draw_per_ship": 8,
+  "car_jobs_per_ship": 10,
+  "magnet_pref": 0.35
 }

@@ -76,11 +76,26 @@ def on_shift(v, day, delay):
     return v["eta"] + delay < hi and v["etd"] + delay > lo
 
 
+LASHED = {"Container", "Multipurpose", "Ro-Ro"}
+
+
 def demand(world, P, delays):
-    """Per-day job means and Matson-Hustler share, given one draw of vessel delays."""
+    """Per-day job means and Matson-Hustler share, given one draw of vessel delays.
+    'magnet' jobs are ones B men ahead of you often prefer (you don't): lashing on a ship's start/finish
+    day, any job on a finishing ship (chance to go home early), and car-ship driving. They pull labor
+    from ahead of you in line."""
     out = []
     for d in world["days"]:
         here = [v for v, dl in zip(world["vessels"], delays) if dl is not None and on_shift(v, d["day"], dl)]
+        day0 = dt.datetime.combine(d["day"], dt.time(0))
+        starting = finishing = 0
+        for v, dl in zip(world["vessels"], delays):
+            if dl is None or v["type"] not in LASHED:
+                continue
+            eta, etd = v["eta"] + dl, v["etd"] + dl
+            starting += day0 - dt.timedelta(hours=6) <= eta < day0 + dt.timedelta(hours=17)
+            finishing += day0 + dt.timedelta(hours=6) <= etd < day0 + dt.timedelta(hours=30)
+        cars = sum(v["type"] == "Car Carrier" for v in here)
         terms = [outlook.TERMINAL.get(v["terminal"].upper()) for v in here]
         pct, husky = terms.count("PCT"), terms.count("HUSKY")
         hw = [world["hustler_w"].get(t, 0.5) for t in terms]
@@ -90,6 +105,9 @@ def demand(world, P, delays):
             "day_mean": P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here),
             "night_mean": P["night_jobs_base"] + P["night_jobs_per_ship"] * len(here),
             "matson_share": (sum(w for w, t in zip(hw, terms) if t == "MATSON/WST") / sum(hw)) if hw else 0.0,
+            "starting": starting, "finishing": finishing, "cars": cars,
+            "magnet_mean": (P["lash_per_ship_event"] * (starting + finishing) + P["finish_draw_per_ship"] * finishing
+                            + P["car_jobs_per_ship"] * cars),
         })
     return out
 
@@ -167,12 +185,17 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                 res["shown"] += 1
             spins = d["spins"]
             avail.sort(key=lambda r: (hours[r], spins.get(swap.get(r, r), 999)))
+            magnet_left = poisson(rng, m["magnet_mean"])
             n_good = poisson(rng, m["good_mean"])
             jobs_left = max(n_good, poisson(rng, m["day_mean"]))
             good_left = n_good
             n_other = jobs_left - n_good
             other_rank = 0          # position among people getting non-good jobs (earlier = more choice)
             for r in avail:
+                if r != REG and magnet_left and rng.random() < P["magnet_pref"]:
+                    magnet_left -= 1          # lashing / finishing ship / car ship: gone from the line ahead of you
+                    hours[r] += 8 if d["full"] else 6
+                    continue
                 if jobs_left == 0:
                     break
                 if good_left and r in qualified:
@@ -249,9 +272,9 @@ def main():
                     default=today + dt.timedelta(days=(5 - today.weekday()) % 7 or 7))   # next Saturday
     ap.add_argument("--days", type=int, default=7)
     ap.add_argument("--goal", type=float, default=2000)
-    ap.add_argument("--confidence", type=float, default=0.75)
+    ap.add_argument("--confidence", type=float, default=0.9)
     ap.add_argument("--hours", type=float, default=0.0)
-    ap.add_argument("--runs", type=int, default=150)
+    ap.add_argument("--runs", type=int, default=200)
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--calibrate", action="store_true", help="fit job counts to your history; writes params.json")
     a = ap.parse_args()
@@ -267,38 +290,45 @@ def main():
     dem0 = demand(world, P, [dt.timedelta(0)] * len(world["vessels"]))
     if not a.json:
         print(f"Params: {P['_note']}\nVessels: {world['source']}\n")
-        print(f"{'day':<10}{'spin':>5}{'ships':>6}{'PCT':>4}{'HSK':>4}   if you worked every day: "
-              f"{'good':>5}{'other':>6}{'Matson':>7}")
+        print(f"{'day':<10}{'spin':>5}{'ships':>6}{'PCT':>4}{'HSK':>4}{'start':>6}{'fin':>4}{'cars':>5}"
+              f"   if you worked every day: {'good':>5}{'other':>6}{'Matson':>7}")
         for d, m, g, w, mt in zip(days, dem0, every["good"], every["work"], every["matson"]):
-            print(f"{d['day']:%a %m-%d}{str(d['spin'] or '-'):>5}{m['ships']:>6}{m['pct']:>4}{m['husky']:>4}   "
+            print(f"{d['day']:%a %m-%d}{str(d['spin'] or '-'):>5}{m['ships']:>6}{m['pct']:>4}{m['husky']:>4}"
+                  f"{m['starting']:>6}{m['finishing']:>4}{m['cars']:>5}   "
                   f"{'':>23}{g / a.runs:>5.0%}{(w - g) / a.runs:>6.0%}{mt / a.runs:>7.0%}"
                   + ("  NO WORK" if d["no_work"] else "  OT day" if d["full"] else ""))
 
     # 1) Fixed plans: every combination of days; keep the best per number of days.
     #    Rank: chance of goal, then bad-week pay, then fewer Matson Hustlers.
-    fixed = {}
+    fixed, ranked = {}, collections.defaultdict(list)
     for k in range(1, len(open_days) + 1):
         for combo in itertools.combinations(open_days, k):
             s = summarize(simulate(world, P, set(combo), a.runs, a.hours), goal)
             key = (round(s["p_goal"], 2), s["p10"], -s["matson"])
+            ranked[k].append((key, set(combo), s))
             if k not in fixed or key > fixed[k][0]:
                 fixed[k] = (key, set(combo), s)
-    # 2) Fixed plan + one backup day (only worked if you're behind by then), for small plans.
-    backups = []
-    for k in (1, 2, 3):
-        if k not in fixed:
-            continue
-        base = fixed[k][1]
+    # 2) Fixed plan + one backup day (only worked if you're behind by then): the top few 2- and 3-day
+    #    plans, plus the best ones with a single weekend day (the Melissa option).
+    bases = []
+    for k in (2, 3):
+        top = sorted(ranked[k], key=lambda x: x[0], reverse=True)
+        bases += [c for _, c, _ in top[:4]]
+        bases += [c for _, c, _ in top if sum(x.weekday() >= 5 for x in c) <= 1][:3]
+    backups, seen = [], set()
+    for base in bases:
         for b in open_days:
-            if b in base:
+            key = (frozenset(base), b)
+            if b in base or key in seen:
                 continue
+            seen.add(key)
             s = summarize(simulate(world, P, base | {b}, a.runs, a.hours, backup=b, goal=goal), goal)
             backups.append((base, b, s))
 
     candidates = [(names(c), None, s) for _, c, s in fixed.values()] + \
                  [(names(b), x, s) for b, x, s in backups]
     ok = [c for c in candidates if c[2]["p_goal"] >= a.confidence]
-    pick = min(ok, key=lambda c: (round(c[2]["days_worked"], 1), -c[2]["p10"], c[2]["matson"])) if ok else None
+    pick = min(ok, key=lambda c: (round(c[2]["days_worked"] * 2) / 2, c[2]["other"], -c[2]["p10"])) if ok else None
 
     if a.json:
         print(json.dumps({"goal": goal, "fixed": {k: {"days": sorted(map(str, c)), **s} for k, (_, c, s) in fixed.items()},
@@ -316,6 +346,17 @@ def main():
     for base, b, s in sorted(backups, key=lambda x: (-x[2]["p_goal"], x[2]["days_worked"]))[:5]:
         row(f"work {names(base)} + backup {b:%a}", s)
     print("  bad wk = pay in a bad week (10th percentile). Matson = expected Matson Hustler shifts.")
+    # Bonus (Melissa): best plan with at most one weekend shift, shown when it's close to the pick.
+    one_wknd = []
+    for _, c, s2 in fixed.values():
+        if sum(x.weekday() >= 5 for x in c) <= 1:
+            one_wknd.append((names(c), None, s2))
+    for b, x, s2 in backups:
+        if sum(y.weekday() >= 5 for y in b | {x}) <= 1:
+            one_wknd.append((names(b), x, s2))
+    one_ok = [c for c in one_wknd if c[2]["p_goal"] >= a.confidence]
+    mel = min(one_ok, key=lambda c: (round(c[2]["days_worked"] * 2) / 2, c[2]["other"], -c[2]["p10"])) if one_ok else \
+        max(one_wknd, key=lambda c: (c[2]["p_goal"], c[2]["expected"]), default=None)
     if pick:
         label = f"{pick[0]}" + (f", backup {pick[1]:%a %m-%d}" if pick[1] else "")
         print(f"\nPICK: work {label}: {pick[2]['p_goal']:.0%} chance of ${goal:,.0f}, "
@@ -323,6 +364,10 @@ def main():
               f"~{pick[2]['days_worked']:.1f} days")
     else:
         print(f"\nNo plan reaches ${goal:,.0f} with >= {a.confidence:.0%} confidence.")
+    if mel:
+        label = f"{mel[0]}" + (f", backup {mel[1]:%a %m-%d}" if mel[1] else "")
+        print(f"ONE-WEEKEND-DAY option (Melissa): work {label}: {mel[2]['p_goal']:.0%} chance, "
+              f"expected ${round(mel[2]['expected']):,}, bad week ${round(mel[2]['p10']):,}, ~{mel[2]['days_worked']:.1f} days")
 
 
 if __name__ == "__main__":
