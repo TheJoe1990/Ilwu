@@ -8,8 +8,11 @@ and a day off moves you up. G, D and night work scale with the Tacoma vessels in
 
 All rates live in params.json and are guesses until calibrated against daily feedback.
 
-Usage: sim.py [--start YYYY-MM-DD] [--days N] [--work K ...] [--hours H] [--runs N] [--calibrate]
-  --work:  how many days you want to work in the range (default 3 4); every combination is simulated
+Goal: reach a weekly pre-tax pay target on as few days as possible. Every combination of days is
+simulated; for each number of days worked it reports the best plan's expected pay and its chance of
+reaching the goal.
+
+Usage: sim.py [--start YYYY-MM-DD] [--days N] [--goal $] [--confidence P] [--hours H] [--runs N] [--calibrate]
   --hours: your logged hours so far in the current period if starting mid-period (default 0)
 """
 import argparse
@@ -80,6 +83,7 @@ def simulate(days, P, workdays, start_hours, runs, seed=1, random_spin=False, at
     regs = sorted({r for d in days for r in d["spins"]} | {REG})
     n_days = len(days)
     good_hits, work_hits = [0] * n_days, [0] * n_days
+    pay, earnings = P["pay"], []
     shown = [0] * n_days
     for _ in range(runs):
         alias = rng.choice([r for r in regs if r != REG]) if random_spin else REG
@@ -88,6 +92,7 @@ def simulate(days, P, workdays, start_hours, runs, seed=1, random_spin=False, at
         qualified = {r for r in regs if r != REG and rng.random() < P["qualified_share"]} | {REG}
         hours = {r: 0.0 for r in regs}
         hours[REG] = start_hours
+        earned = 0.0
         for i, d in enumerate(days):
             if i > 0 and period_start(d["day"]):
                 hours = dict.fromkeys(regs, 0.0)
@@ -128,9 +133,11 @@ def simulate(days, P, workdays, start_hours, runs, seed=1, random_spin=False, at
                 if r == REG:
                     work_hits[i] += 1
                     good_hits[i] += got == "good"
+                    earned += pay[got][1 if full else 0]
+        earnings.append(earned)
     if attend is not None:
         return sum(good_hits) / max(1, sum(shown)), sum(work_hits) / max(1, sum(shown))
-    return ([g / runs for g in good_hits], [w / runs for w in work_hits])
+    return ([g / runs for g in good_hits], [w / runs for w in work_hits], earnings)
 
 
 def calibrate(P, a):
@@ -166,7 +173,8 @@ def main():
     ap.add_argument("--start", type=dt.date.fromisoformat,
                     default=today + dt.timedelta(days=(5 - today.weekday()) % 7 or 7))
     ap.add_argument("--days", type=int, default=7)
-    ap.add_argument("--work", type=int, nargs="+", default=[3, 4])
+    ap.add_argument("--goal", type=float, default=2000)
+    ap.add_argument("--confidence", type=float, default=0.6)
     ap.add_argument("--hours", type=float, default=0.0)
     ap.add_argument("--runs", type=int, default=300)
     ap.add_argument("--json", action="store_true")
@@ -180,30 +188,38 @@ def main():
     open_days = [d["day"] for d in days if not d["no_work"]]
     print(f"Params: {P['_note']}\n")
     # Per-day odds if you show up every day (context for the plans below).
-    g_all, w_all = simulate(days, P, None, a.hours, a.runs)
+    g_all, w_all, _ = simulate(days, P, None, a.hours, a.runs)
     print(f"{'day':<11}{'spin':>5} {'ships':>5}  {'P(good)':>8} {'P(hustler/other)':>17}   if you work every day")
     for d, g, w in zip(days, g_all, w_all):
         print(f"{d['day']:%a %m-%d}  {str(d['info']['spin'] or '-'):>5} {len(d['info']['vessels']):>5}  {g:>8.0%} {w - g:>17.0%}"
               + ("  NO WORK" if d["no_work"] else ""))
-    out = {}
-    for k in a.work:
-        plans = []
+    # Every combination of days, scored by chance of reaching the weekly goal, then expected pay.
+    best_by_k = {}
+    for k in range(1, len(open_days) + 1):
         for combo in itertools.combinations(open_days, k):
-            g, w = simulate(days, P, set(combo), a.hours, a.runs)
-            good, other = sum(g), sum(w) - sum(g)
-            plans.append((good - 0.3 * other, combo, good, other))   # good shifts first, fewer hustlers second
-        plans.sort(key=lambda x: -x[0])
-        out[k] = [{"days": [str(c) for c in combo], "good": round(good, 2), "other": round(other, 2)}
-                  for _, combo, good, other in plans]
-        if not a.json:
-            print(f"\nBest ways to work {k} days (of {len(open_days)}):")
-            print(f"  {'work on':<34}{'good':>6}{'hustler/other':>15}")
-            for _, combo, good, other in plans[:4]:
-                print(f"  {' '.join(f'{c:%a}' for c in combo):<34}{good:>6.2f}{other:>15.2f}")
-            worst = plans[-1]
-            print(f"  worst: {' '.join(f'{c:%a}' for c in worst[1])} -> {worst[2]:.2f} good, {worst[3]:.2f} other")
+            g, w, earn = simulate(days, P, set(combo), a.hours, a.runs)
+            p_goal = sum(e >= a.goal for e in earn) / len(earn)
+            mean = sum(earn) / len(earn)
+            row = {"days": [str(c) for c in combo], "p_goal": round(p_goal, 2), "expected_pay": round(mean),
+                   "good": round(sum(g), 2), "other": round(sum(w) - sum(g), 2)}
+            cur = best_by_k.get(k)
+            if not cur or (p_goal, mean) > (cur["p_goal"], cur["expected_pay"]):
+                best_by_k[k] = row
+    pick = next((r for k, r in sorted(best_by_k.items()) if r["p_goal"] >= a.confidence), None)
     if a.json:
-        print(json.dumps(out, indent=1))
+        print(json.dumps({"goal": a.goal, "best_by_days": best_by_k, "recommended": pick}, indent=1))
+        return
+    print(f"\nWeekly goal ${a.goal:,.0f} pre-tax. Best plan for each number of days worked:")
+    print(f"  {'days':>4}  {'work on':<30}{'P(goal)':>8}{'expected':>10}{'good':>6}{'other':>6}")
+    for k, r in sorted(best_by_k.items()):
+        names = " ".join(dt.date.fromisoformat(x).strftime("%a") for x in r["days"])
+        print(f"  {k:>4}  {names:<30}{r['p_goal']:>8.0%}{'$' + format(r['expected_pay'], ','):>10}{r['good']:>6.2f}{r['other']:>6.2f}")
+    if pick:
+        names = " ".join(dt.date.fromisoformat(x).strftime("%a %m-%d") for x in pick["days"])
+        print(f"\nFewest days with >= {a.confidence:.0%} chance of ${a.goal:,.0f}: {names} "
+              f"({pick['p_goal']:.0%}, expected ${pick['expected_pay']:,})")
+    else:
+        print(f"\nNo plan reaches ${a.goal:,.0f} with >= {a.confidence:.0%} confidence this week.")
 
 if __name__ == "__main__":
     main()

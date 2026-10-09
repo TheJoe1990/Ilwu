@@ -12,5 +12,16 @@
   "night_jobs_per_ship": 6,
   "your_attendance": 0.6,
   "target_work_per_shown_day": 0.9,
-  "target_good_per_shown_day": 0.26
+  "target_good_per_shown_day": 0.26,
+  "pay": {
+    "good": [
+      711.16,
+      969.8
+    ],
+    "other": [
+      490.0,
+      735.04
+    ],
+    "_comment": "[weekday, weekend/holiday] per shift, from 2026 timebook"
+  }
 }
