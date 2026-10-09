@@ -332,10 +332,16 @@ def main():
             s = summarize(simulate(world, P, base | {b}, a.runs, a.hours, backup=b, goal=goal), goal)
             backups.append((base, b, s))
 
-    candidates = [(names(c), None, s) for _, c, s in fixed.values()] + \
-                 [(names(b), x, s) for b, x, s in backups]
+    # User preference: a PCT ship in port makes a day worth working (strads). Each PCT day a plan skips
+    # costs it pct_day_off_penalty "days"; a backup day counts as half-skipped.
+    pct_days = {d["day"] for d, m in zip(days, dem0) if m["pct"] and not d["no_work"]}
+    def pct_skipped(plan, backup=None):
+        return sum(0.5 if x == backup else (0 if x in plan else 1) for x in pct_days)
+    candidates = [(names(c), None, s, pct_skipped(c)) for _, c, s in fixed.values()] + \
+                 [(names(b), x, s, pct_skipped(b | {x}, x)) for b, x, s in backups]
     ok = [c for c in candidates if c[2]["p_goal"] >= a.confidence]
-    pick = min(ok, key=lambda c: (round(c[2]["days_worked"] * 2) / 2, c[2]["other"], -c[2]["p10"])) if ok else None
+    cost = lambda c: (round((c[2]["days_worked"] + P["pct_day_off_penalty"] * c[3]) * 2) / 2, c[2]["other"], -c[2]["p10"])
+    pick = min(ok, key=cost) if ok else None
 
     if a.json:
         print(json.dumps({"goal": goal, "fixed": {k: {"days": sorted(map(str, c)), **s} for k, (_, c, s) in fixed.items()},
@@ -353,16 +359,18 @@ def main():
     for base, b, s in sorted(backups, key=lambda x: (-x[2]["p_goal"], x[2]["days_worked"]))[:5]:
         row(f"work {names(base)} + backup {b:%a}", s)
     print("  bad wk = pay in a bad week (10th percentile). Matson = expected Matson Hustler shifts.")
+    if pct_days:
+        print(f"  PCT ship days ({names(pct_days)}) are weighted as worth working (your preference).")
     # Bonus (Melissa): best plan with at most one weekend shift, shown when it's close to the pick.
     one_wknd = []
     for _, c, s2 in fixed.values():
         if sum(x.weekday() >= 5 for x in c) <= 1:
-            one_wknd.append((names(c), None, s2))
+            one_wknd.append((names(c), None, s2, pct_skipped(c)))
     for b, x, s2 in backups:
         if sum(y.weekday() >= 5 for y in b | {x}) <= 1:
-            one_wknd.append((names(b), x, s2))
+            one_wknd.append((names(b), x, s2, pct_skipped(b | {x}, x)))
     one_ok = [c for c in one_wknd if c[2]["p_goal"] >= a.confidence]
-    mel = min(one_ok, key=lambda c: (round(c[2]["days_worked"] * 2) / 2, c[2]["other"], -c[2]["p10"])) if one_ok else \
+    mel = min(one_ok, key=cost) if one_ok else \
         max(one_wknd, key=lambda c: (c[2]["p_goal"], c[2]["expected"]), default=None)
     if pick:
         label = f"{pick[0]}" + (f", backup {pick[1]:%a %m-%d}" if pick[1] else "")

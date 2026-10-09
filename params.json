@@ -35,5 +35,6 @@
   "magnet_pref": 0.35,
   "matson_extra_jobs_per_ship": 100.0,
   "weekend_jobs_factor": 0.7,
-  "weekend_show_boost": 1.2
+  "weekend_show_boost": 1.2,
+  "pct_day_off_penalty": 0.5
 }
