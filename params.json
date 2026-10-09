@@ -6,8 +6,8 @@
   "good_base": 2.0,
   "good_per_pct_ship": 8.0,
   "good_per_husky_ship": 4.0,
-  "day_jobs_base": 120.0,
-  "day_jobs_per_ship": 48.0,
+  "day_jobs_base": 90.0,
+  "day_jobs_per_ship": 36.0,
   "night_jobs_base": 15,
   "night_jobs_per_ship": 6,
   "your_attendance": 0.6,
@@ -23,5 +23,10 @@
       735.04
     ],
     "_comment": "[weekday, weekend/holiday] per shift, from 2026 timebook"
-  }
+  },
+  "eta_slip_mean_h": 6,
+  "eta_slip_sd_h": 18,
+  "berth_slip_sd_h": 8,
+  "vessel_miss_prob": 0.07,
+  "show_concentration": 2.0
 }
