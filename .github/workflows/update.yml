@@ -27,15 +27,18 @@ jobs:
 
       # Fails the run (GitHub emails you) if the union site layout changes and no spin sheets are found.
       - name: Fetch spins
-        run: python3 spin.py --all > spins.json.new && mv spins.json.new spins.json
+        run: |
+          python3 spin.py --all > spins.json.new && mv spins.json.new spins.json
+          # The union removes past weeks; keep every week ever posted for model fitting.
+          python3 -c "import json,pathlib;d=json.load(open('spins.json'));p=pathlib.Path('data/spins');p.mkdir(parents=True,exist_ok=True);[(p/(w['start']+'.json')).write_text(json.dumps(w,separators=(',',':'))) for w in d['weeks']]"
 
       # Committing changed data also counts as repo activity, which keeps the daily schedule from being auto-disabled.
       - name: Commit if changed
         run: |
-          if ! git diff --quiet -- spins.json || [ -n "$(git ls-files --others --exclude-standard spins.json)" ]; then
+          git add spins.json data/spins
+          if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add spins.json
             git commit -m "Update spins $(date -u +%F)"
             for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
           fi

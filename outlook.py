@@ -116,6 +116,7 @@ def load_vessels():
 
 
 def load_spins(reg):
+    """Return {date: (spin, share of same-class regs with a lower spin, i.e. ahead of you on an hours tie)}."""
     try:
         data = json.loads(spin.fetch(SPINS_URL))
     except Exception:
@@ -123,9 +124,13 @@ def load_spins(reg):
     out = {}
     for w in data["weeks"]:
         if reg in w["regs"]:
+            cls = w["regs"][reg][0]
+            peers = [v[1:] for v in w["regs"].values() if v[0] == cls]
             start = dt.date.fromisoformat(w["start"])
             for i, s in enumerate(w["regs"][reg][1:]):
-                out[start + dt.timedelta(days=i)] = s
+                if s is not None:
+                    col = [p[i] for p in peers if p[i] is not None]
+                    out[start + dt.timedelta(days=i)] = (s, sum(x < s for x in col) / len(col))
     return out
 
 
@@ -145,8 +150,13 @@ def outlook(start, days, reg):
             v["good_rate"] = round(odds[bucket]["rate"], 2) if bucket else None
             good_signal += odds[bucket]["rate"] if bucket else 0
         iso = day.isoformat()
+        spin_no, ahead = spins.get(day, (None, 0.5))
+        # Spin only orders people with equal hours, so it scales the odds rather than deciding them.
+        spin_factor = 1 - 0.7 * ahead
+        # More ships in port = more total work = A men spread out and dispatch reaches deeper into the B list.
+        busy_factor = 1 + 0.08 * (len(working) - 4)
         result.append({
-            "date": iso, "weekday": day.strftime("%a"), "spin": spins.get(day),
+            "date": iso, "weekday": day.strftime("%a"), "spin": spin_no, "spin_ahead_pct": round(100 * ahead),
             "no_work": iso in NO_WORK,
             "full_hours_day": day.weekday() >= 5 or iso in OT_DAYS,   # weekend/holiday: OT pay, logs all hours
             "vessels": [{k: (v[k].strftime("%a %m-%d %H:%M") if isinstance(v[k], dt.datetime) else v[k])
@@ -154,13 +164,11 @@ def outlook(start, days, reg):
             "pct_vessels": sum(v["terminal"].upper() == "PCT" for v in working),
             "husky_vessels": sum(v["terminal"].upper() == "HUSKY" for v in working),
             "good_job_signal": round(good_signal, 2),
+            "good_job_chance": round(good_signal * spin_factor * busy_factor, 2),
         })
-    # Day-off rank: lowest good-job signal first; weekends/holidays pay OT so rank them later;
-    # a high spin (worse tiebreak, assuming low spin dispatches first) nudges a day toward "take off".
-    max_spin = max([d["spin"] for d in result if d["spin"]] or [1])
+    # Day-off rank: lowest good-job chance first; weekends/holidays pay OT so rank them later.
     for d in result:
-        d["day_off_score"] = round(-d["good_job_signal"] - (0.6 if d["full_hours_day"] else 0)
-                                   + 0.4 * ((d["spin"] or 0) / max_spin), 2)
+        d["day_off_score"] = round(-d["good_job_chance"] - (0.4 if d["full_hours_day"] else 0), 2)
     ranked = sorted((d for d in result if not d["no_work"]), key=lambda d: -d["day_off_score"])
     for n, d in enumerate(ranked, 1):
         d["day_off_rank"] = n
@@ -188,7 +196,7 @@ def main():
     print("Your day shifts by weekday (good/total): " + ", ".join(
         f"{k} {v['good']}/{v['shifts']}" for k, v in o["weekday_history"].items()))
     print()
-    print(f"{'date':<11}{'day':<5}{'spin':>5}  {'PCT':>3} {'HSK':>3} {'all':>3}  {'signal':>6}  {'off#':>4}  notes")
+    print(f"{'date':<11}{'day':<5}{'spin':>5}{'ahead':>6}  {'PCT':>3} {'HSK':>3} {'all':>3}  {'signal':>6} {'chance':>6}  {'off#':>4}  notes")
     for d in o["days"]:
         notes = []
         if d["no_work"]:
@@ -196,8 +204,8 @@ def main():
         elif d["full_hours_day"]:
             notes.append("OT day")
         notes.append(", ".join(f"{v['terminal']}:{v['vessel']}" for v in d["vessels"]))
-        print(f"{d['date']:<11}{d['weekday']:<5}{d['spin'] if d['spin'] is not None else '-':>5}  "
-              f"{d['pct_vessels']:>3} {d['husky_vessels']:>3} {len(d['vessels']):>3}  {d['good_job_signal']:>6}  "
+        print(f"{d['date']:<11}{d['weekday']:<5}{d['spin'] if d['spin'] is not None else '-':>5}{str(d['spin_ahead_pct']) + '%':>6}  "
+              f"{d['pct_vessels']:>3} {d['husky_vessels']:>3} {len(d['vessels']):>3}  {d['good_job_signal']:>6} {d['good_job_chance']:>6}  "
               f"{d.get('day_off_rank', '-'):>4}  {' · '.join(n for n in notes if n)}")
 
 
