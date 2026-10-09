@@ -297,6 +297,10 @@ def main():
     dem0 = demand(world, P, [dt.timedelta(0)] * len(world["vessels"]))
     if not a.json:
         print(f"Params: {P['_note']}\nVessels: {world['source']}\n")
+        pct_calls = [v for v in world["vessels"] if v["terminal"].upper() == "PCT"
+                     and v["etd"].date() >= days[0]["day"] and v["eta"].date() <= days[-1]["day"]]
+        print("PCT in port: " + ("; ".join(f"{v['vessel']} {v['eta']:%a %m-%d %H:%M} -> {v['etd']:%a %m-%d %H:%M} ({v['status']})"
+                                          for v in pct_calls) or "none scheduled in this range") + "\n")
         print(f"{'day':<10}{'spin':>5}{'ships':>6}{'PCT':>4}{'HSK':>4}{'start':>6}{'fin':>4}{'cars':>5}"
               f"   if you worked every day: {'good':>5}{'other':>6}{'Matson':>7}")
         for d, m, g, w, mt in zip(days, dem0, every["good"], every["work"], every["matson"]):
