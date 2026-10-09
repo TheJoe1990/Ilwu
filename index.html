@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spin</title>
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<style>
+  :root {
+    --bg: #f4f6fa; --card: #ffffff; --fg: #0b1220; --muted: #5b6577; --line: #d9dee7;
+    --accent: #1d4ed8; --accent-fg: #ffffff; --warn: #b45309; --danger: #b91c1c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0b1220; --card: #141c2e; --fg: #f3f6fb; --muted: #94a0b8; --line: #263049;
+            --accent: #3b82f6; --accent-fg: #ffffff; --warn: #f59e0b; --danger: #f87171; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-tap-highlight-color: transparent; user-select: none;
+  }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  .hidden { display: none !important; }
+
+  /* Main screen: two numbers, nothing else */
+  #main {
+    min-height: 100dvh; display: grid; grid-template-rows: 1fr 1fr; gap: 12px;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  }
+  .big {
+    background: var(--card); border: 1px solid var(--line); border-radius: 24px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 12px; text-align: center; width: 100%;
+  }
+  .label { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .num { font-size: min(34vw, 26vh); font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; margin: 4px 0; }
+  .sub { font-size: 15px; color: var(--muted); min-height: 1.4em; }
+  .warn { color: var(--warn); }
+  #gear {
+    position: fixed; top: max(8px, env(safe-area-inset-top)); right: 8px; z-index: 2;
+    background: none; border: 0; padding: 10px; color: var(--muted); font-size: 20px; line-height: 1;
+  }
+
+  /* Overlay panels (hours, week, settings) */
+  .panel {
+    position: fixed; inset: 0; background: var(--bg); overflow-y: auto; z-index: 3;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+  }
+  .panel h2 { margin: 4px 0 16px; font-size: 22px; display: flex; justify-content: space-between; align-items: center; }
+  .close { background: none; border: 0; font-size: 28px; line-height: 1; padding: 4px 8px; color: var(--muted); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .chip, .btn {
+    border: 1px solid var(--line); background: var(--card); border-radius: 14px;
+    padding: 14px 18px; font-size: 20px; font-weight: 600; min-width: 64px;
+  }
+  .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); width: 100%; }
+  input, select {
+    font: inherit; font-size: 20px; color: var(--fg); background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; width: 100%;
+  }
+  .field { margin-bottom: 16px; }
+  .field > span { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 4px; border-bottom: 1px solid var(--line); font-size: 18px;
+  }
+  .list li.today { font-weight: 800; color: var(--accent); }
+  .del { background: none; border: 0; color: var(--danger); font-size: 22px; padding: 4px 10px; }
+  .muted { color: var(--muted); font-size: 14px; }
+  .reset-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-bottom: 8px; }
+  h3 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
+</style>
+</head>
+<body>
+
+<button id="gear" aria-label="Settings">⚙</button>
+
+<main id="main">
+  <button class="big" id="spinCard" aria-label="Show week">
+    <div class="label" id="spinLabel">Today's spin</div>
+    <div class="num" id="spinNum">–</div>
+    <div class="sub" id="spinSub"></div>
+  </button>
+  <button class="big" id="hoursCard" aria-label="Log hours">
+    <div class="label">Hours</div>
+    <div class="num" id="hoursNum">0</div>
+    <div class="sub" id="hoursSub"></div>
+  </button>
+</main>
+
+<section class="panel hidden" id="hoursPanel">
+  <h2>Log hours <button class="close" data-close>×</button></h2>
+  <div class="row" id="dayToggle">
+    <button class="chip" data-day="0" aria-pressed="true">Today</button>
+    <button class="chip" data-day="1" aria-pressed="false">Yesterday</button>
+  </div>
+  <div class="row" id="quick">
+    <button class="chip" data-h="1">+1</button>
+    <button class="chip" data-h="8">+8</button>
+    <button class="chip" data-h="9">+9</button>
+    <button class="chip" data-h="10">+10</button>
+  </div>
+  <div class="row">
+    <input id="hoursIn" type="number" inputmode="decimal" step="0.25" min="0" placeholder="Other amount" style="flex:1;width:auto">
+    <button class="btn" id="addBtn">Add</button>
+  </div>
+  <h3>Since last reset</h3>
+  <ul class="list" id="entryList"></ul>
+  <p class="muted" id="resetNote"></p>
+</section>
+
+<section class="panel hidden" id="weekPanel">
+  <h2>Spins <button class="close" data-close>×</button></h2>
+  <div id="weekList"></div>
+  <p class="muted" id="dataNote"></p>
+</section>
+
+<section class="panel hidden" id="settingsPanel">
+  <h2>Settings <button class="close" data-close>×</button></h2>
+  <label class="field"><span>Registration number</span>
+    <input id="regIn" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off">
+  </label>
+  <h3>Hours reset to 0 at</h3>
+  <div id="resetRows"></div>
+  <div class="row"><button class="btn" id="addReset">+ Add reset time</button></div>
+  <button class="btn primary" id="saveSettings">Save</button>
+  <p class="muted" id="regNote"></p>
+</section>
+
+<script>
+const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const $ = (id) => document.getElementById(id);
+
+// localStorage wrapped so private mode / blocked storage never breaks the page.
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+let settings = store.get("settings", { reg: "", resets: [{ dow: 6, time: "00:00" }, { dow: 1, time: "00:00" }] });
+let entries = store.get("entries", []);          // [{t: epoch ms the hours count toward, h: hours}]
+let mine = store.get("mySpins", null);           // {generated, weeks: [{start, cls, spins[7]}]} for settings.reg
+let lastFetch = 0;
+
+const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const parseYmd = (s) => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const fmtH = (h) => (Math.round(h * 100) / 100).toString();
+const fmtDate = (d) => d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+const fmtWhen = (d) => d.toLocaleString(undefined, { weekday: "short", hour: "numeric", minute: "2-digit" });
+
+// Most recent (or next) occurrence of any reset point relative to now.
+function resetBoundary(now, dir) {
+  let best = null;
+  for (const r of settings.resets) {
+    const [hh, mm] = r.time.split(":").map(Number);
+    const d = new Date(now); d.setHours(hh, mm, 0, 0);
+    if (dir < 0) {
+      d.setDate(d.getDate() - ((d.getDay() - r.dow + 7) % 7));
+      if (d > now) d.setDate(d.getDate() - 7);
+      if (!best || d > best) best = d;
+    } else {
+      d.setDate(d.getDate() + ((r.dow - d.getDay() + 7) % 7));
+      if (d <= now) d.setDate(d.getDate() + 7);
+      if (!best || d < best) best = d;
+    }
+  }
+  return best;
+}
+
+function periodEntries(now) {
+  const since = resetBoundary(now, -1);
+  return entries.filter((e) => !since || e.t >= since.getTime()).sort((a, b) => b.t - a.t);
+}
+
+function spinFor(date) {
+  if (!mine) return null;
+  const key = ymd(date);
+  for (const w of mine.weeks) {
+    const i = Math.round((parseYmd(key) - parseYmd(w.start)) / 864e5);
+    if (i >= 0 && i < 7) return { spin: w.spins[i], cls: w.cls };
+  }
+  return null;
+}
+
+function render() {
+  const now = new Date();
+  // Spin
+  const t = spinFor(now);
+  $("spinLabel").textContent = `${DAYS[now.getDay()]}'s spin`;
+  if (!settings.reg) {
+    $("spinNum").textContent = "–"; $("spinSub").textContent = "Tap ⚙ to set your reg #";
+  } else if (t && t.spin != null) {
+    $("spinNum").textContent = t.spin;
+    const tm = spinFor(addDays(now, 1));
+    $("spinSub").textContent = tm && tm.spin != null ? `Tomorrow ${tm.spin}` : "";
+  } else {
+    $("spinNum").textContent = "–";
+    $("spinSub").textContent = mine ? "Not posted for today" : "Loading…";
+  }
+  const ageDays = mine ? (now - new Date(mine.generated)) / 864e5 : 0;
+  if (mine && ageDays > 3) {
+    $("spinSub").innerHTML = `<span class="warn">Spin data ${Math.floor(ageDays)} days old</span>`;
+  }
+  // Hours
+  const list = periodEntries(now);
+  $("hoursNum").textContent = fmtH(list.reduce((s, e) => s + e.h, 0));
+  const next = resetBoundary(now, 1);
+  $("hoursSub").textContent = next ? `Resets ${fmtWhen(next)}` : "";
+}
+
+function renderEntries() {
+  const now = new Date();
+  const list = periodEntries(now);
+  $("entryList").innerHTML = list.length ? "" : `<li class="muted">Nothing logged yet</li>`;
+  for (const e of list) {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${fmtDate(new Date(e.t))}</span><span><b>${fmtH(e.h)} h</b> <button class="del" aria-label="Delete">✕</button></span>`;
+    li.querySelector(".del").onclick = () => { entries = entries.filter((x) => x !== e); save(); renderEntries(); render(); };
+    $("entryList").appendChild(li);
+  }
+  const since = resetBoundary(now, -1);
+  $("resetNote").textContent = since ? `Counting since ${fmtWhen(since)}.` : "No reset times set; counting everything.";
+}
+
+function renderWeek() {
+  const box = $("weekList"); box.innerHTML = "";
+  const today = ymd(new Date());
+  if (!mine || !mine.weeks.length) { box.innerHTML = `<p class="muted">No spins loaded for reg ${settings.reg || "(not set)"}.</p>`; }
+  for (const w of mine ? mine.weeks : []) {
+    const start = parseYmd(w.start);
+    if (addDays(start, 7) <= parseYmd(today)) continue;   // hide past weeks
+    const h = document.createElement("h3"); h.textContent = `Week of ${fmtDate(start)} · class ${w.cls}`; box.appendChild(h);
+    const ul = document.createElement("ul"); ul.className = "list";
+    w.spins.forEach((s, i) => {
+      const d = addDays(start, i);
+      const li = document.createElement("li");
+      if (ymd(d) === today) li.className = "today";
+      li.innerHTML = `<span>${fmtDate(d)}</span><span>${s ?? "–"}</span>`;
+      ul.appendChild(li);
+    });
+    box.appendChild(ul);
+  }
+  $("dataNote").textContent = mine ? `Data updated ${new Date(mine.generated).toLocaleString()}.` : "";
+}
+
+function save() {
+  // Keep ~3 months of entries; older ones can never count toward a weekly total.
+  const cutoff = Date.now() - 90 * 864e5;
+  entries = entries.filter((e) => e.t >= cutoff);
+  store.set("entries", entries);
+}
+
+async function loadSpins(force) {
+  if (!settings.reg || (!force && Date.now() - lastFetch < 3 * 3600e3)) return;
+  try {
+    const r = await fetch("spins.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    lastFetch = Date.now();
+    const weeks = data.weeks.filter((w) => w.regs[settings.reg])
+      .map((w) => ({ start: w.start, cls: w.regs[settings.reg][0], spins: w.regs[settings.reg].slice(1) }));
+    mine = { generated: data.generated, reg: settings.reg, weeks };
+    store.set("mySpins", mine);
+    $("regNote").textContent = weeks.length ? "" : `Reg ${settings.reg} isn't on any posted spin sheet.`;
+  } catch (err) {
+    // Offline: keep showing the cached copy.
+  }
+  render();
+}
+
+function openPanel(id) { document.querySelectorAll(".panel").forEach((p) => p.classList.add("hidden")); $(id).classList.remove("hidden"); }
+function closePanels() { document.querySelectorAll(".panel").forEach((p) => p.classList.add("hidden")); render(); }
+document.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closePanels));
+
+// Hours panel
+let dayBack = 0;
+$("hoursCard").onclick = () => { dayBack = 0; syncDayToggle(); $("hoursIn").value = ""; renderEntries(); openPanel("hoursPanel"); };
+function syncDayToggle() { document.querySelectorAll("#dayToggle .chip").forEach((c) => c.setAttribute("aria-pressed", String(+c.dataset.day === dayBack))); }
+document.querySelectorAll("#dayToggle .chip").forEach((c) => (c.onclick = () => { dayBack = +c.dataset.day; syncDayToggle(); }));
+function addHours(h) {
+  if (!(h > 0) || h > 24) return;
+  // "Yesterday" is stamped at yesterday noon so it lands in the period that day belonged to.
+  const t = dayBack ? (() => { const d = addDays(new Date(), -dayBack); d.setHours(12, 0, 0, 0); return d.getTime(); })() : Date.now();
+  entries.push({ t, h }); save(); renderEntries(); render();
+}
+document.querySelectorAll("#quick .chip").forEach((c) => (c.onclick = () => addHours(+c.dataset.h)));
+$("addBtn").onclick = () => { addHours(parseFloat($("hoursIn").value)); $("hoursIn").value = ""; };
+
+// Week panel
+$("spinCard").onclick = () => { renderWeek(); openPanel("weekPanel"); };
+
+// Settings panel
+function resetRow(r) {
+  const div = document.createElement("div"); div.className = "reset-row";
+  div.innerHTML = `<select>${DAYS.map((d, i) => `<option value="${i}"${i === r.dow ? " selected" : ""}>${d}</option>`).join("")}</select>
+    <input type="time" value="${r.time}"><button class="del" aria-label="Remove">✕</button>`;
+  div.querySelector(".del").onclick = () => div.remove();
+  return div;
+}
+$("gear").onclick = () => {
+  $("regIn").value = settings.reg;
+  $("resetRows").innerHTML = ""; settings.resets.forEach((r) => $("resetRows").appendChild(resetRow(r)));
+  openPanel("settingsPanel");
+};
+$("addReset").onclick = () => $("resetRows").appendChild(resetRow({ dow: 6, time: "00:00" }));
+$("saveSettings").onclick = () => {
+  const reg = $("regIn").value.trim().replace(/\D/g, "");
+  const resets = [...$("resetRows").children].map((row) => ({
+    dow: +row.querySelector("select").value, time: row.querySelector("input").value || "00:00",
+  }));
+  const regChanged = reg !== settings.reg;
+  settings = { reg, resets }; store.set("settings", settings);
+  if (regChanged) { mine = null; store.set("mySpins", null); }
+  closePanels(); loadSpins(true);
+};
+
+// Re-render when the app is reopened (new day, reset passed) and refresh data occasionally.
+document.addEventListener("visibilitychange", () => { if (!document.hidden) { render(); loadSpins(false); } });
+setInterval(render, 60e3);
+
+if (!settings.reg) $("gear").onclick();
+render(); loadSpins(true);
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>
