@@ -1,0 +1,16 @@
+{
+  "_note": "Calibrated 2026-10-09: work 90% / good 26% of days shown, attendance 60%, other B's show 75%. Mostly guesses until daily feedback.",
+  "show_rate": 0.75,
+  "night_share": 0.3,
+  "qualified_share": 0.3,
+  "good_base": 2.0,
+  "good_per_pct_ship": 8.0,
+  "good_per_husky_ship": 4.0,
+  "day_jobs_base": 120.0,
+  "day_jobs_per_ship": 48.0,
+  "night_jobs_base": 15,
+  "night_jobs_per_ship": 6,
+  "your_attendance": 0.6,
+  "target_work_per_shown_day": 0.9,
+  "target_good_per_shown_day": 0.26
+}
