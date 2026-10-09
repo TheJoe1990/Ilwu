@@ -74,6 +74,9 @@
   .list li.today { font-weight: 800; color: var(--accent); }
   .del { background: none; border: 0; color: var(--danger); font-size: 22px; padding: 4px 10px; }
   .muted { color: var(--muted); font-size: 14px; }
+  .jobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .job { padding: 14px 6px; }
+  .job small { display: block; font-size: 13px; font-weight: 500; opacity: .75; margin-top: 2px; }
   .reset-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-bottom: 8px; }
   h3 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
 </style>
@@ -101,16 +104,16 @@
     <button class="chip" data-day="0" aria-pressed="true">Today</button>
     <button class="chip" data-day="1" aria-pressed="false">Yesterday</button>
   </div>
-  <div class="row" id="quick">
-    <button class="chip" data-h="6">+6</button>
-    <button class="chip" data-h="8">+8</button>
-    <button class="chip" data-h="10">+10</button>
-    <button class="chip" data-h="12">+12</button>
+  <div class="jobs" id="quick">
+    <button class="chip job" data-job="Hustler" data-w="8">Hustler<small></small></button>
+    <button class="chip job" data-job="Strad" data-w="10">Strad<small></small></button>
+    <button class="chip job" data-job="Top Pick" data-w="10">Top Pick<small></small></button>
   </div>
   <div class="row">
-    <input id="hoursIn" type="number" inputmode="decimal" step="0.25" min="0" placeholder="Other amount" style="flex:1;width:auto">
+    <input id="hoursIn" type="number" inputmode="decimal" step="0.25" min="0" placeholder="Other job: hours worked" style="flex:1;width:auto">
     <button class="btn" id="addBtn">Add</button>
   </div>
+  <p class="muted" id="logRule"></p>
   <h3>Since last reset</h3>
   <ul class="list" id="entryList"></ul>
   <p class="muted" id="resetNote"></p>
@@ -132,9 +135,17 @@
   <div class="row"><button class="btn" id="addReset">+ Add reset time</button></div>
   <button class="btn primary" id="saveSettings">Save</button>
   <p class="muted" id="regNote"></p>
+  <h3>Work log</h3>
+  <div class="row"><button class="btn" id="exportLog">Export work log (CSV)</button></div>
 </section>
 
 <script>
+// Longshore day-shift overtime dates (logged in full, like weekends), from the ILWU/PMA paid holiday calendar.
+// Update each December from the NWSA "Longshore Holiday Calendar" PDF.
+const HOLIDAYS = new Set([
+  "2026-01-19", "2026-02-12", "2026-02-16", "2026-03-31", "2026-05-25", "2026-06-19", "2026-07-06",
+  "2026-07-28", "2026-09-07", "2026-11-11", "2026-11-26", "2026-12-24", "2026-12-25", "2026-12-31", "2027-01-01",
+]);
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const $ = (id) => document.getElementById(id);
 
@@ -222,7 +233,9 @@ function renderEntries() {
   $("entryList").innerHTML = list.length ? "" : `<li class="muted">Nothing logged yet</li>`;
   for (const e of list) {
     const li = document.createElement("li");
-    li.innerHTML = `<span>${fmtDate(new Date(e.t))}</span><span><b>${fmtH(e.h)} h</b> <button class="del" aria-label="Delete">✕</button></span>`;
+    const what = e.job ? ` · ${e.job}` : "";
+    const worked = e.w != null && e.w !== e.h ? ` <span class="muted">(${fmtH(e.w)} worked)</span>` : "";
+    li.innerHTML = `<span>${fmtDate(new Date(e.t))}${what}</span><span><b>${fmtH(e.h)} h</b>${worked} <button class="del" aria-label="Delete">✕</button></span>`;
     li.querySelector(".del").onclick = () => { entries = entries.filter((x) => x !== e); save(); renderEntries(); render(); };
     $("entryList").appendChild(li);
   }
@@ -252,8 +265,8 @@ function renderWeek() {
 }
 
 function save() {
-  // Keep ~3 months of entries; older ones can never count toward a weekly total.
-  const cutoff = Date.now() - 90 * 864e5;
+  // Keep ~2 years: only the current period counts toward hours, but the log feeds the dispatch forecast.
+  const cutoff = Date.now() - 730 * 864e5;
   entries = entries.filter((e) => e.t >= cutoff);
   store.set("entries", entries);
 }
@@ -283,16 +296,35 @@ document.querySelectorAll("[data-close]").forEach((b) => (b.onclick = closePanel
 // Hours panel
 let dayBack = 0;
 $("hoursCard").onclick = () => { dayBack = 0; syncDayToggle(); $("hoursIn").value = ""; renderEntries(); openPanel("hoursPanel"); };
-function syncDayToggle() { document.querySelectorAll("#dayToggle .chip").forEach((c) => c.setAttribute("aria-pressed", String(+c.dataset.day === dayBack))); }
-document.querySelectorAll("#dayToggle .chip").forEach((c) => (c.onclick = () => { dayBack = +c.dataset.day; syncDayToggle(); }));
-function addHours(h) {
-  if (!(h > 0) || h > 24) return;
-  // "Yesterday" is stamped at yesterday noon so it lands in the period that day belonged to.
-  const t = dayBack ? (() => { const d = addDays(new Date(), -dayBack); d.setHours(12, 0, 0, 0); return d.getTime(); })() : Date.now();
-  entries.push({ t, h }); save(); renderEntries(); render();
+function syncDayToggle() {
+  document.querySelectorAll("#dayToggle .chip").forEach((c) => c.setAttribute("aria-pressed", String(+c.dataset.day === dayBack)));
+  const d = shiftDate();
+  document.querySelectorAll("#quick .job").forEach((c) => (c.querySelector("small").textContent = `logs ${fmtH(loggedHours(d, +c.dataset.w))}`));
+  $("logRule").textContent = fullDay(d) ? "Weekend/holiday: logs all hours worked." : "Weekday day shift: logs 2 h less than worked.";
 }
-document.querySelectorAll("#quick .chip").forEach((c) => (c.onclick = () => addHours(+c.dataset.h)));
-$("addBtn").onclick = () => { addHours(parseFloat($("hoursIn").value)); $("hoursIn").value = ""; };
+document.querySelectorAll("#dayToggle .chip").forEach((c) => (c.onclick = () => { dayBack = +c.dataset.day; syncDayToggle(); }));
+const shiftDate = () => addDays(new Date(), -dayBack);
+const fullDay = (d) => d.getDay() === 0 || d.getDay() === 6 || HOLIDAYS.has(ymd(d));
+const loggedHours = (d, worked) => (fullDay(d) ? worked : Math.max(0, worked - 2));
+function addShift(job, worked) {
+  if (!(worked > 0) || worked > 24) return;
+  const d = shiftDate();
+  // "Yesterday" is stamped at yesterday noon so it lands in the period that day belonged to.
+  const t = dayBack ? new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12).getTime() : Date.now();
+  entries.push({ t, job, w: worked, h: loggedHours(d, worked) }); save(); renderEntries(); render();
+}
+document.querySelectorAll("#quick .job").forEach((c) => (c.onclick = () => addShift(c.dataset.job, +c.dataset.w)));
+$("addBtn").onclick = () => { addShift("Other", parseFloat($("hoursIn").value)); $("hoursIn").value = ""; };
+
+$("exportLog").onclick = () => {
+  const lines = ["date,job,worked,logged", ...[...entries].sort((a, b) => a.t - b.t)
+    .map((e) => [ymd(new Date(e.t)), e.job || "", e.w ?? "", e.h].join(","))];
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([lines.join("\n") + "\n"], { type: "text/csv" }));
+  a.download = `worklog-${ymd(new Date())}.csv`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
 
 // Week panel
 $("spinCard").onclick = () => { renderWeek(); openPanel("weekPanel"); };
