@@ -103,7 +103,6 @@
   <div class="row" id="dayToggle">
     <button class="chip" data-day="0" aria-pressed="true">Today</button>
     <button class="chip" data-day="1" aria-pressed="false">Yesterday</button>
-    <input id="dayPick" type="date" aria-label="Other day" style="flex:1;width:auto;min-width:140px">
   </div>
   <div class="jobs" id="quick">
     <button class="chip job" data-job="Hustler" data-w="8">Hustler<small></small></button>
@@ -299,19 +298,11 @@ let dayBack = 0;
 $("hoursCard").onclick = () => { dayBack = 0; syncDayToggle(); $("hoursIn").value = ""; renderEntries(); openPanel("hoursPanel"); };
 function syncDayToggle() {
   document.querySelectorAll("#dayToggle .chip").forEach((c) => c.setAttribute("aria-pressed", String(+c.dataset.day === dayBack)));
-  $("dayPick").value = ymd(shiftDate());
-  $("dayPick").max = ymd(new Date());
   const d = shiftDate();
   document.querySelectorAll("#quick .job").forEach((c) => (c.querySelector("small").textContent = `logs ${fmtH(loggedHours(d, +c.dataset.w))}`));
   $("logRule").textContent = fullDay(d) ? "Weekend/holiday: logs all hours worked." : "Weekday day shift: logs 2 h less than worked.";
 }
 document.querySelectorAll("#dayToggle .chip").forEach((c) => (c.onclick = () => { dayBack = +c.dataset.day; syncDayToggle(); }));
-$("dayPick").onchange = () => {
-  const v = $("dayPick").value;
-  const back = v ? Math.round((parseYmd(ymd(new Date())) - parseYmd(v)) / 864e5) : 0;
-  dayBack = back >= 0 ? back : 0;
-  syncDayToggle();
-};
 const shiftDate = () => addDays(new Date(), -dayBack);
 const fullDay = (d) => d.getDay() === 0 || d.getDay() === 6 || HOLIDAYS.has(ymd(d));
 const loggedHours = (d, worked) => (fullDay(d) ? worked : Math.max(0, worked - 2));
