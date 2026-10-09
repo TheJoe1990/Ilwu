@@ -86,6 +86,8 @@ def demand(world, P, delays):
     from ahead of you in line."""
     out = []
     for d in world["days"]:
+        # Weekends/holidays pay OT, so companies order less labor (and more B men show up; see simulate()).
+        wk = P["weekend_jobs_factor"] if d["full"] else 1.0
         here = [v for v, dl in zip(world["vessels"], delays) if dl is not None and on_shift(v, d["day"], dl)]
         day0 = dt.datetime.combine(d["day"], dt.time(0))
         starting = finishing = 0
@@ -105,8 +107,8 @@ def demand(world, P, delays):
                  for w, t in zip(hw, terms)]
         out.append({
             "ships": len(here), "pct": pct, "husky": husky,
-            "good_mean": P["good_base"] + pct * P["good_per_pct_ship"] + husky * P["good_per_husky_ship"],
-            "day_mean": P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here) + P["matson_extra_jobs_per_ship"] * matson,
+            "good_mean": wk * (P["good_base"] + pct * P["good_per_pct_ship"] + husky * P["good_per_husky_ship"]),
+            "day_mean": wk * (P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here) + P["matson_extra_jobs_per_ship"] * matson),
             "night_mean": P["night_jobs_base"] + P["night_jobs_per_ship"] * len(here),
             "matson_share": (sum(x for x, t in zip(labor, terms) if t == "MATSON/WST") / sum(labor)) if labor else 0.0,
             "starting": starting, "finishing": finishing, "cars": cars,
@@ -183,7 +185,8 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                 me = earned + sum(pay["other"][1 if x["full"] else 0] for x in rest) < goal
             else:
                 me = workdays is None or d["day"] in workdays
-            avail = [r for r in others if r not in night and rng.random() < habit[r]]
+            boost = P["weekend_show_boost"] if d["full"] else 1.0
+            avail = [r for r in others if r not in night and rng.random() < min(1.0, habit[r] * boost)]
             if me:
                 avail.append(REG)
                 res["shown"] += 1

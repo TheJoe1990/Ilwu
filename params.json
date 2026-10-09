@@ -6,8 +6,8 @@
   "good_base": 1.5,
   "good_per_pct_ship": 6.0,
   "good_per_husky_ship": 3.0,
-  "day_jobs_base": 90.0,
-  "day_jobs_per_ship": 36.0,
+  "day_jobs_base": 120.0,
+  "day_jobs_per_ship": 48.0,
   "night_jobs_base": 15,
   "night_jobs_per_ship": 6,
   "your_attendance": 0.6,
@@ -33,5 +33,7 @@
   "finish_draw_per_ship": 8,
   "car_jobs_per_ship": 10,
   "magnet_pref": 0.35,
-  "matson_extra_jobs_per_ship": 75.0
+  "matson_extra_jobs_per_ship": 100.0,
+  "weekend_jobs_factor": 0.7,
+  "weekend_show_boost": 1.2
 }
