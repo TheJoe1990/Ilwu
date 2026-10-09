@@ -53,9 +53,13 @@ def col_index(ref):
 
 
 def workbook_tabs(sheet_id):
-    """Return {tab_name: [[cell_text, ...], ...]} from the sheet's .xlsx export (stdlib only)."""
-    z = zipfile.ZipFile(io.BytesIO(fetch(
-        f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx", binary=True)))
+    """Return {tab_name: [[cell_text, ...], ...]} from a Google Sheet's .xlsx export."""
+    return xlsx_tabs(fetch(f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=xlsx", binary=True))
+
+
+def xlsx_tabs(data):
+    """Return {tab_name: [[cell_text, ...], ...]} from .xlsx bytes (stdlib only)."""
+    z = zipfile.ZipFile(io.BytesIO(data))
     shared = []
     if "xl/sharedStrings.xml" in z.namelist():
         for si in ET.fromstring(z.read("xl/sharedStrings.xml")).findall("m:si", NS):
