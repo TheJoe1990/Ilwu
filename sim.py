@@ -11,7 +11,7 @@ work if you're behind by then. Also tracks the chance of a Matson Hustler (the o
 
 All rates live in params.json and are guesses until calibrated against daily feedback.
 
-Usage: sim.py [--start YYYY-MM-DD] [--days N] [--goal $] [--confidence P] [--hours H] [--runs N] [--calibrate]
+Usage: sim.py [--start YYYY-MM-DD] [--days N] [--goal $] [--confidence P] [--hours H] [--off DATE ...] [--runs N] [--calibrate]
   --hours: your logged hours so far in the current period if starting mid-period (default 0)
 """
 import argparse
@@ -285,6 +285,8 @@ def main():
     ap.add_argument("--goal", type=float, default=2000)
     ap.add_argument("--confidence", type=float, default=0.9)
     ap.add_argument("--hours", type=float, default=0.0)
+    ap.add_argument("--off", type=dt.date.fromisoformat, nargs="*", default=[],
+                    help="dates you won't work at all (plans); never planned as work or backup")
     ap.add_argument("--runs", type=int, default=200)
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--calibrate", action="store_true", help="fit job counts to your history; writes params.json")
@@ -294,7 +296,7 @@ def main():
         return calibrate(P, a)
     world = setup(a.start, a.days)
     days = world["days"]
-    open_days = [d["day"] for d in days if not d["no_work"]]
+    open_days = [d["day"] for d in days if not d["no_work"] and d["day"] not in a.off]
     goal = a.goal
 
     every = simulate(world, P, None, a.runs, a.hours)
