@@ -163,6 +163,10 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
         # Each B has their own attendance habit (some show almost daily, some rarely), mean = show_rate.
         c = P["show_concentration"]
         habit = {r: rng.betavariate(P["show_rate"] * c, (1 - P["show_rate"]) * c) for r in others}
+        # Some B's are out entirely (medical, students): PMA 70% sheet Aug-Sep 2026 had 28 of 263 at zero hours.
+        for r in others:
+            if rng.random() < P.get("inactive_share", 0.0):
+                habit[r] = 0.0
         qualified = {r for r in others if rng.random() < P["qualified_share"]} | {REG}
         hours = dict.fromkeys(regs, 0.0)
         hours[REG] = start_hours
@@ -246,7 +250,7 @@ def calibrate(P, a):
     tw, tg, att = P["target_work_per_shown_day"], P["target_good_per_shown_day"], P["your_attendance"]
     world = setup(a.start - dt.timedelta(days=a.start.weekday()), 19)
     best = None
-    for kd in (0.6, 0.8, 1.0, 1.3, 1.6, 2.0, 2.5, 3.0, 4.0, 5.0):
+    for kd in (0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.3, 1.6, 2.0, 2.5, 3.0, 4.0, 5.0):
         for kg in (0.3, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0):
             Q = dict(P, **{k: P[k] * kd for k in ("day_jobs_base", "day_jobs_per_ship", "matson_extra_jobs_per_ship")},
                      **{k: P[k] * kg for k in ("good_base", "good_per_pct_ship", "good_per_husky_ship")})
