@@ -4,6 +4,7 @@
 Saves, under data/:
   boards/day/<board-date>_<hash>.html    each distinct version of the ILWU 23 day board
   boards/night/<board-date>_<hash>.html  same for the night board
+  boards/index.json                      {kind: {board-date: [{file, saved}]}}, oldest first, for the app's board viewer
   vessels/<YYYY-MM-DD>.xlsx              latest NWSA vessel schedule snapshot for that day (Pacific)
 
 Only writes a file when content changed, so frequent runs are cheap. Stdlib only.
@@ -11,6 +12,7 @@ Only writes a file when content changed, so frequent runs are cheap. Stdlib only
 import datetime as dt
 import hashlib
 import io
+import json
 import pathlib
 import re
 import sys
@@ -47,8 +49,19 @@ def save_board(kind, url):
         return False
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(raw)
+    index_board(kind, board_date, out.name)
     print(f"{kind}: saved {out.name}")
     return True
+
+
+def index_board(kind, board_date, name):
+    """Record a saved board version (with when it was saved) so the app can list boards without a directory listing."""
+    path = ROOT / "boards" / "index.json"
+    idx = json.loads(path.read_text()) if path.exists() else {}
+    versions = idx.setdefault(kind, {}).setdefault(board_date, [])
+    if not any(v["file"] == name for v in versions):
+        versions.append({"file": name, "saved": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")})
+    path.write_text(json.dumps(idx, indent=1, sort_keys=True))
 
 
 def save_vessels():
