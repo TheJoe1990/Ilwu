@@ -37,5 +37,6 @@
   "weekend_jobs_factor": 0.7,
   "weekend_show_boost": 1.2,
   "pct_day_off_penalty": 0.5,
-  "inactive_share": 0.106
+  "inactive_share": 0.106,
+  "matson_pref_share": 0.33
 }

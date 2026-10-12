@@ -226,8 +226,10 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                     res["work"][i] += 1
                     if got == "good":
                         res["good"][i] += 1
-                    elif other_rank > n_other * (1 - m["matson_share"]):
-                        # You pick WUT/Husky over Matson; you only get Matson once those are gone.
+                    elif (other_rank - 1) * (1 - P["matson_pref_share"]) >= n_other * (1 - m["matson_share"]):
+                        # You pick WUT/Husky over Matson; you only get Matson once those are gone. Others' truck
+                        # preferences split roughly evenly (WUT / Husky / Matson), so a matson_pref_share of the
+                        # people ahead of you take Matson and leave a WUT/Husky truck for you.
                         res["matson"][i] += 1
                         matson += 1
         res["earn"].append(earned)
