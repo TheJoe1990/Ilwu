@@ -153,7 +153,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
     others = [r for r in regs if r != REG]
     pay = P["pay"]
     n = len(days)
-    res = {"good": [0] * n, "work": [0] * n, "matson": [0.0] * n, "shown": 0,
+    res = {"good": [0] * n, "work": [0] * n, "unsk": [0] * n, "matson": [0.0] * n, "shown": 0,
            "earn": [], "worked": [], "matson_runs": []}
     for _ in range(runs):
         dem = demand(world, P, draw_delays(world, P, rng))
@@ -196,19 +196,29 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                 res["shown"] += 1
             spins = d["spins"]
             avail.sort(key=lambda r: (hours[r], spins.get(swap.get(r, r), 999)))
-            magnet_left = poisson(rng, m["magnet_mean"])
+            # Car-ship / lashing / finishing-ship jobs are unskilled. A men may take them (car shifts with a good
+            # move count per driver); each A who does leaves a skill job (truck etc.) for the B line. B men must fill
+            # every skill job before any unskilled one, so the rest only go to B's after skill jobs run out.
+            magnet = poisson(rng, m["magnet_mean"])
+            a_cars = sum(rng.random() < P["a_magnet_share"] for _ in range(magnet))
+            unsk_left = magnet - a_cars
             n_good = poisson(rng, m["good_mean"])
-            jobs_left = max(n_good, poisson(rng, m["day_mean"]))
+            jobs_left = max(n_good, poisson(rng, m["day_mean"])) + a_cars
             good_left = n_good
             n_other = jobs_left - n_good
             other_rank = 0          # position among people getting non-good jobs (earlier = more choice)
             for r in avail:
-                if r != REG and magnet_left and rng.random() < P["magnet_pref"]:
-                    magnet_left -= 1          # lashing / finishing ship / car ship: gone from the line ahead of you
-                    hours[r] += 8 if d["full"] else 6
-                    continue
                 if jobs_left == 0:
-                    break
+                    if not unsk_left:
+                        break
+                    unsk_left -= 1            # skill jobs are gone: next B in line takes an unskilled job
+                    hours[r] += 8 if d["full"] else 6
+                    if r == REG:
+                        worked += 1
+                        earned += pay["other"][1 if d["full"] else 0]
+                        res["work"][i] += 1
+                        res["unsk"][i] += 1
+                    continue
                 if good_left and r in qualified:
                     good_left -= 1
                     hours[r] += 10 if d["full"] else 8

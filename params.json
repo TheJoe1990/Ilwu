@@ -1,17 +1,17 @@
 {
-  "_note": "Calibrated 2026-10-10: work 90% / good 26% of days shown, attendance 60%. show_rate 0.45 + inactive_share 0.106 anchored to PMA 70% sheet (22-Aug..18-Sep-2026, Tacoma B): 235 of 263 B's had hours, avg 120.5 PAID hrs/4wk = 30.1/wk (70% bar 84). Sim gives ~30-32 paid hrs/wk per active B (was 43.5 at show_rate 0.75). Monthly figure, moves month to month: a rough anchor, not a tight fit.",
+  "_note": "Calibrated 2026-10-12: work 97% / good 26% of days shown, attendance 60%, other B's show 45%. Mostly guesses until daily feedback.. show_rate 0.45 + inactive_share 0.106 anchored to PMA 70% sheet (Aug-Sep 2026: 30.1 paid hrs/wk per active B). B's fill all skill jobs before unskilled (car/lash); a_magnet_share = A's taking car/lash shifts (guess 0.5). Rough, still mostly guesses.",
   "show_rate": 0.45,
   "night_share": 0.3,
   "qualified_share": 0.3,
-  "good_base": 1.12,
-  "good_per_pct_ship": 4.5,
-  "good_per_husky_ship": 2.25,
-  "day_jobs_base": 48.0,
-  "day_jobs_per_ship": 19.2,
+  "good_base": 1.68,
+  "good_per_pct_ship": 6.75,
+  "good_per_husky_ship": 3.38,
+  "day_jobs_base": 62.4,
+  "day_jobs_per_ship": 24.96,
   "night_jobs_base": 15,
   "night_jobs_per_ship": 6,
   "your_attendance": 0.6,
-  "target_work_per_shown_day": 0.9,
+  "target_work_per_shown_day": 0.97,
   "target_good_per_shown_day": 0.26,
   "pay": {
     "good": [
@@ -32,11 +32,11 @@
   "lash_per_ship_event": 6,
   "finish_draw_per_ship": 8,
   "car_jobs_per_ship": 10,
-  "magnet_pref": 0.35,
-  "matson_extra_jobs_per_ship": 40.0,
+  "matson_extra_jobs_per_ship": 52.0,
   "weekend_jobs_factor": 0.7,
   "weekend_show_boost": 1.2,
   "pct_day_off_penalty": 0.5,
   "inactive_share": 0.106,
-  "matson_pref_share": 0.33
+  "matson_pref_share": 0.33,
+  "a_magnet_share": 0.5
 }
