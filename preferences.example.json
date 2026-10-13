@@ -1,0 +1,12 @@
+{
+  "_comment": "Personal settings for YOUR agent. Copy to private/preferences.json (gitignored) and edit. Not shared.",
+  "reg": "your reg # (stays private)",
+  "class": "B",
+  "shifts": ["day"],
+  "weekly_goal_pretax": 2300,
+  "wanted_jobs": ["describe what you want, e.g. strad, top pick, crane, hustler at a certain terminal"],
+  "avoid": ["jobs or terminals you'd rather not get"],
+  "pay_per_shift": {"_comment": "from your own timebook", "good": [0, 0], "other": [0, 0]},
+  "max_days_per_week": null,
+  "notes": "anything else your agent should weigh, e.g. which weekend day you want off"
+}
