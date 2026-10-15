@@ -19,6 +19,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - **observed** B's fill all skill jobs before unskilled ones (car ships, lashing). Only A's choose car shifts.
 - **observed** Trucks (hustlers) at a terminal: B preferences split roughly evenly across WUT / Husky / Matson.
 - **observed** Lashers on the board = a ship starting or finishing. Lashing and car ships soak up labor ahead of you, so lots of them improves your odds for other jobs.
+- **rule** Reading the board: job counts are jobs open at the hall, already net of men coming "BACK" (holding from the previous day). E.g. "10 BACK 6NEW 15 HUST" = 15 new hustler jobs to dispatch.
 - "SV" on the board = supervisor. **rule** Supervisor jobs are dispatched at flex pick, before regular pick. **observed** Sometimes the dispatcher sends no B's at flex pick and hands SV jobs out at regular pick instead (2026-10-13). Treat an SV at regular pick as an anomaly; it isn't modeled.
 
 ## Turnout
