@@ -25,6 +25,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 ## Turnout
 
 - **observed** Turnout drops on slow days. With 1 ship in port the parking lot was empty, the line went deep, and a 0-hr B with spin 174 of ~296 still got a strad. **Few ships does not mean worse odds.**
+- **observed** Military work (e.g. P-7 military rail) lowers turnout: it can be extremely physical and many people avoid it, so more stay home when it is on the board.
 - **observed** Light weekday boards run out early: 2026-10-14 (3 vessels at SSAT/WUT/EB1, no PCT or Husky, little house work) jobs ran out around 12 hrs, so a B at 14 hrs with spin 309 got nothing. One data point; that board was unusually light for a Wednesday.
 - **observed** Busy Saturdays can run through the whole B list into casuals: everyone who shows works.
 - **observed** PMA sheet (Aug–Sep 2026): active B's average ~30 paid hrs/week; ~10% of B's barely work.
