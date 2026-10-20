@@ -40,6 +40,23 @@ TERMINAL = {"PCT": "PCT", "HUSKY": "HUSKY", "WUT": "WUT", "WST": "MATSON/WST", "
             "T7": "T7", "EB1": "EB1", "BLAIR": "BLAIR"}
 
 
+# Terminals that only work nights (user, 2026-10-20: TOTE is a Wed/Fri night shift, basically never days).
+# They're left out of day-shift ship counts.
+NIGHT_ONLY = {"TOTE"}
+
+
+# A ship that isn't due at the dock until the afternoon gets no day-shift hire that day (user, 2026-10-20).
+DAY_ETA_CUTOFF = dt.time(12)
+
+
+def arrived_for_day(v, day, delay=dt.timedelta(0)):
+    return v["eta"] + delay < dt.datetime.combine(day, DAY_ETA_CUTOFF)
+
+
+def day_shift(v):
+    return v["terminal"].upper() not in NIGHT_ONLY
+
+
 def timebook_bucket(loc):
     loc = loc.strip().lower()
     for key, bucket in [("husky", "HUSKY"), ("p4", "HUSKY"), ("p3", "HUSKY"), ("wut", "WUT"), ("pct", "PCT"),
@@ -90,9 +107,10 @@ def excel_dt(v):
         return dt.datetime.fromisoformat(v)
 
 
-def load_vessels():
+def load_vessels(data=None, source="file"):
     try:
-        data, source = spin.fetch(VESSELS_URL, binary=True), "live NWSA"
+        if data is None:
+            data, source = spin.fetch(VESSELS_URL, binary=True), "live NWSA"
     except Exception:
         files = sorted((HERE / "data" / "vessels").glob("*.xlsx"))
         if not files:
@@ -147,7 +165,8 @@ def outlook(start, days, reg):
     for i in range(days):
         day = start + dt.timedelta(days=i)
         lo, hi = dt.datetime.combine(day, SHIFT[0]), dt.datetime.combine(day, SHIFT[1])
-        working = [v for v in vessels if v["eta"] and v["etd"] and v["eta"] < hi and v["etd"] > lo]
+        working = [v for v in vessels if v["eta"] and v["etd"] and v["eta"] < hi and v["etd"] > lo and day_shift(v)
+                   and arrived_for_day(v, day)]
         good_signal = 0.0
         for v in working:
             bucket = TERMINAL.get(v["terminal"].upper())

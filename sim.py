@@ -73,7 +73,7 @@ def setup(start, days):
 
 def on_shift(v, day, delay):
     lo, hi = dt.datetime.combine(day, outlook.SHIFT[0]), dt.datetime.combine(day, outlook.SHIFT[1])
-    return v["eta"] + delay < hi and v["etd"] + delay > lo
+    return v["eta"] + delay < hi and v["etd"] + delay > lo and outlook.arrived_for_day(v, day, delay)
 
 
 LASHED = {"Container", "Multipurpose", "Ro-Ro"}
@@ -88,11 +88,12 @@ def demand(world, P, delays):
     for d in world["days"]:
         # Weekends/holidays pay OT, so companies order less labor (and more B men show up; see simulate()).
         wk = P["weekend_jobs_factor"] if d["full"] else 1.0
-        here = [v for v, dl in zip(world["vessels"], delays) if dl is not None and on_shift(v, d["day"], dl)]
+        in_port = [v for v, dl in zip(world["vessels"], delays) if dl is not None and on_shift(v, d["day"], dl)]
+        here = [v for v in in_port if outlook.day_shift(v)]
         day0 = dt.datetime.combine(d["day"], dt.time(0))
         starting = finishing = 0
         for v, dl in zip(world["vessels"], delays):
-            if dl is None or v["type"] not in LASHED:
+            if dl is None or v["type"] not in LASHED or not outlook.day_shift(v):
                 continue
             eta, etd = v["eta"] + dl, v["etd"] + dl
             starting += day0 - dt.timedelta(hours=6) <= eta < day0 + dt.timedelta(hours=17)
@@ -109,7 +110,7 @@ def demand(world, P, delays):
             "ships": len(here), "pct": pct, "husky": husky,
             "good_mean": wk * (P["good_base"] + pct * P["good_per_pct_ship"] + husky * P["good_per_husky_ship"]),
             "day_mean": wk * (P["day_jobs_base"] + P["day_jobs_per_ship"] * len(here) + P["matson_extra_jobs_per_ship"] * matson),
-            "night_mean": P["night_jobs_base"] + P["night_jobs_per_ship"] * len(here),
+            "night_mean": P["night_jobs_base"] + P["night_jobs_per_ship"] * len(in_port),
             "matson_share": (sum(x for x, t in zip(labor, terms) if t == "MATSON/WST") / sum(labor)) if labor else 0.0,
             "starting": starting, "finishing": finishing, "cars": cars,
             "magnet_mean": (P["lash_per_ship_event"] * (starting + finishing) + P["finish_draw_per_ship"] * finishing
