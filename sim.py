@@ -296,6 +296,9 @@ def main():
                     default=today + dt.timedelta(days=(5 - today.weekday()) % 7 or 7))   # next Saturday
     ap.add_argument("--days", type=int, default=7)
     ap.add_argument("--goal", type=float, default=2000)
+    ap.add_argument("--spend", type=float, help="weekly spending-money goal instead of --goal; converts with "
+                    "gross_for_spending() from private/takehome.py (your own taxes and fixed transfers)")
+    ap.add_argument("--paid", type=float, default=0.0, help="gross already earned this pay period (with --spend)")
     ap.add_argument("--confidence", type=float, default=0.9)
     ap.add_argument("--hours", type=float, default=0.0)
     ap.add_argument("--off", type=dt.date.fromisoformat, nargs="*", default=[],
@@ -311,6 +314,11 @@ def main():
     days = world["days"]
     open_days = [d["day"] for d in days if not d["no_work"] and d["day"] not in a.off]
     goal = a.goal
+    if a.spend is not None:
+        sys.path.insert(0, str(HERE / "private"))
+        from takehome import gross_for_spending
+        goal = gross_for_spending(a.spend) - a.paid
+        print(f"Spending goal ${a.spend:,.0f}/wk = ${goal + a.paid:,.0f} gross; ${goal:,.0f} still to earn\n")
 
     every = simulate(world, P, None, a.runs, a.hours)
     dem0 = demand(world, P, [dt.timedelta(0)] * len(world["vessels"]))
