@@ -26,7 +26,8 @@ VESSELS_URL = "https://docs.nwseaportalliance.com/Vessel/Schedule.xlsx"
 SPINS_URL = "https://thejoe1990.github.io/Ilwu/spins.json"
 GOOD_JOBS = {"STRAD", "TOP PICK"}
 SHIFT = (dt.time(8), dt.time(17))          # day shift window a vessel must overlap
-TIMEBOOK_SINCE = dt.date(2024, 1, 1)
+# First strad in the timebook (user wasn't strad/top-pick trained before; 2026-10-20). First top pick: 2025-04-22.
+TIMEBOOK_SINCE = dt.date(2024, 6, 18)
 TIME_OFF = [(dt.date(2026, 4, 1), dt.date(2026, 6, 30))]   # user was off work; not "no work available"
 
 # ILWU/PMA 2026 longshore calendar (NWSA "Longshore Holiday Calendar"). Update each December.
