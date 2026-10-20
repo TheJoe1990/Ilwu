@@ -2,7 +2,7 @@
 """Archive public port/dispatch data so there is history to learn from.
 
 Saves, under data/:
-  boards/day/<board-date>_<hash>.html    each distinct version of the ILWU 23 day board
+  boards/day/<board-date>_<hash>.html    each distinct version of the ILWU 23 day board (dated by fetch time if the header lags, see day_board_date)
   boards/night/<board-date>_<hash>.html  same for the night board
   boards/index.json                      {kind: {board-date: [{file, saved}]}}, oldest first, for the app's board viewer
   vessels/<YYYY-MM-DD>.xlsx              latest NWSA vessel schedule snapshot for that day (Pacific)
@@ -25,6 +25,7 @@ BOARDS = {"day": "http://ilwu23.com/?screen=2", "night": "http://ilwu23.com/?scr
 VESSELS = "https://docs.nwseaportalliance.com/Vessel/Schedule.xlsx"
 UA = {"User-Agent": "Mozilla/5.0 (ilwu-archive)"}
 PT = ZoneInfo("America/Los_Angeles")
+DAY_CUTOFF_HOUR = 8   # Pacific; day boards fetched from this hour on are for the next day
 
 
 def fetch(url):
@@ -40,7 +41,15 @@ def save_board(kind, url):
         print(f"{kind}: no board date found, skipped", file=sys.stderr)
         return False
     mo, d, y = map(int, m.groups())
-    board_date = dt.date(2000 + y, mo, d).isoformat()
+    header_date = dt.date(2000 + y, mo, d).isoformat()
+    board_date = header_date
+    if kind == "day":
+        # The hall sometimes leaves yesterday's date in the header when posting the next board
+        # (e.g. Tue 10-20's board was headed 10/19/26), so never file a day board earlier than its fetch time implies.
+        # A header ahead of that is kept: the next day's board can go up before the cutoff.
+        board_date = max(header_date, day_board_date(dt.datetime.now(PT)).isoformat())
+        if board_date != header_date:
+            print(f"day: header says {header_date}, filed as {board_date}", file=sys.stderr)
     # Hash the visible text only, so markup/whitespace churn doesn't create new versions.
     visible = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", re.sub(r"(?is)<(script|style).*?</\1>", "", text))).strip()
     h = hashlib.sha1(visible.encode()).hexdigest()[:8]
@@ -49,18 +58,26 @@ def save_board(kind, url):
         return False
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(raw)
-    index_board(kind, board_date, out.name)
+    index_board(kind, board_date, out.name, header_date)
     print(f"{kind}: saved {out.name}")
     return True
 
 
-def index_board(kind, board_date, name):
+def day_board_date(fetched):
+    """Day dispatch is done by ~8am Pacific; after that the board shows the next day's work."""
+    return fetched.date() + dt.timedelta(days=0 if fetched.hour < DAY_CUTOFF_HOUR else 1)
+
+
+def index_board(kind, board_date, name, header_date=None):
     """Record a saved board version (with when it was saved) so the app can list boards without a directory listing."""
     path = ROOT / "boards" / "index.json"
     idx = json.loads(path.read_text()) if path.exists() else {}
     versions = idx.setdefault(kind, {}).setdefault(board_date, [])
     if not any(v["file"] == name for v in versions):
-        versions.append({"file": name, "saved": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")})
+        v = {"file": name, "saved": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
+        if header_date and header_date != board_date:
+            v["header"] = header_date
+        versions.append(v)
     path.write_text(json.dumps(idx, indent=1, sort_keys=True))
 
 
