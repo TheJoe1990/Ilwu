@@ -24,7 +24,8 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 
 - **rule** PCT (Evergreen) hires 4 strads per working crane. Matches the board: EVER ELITE 10-20 had 4 new gangs and 16 strads.
 - **rule** Ships at WUT and Pier 4 (Husky) raise the chance of top-pick jobs.
-- Unknown board codes so far: `HS`, `SK/HS`, `UT`, `T/TAINER`. `STRAD` = strad, `T/PICK` = top pick, `HT`/`HUST` = hustler.
+- `UT` = utility truck: a yard hustler hired for house/yard work, not a ship. Same truck as a ship hustler, so it counts as a truck (skill) job, not a strad/top pick.
+- Unknown board codes so far: `HS`, `SK/HS`, `T/TAINER`. `STRAD` = strad, `T/PICK` = top pick, `HT`/`HUST` = hustler.
 
 ## Turnout
 
