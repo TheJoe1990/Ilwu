@@ -22,6 +22,10 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - **rule** Reading the board: job counts are jobs open at the hall, already net of men coming "BACK" (holding from the previous day). E.g. "10 BACK 6NEW 15 HUST" = 15 new hustler jobs to dispatch.
 - "SV" on the board = supervisor. **rule** Supervisor jobs are dispatched at flex pick, before regular pick. **observed** Sometimes the dispatcher sends no B's at flex pick and hands SV jobs out at regular pick instead (2026-10-13). Treat an SV at regular pick as an anomaly; it isn't modeled.
 
+- **rule** PCT (Evergreen) hires 4 strads per working crane. Matches the board: EVER ELITE 10-20 had 4 new gangs and 16 strads.
+- **rule** Ships at WUT and Pier 4 (Husky) raise the chance of top-pick jobs.
+- Unknown board codes so far: `HS`, `SK/HS`, `UT`, `T/TAINER`. `STRAD` = strad, `T/PICK` = top pick, `HT`/`HUST` = hustler.
+
 ## Turnout
 
 - **observed** Turnout drops on slow days. With 1 ship in port the parking lot was empty, the line went deep, and a 0-hr B with spin 174 of ~296 still got a strad. **Few ships does not mean worse odds.**
