@@ -106,6 +106,10 @@ def load_vessels():
         r = r + [""] * (len(hdr) - len(r))
         if r[col["Harbor"]] != "Tacoma":
             continue
+        # Grain ships don't count as ships (user, 2026-10-20): the elevators hire few longshore and no skill jobs.
+        # NWSA's schedule doesn't list them today; this keeps them out if it ever does.
+        if any(w in f"{r[col['Vessel Type']]} {r[col['Terminal']]}".lower() for w in ("grain", "bulk")):
+            continue
         key = (r[col["Terminal"]], r[col["Vessel Name"]], r[col["Voyage"]])
         if key in seen:
             continue

@@ -35,6 +35,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - PCT (Evergreen): a ship there runs lots of strads/top picks. The strongest single signal for skill jobs.
 - Husky (P3/P4): some skill jobs. WUT: mostly hustlers. Matson/WST, EB1, T7, Blair: few skill jobs reaching B's.
 - PCT rail / NIM train days also run strads without a ship.
+- **rule** Grain ships (grain elevators, e.g. "C.G" on the board) don't count when counting ships for the day: they hire few longshore and no skill jobs. Wed 10-21 board: 5 ships + 1 grain.
 
 ## The model in this repo
 
