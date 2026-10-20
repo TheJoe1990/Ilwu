@@ -36,6 +36,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Husky (P3/P4): some skill jobs. WUT: mostly hustlers. Matson/WST, EB1, T7, Blair: few skill jobs reaching B's.
 - PCT rail / NIM train days also run strads without a ship.
 - **rule** TOTE works Wednesday and Friday nights and basically never day shift, so it's left out of day-shift ship counts (it still adds night work).
+- **rule** A ship that doesn't appear on the day board isn't hiring longshore work that day. When the schedule lists a ship that the board doesn't, the forecast overcounted (see `board_backtest.py`).
 - **rule** Grain ships (grain elevators, e.g. "C.G" on the board) don't count when counting ships for the day: they hire few longshore and no skill jobs. Wed 10-21 board: 5 ships + 1 grain.
 
 ## The model in this repo
