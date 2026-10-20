@@ -73,7 +73,7 @@ def setup(start, days):
 
 def on_shift(v, day, delay):
     lo, hi = dt.datetime.combine(day, outlook.SHIFT[0]), dt.datetime.combine(day, outlook.SHIFT[1])
-    return v["eta"] + delay < hi and v["etd"] + delay > lo and outlook.arrived_for_day(v, day, delay)
+    return v["eta"] + delay < hi and v["etd"] + delay > lo and outlook.arrived_for_day(v, day, delay) and outlook.stays_for_day(v, day, delay)
 
 
 LASHED = {"Container", "Multipurpose", "Ro-Ro"}

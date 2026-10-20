@@ -53,6 +53,17 @@ def arrived_for_day(v, day, delay=dt.timedelta(0)):
     return v["eta"] + delay < dt.datetime.combine(day, DAY_ETA_CUTOFF)
 
 
+# A container ship leaving before mid-afternoon is usually finished on the night shift before: a day gang would get
+# half a shift (less untie time) but be paid for a whole one (user, 2026-10-20; YM TARGET ETD 13:00 on 10-13).
+# Car ships work fast with drivers, so they're exempt (MORNING LISA ETD 14:00 still hired).
+DAY_ETD_CUTOFF = dt.time(15)
+
+
+def stays_for_day(v, day, delay=dt.timedelta(0)):
+    etd = v["etd"] + delay
+    return v["type"] == "Car Carrier" or not (etd.date() == day and etd.time() < DAY_ETD_CUTOFF)
+
+
 def day_shift(v):
     return v["terminal"].upper() not in NIGHT_ONLY
 
@@ -166,7 +177,7 @@ def outlook(start, days, reg):
         day = start + dt.timedelta(days=i)
         lo, hi = dt.datetime.combine(day, SHIFT[0]), dt.datetime.combine(day, SHIFT[1])
         working = [v for v in vessels if v["eta"] and v["etd"] and v["eta"] < hi and v["etd"] > lo and day_shift(v)
-                   and arrived_for_day(v, day)]
+                   and arrived_for_day(v, day) and stays_for_day(v, day)]
         good_signal = 0.0
         for v in working:
             bucket = TERMINAL.get(v["terminal"].upper())

@@ -41,7 +41,8 @@ def predicted(day):
     vessels, _ = outlook.load_vessels(f.read_bytes(), f.name)
     lo, hi = (dt.datetime.combine(day, t) for t in outlook.SHIFT)
     return [v for v in vessels if v["eta"] and v["etd"] and v["eta"] < hi and v["etd"] > lo
-            and outlook.day_shift(v) and outlook.arrived_for_day(v, day)]
+            and outlook.day_shift(v) and outlook.arrived_for_day(v, day)
+            and outlook.stays_for_day(v, day)]
 
 
 def same(a, b):

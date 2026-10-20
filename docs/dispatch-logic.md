@@ -37,6 +37,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - PCT rail / NIM train days also run strads without a ship.
 - **rule** TOTE works Wednesday and Friday nights and basically never day shift, so it's left out of day-shift ship counts (it still adds night work).
 - **rule** A ship that doesn't appear on the day board isn't hiring longshore work that day. When the schedule lists a ship that the board doesn't, the forecast overcounted (see `board_backtest.py`).
+- **observed** A container ship leaving before ~3pm usually isn't worked on day shift that day: a day gang would get half a shift minus untie time but be paid for a whole one, so it gets finished on the night before. Tying up on arrival takes time too, so a ship due after ~noon gets no day hire.
 - **rule** Grain ships (grain elevators, e.g. "C.G" on the board) don't count when counting ships for the day: they hire few longshore and no skill jobs. Wed 10-21 board: 5 ships + 1 grain.
 
 ## The model in this repo
