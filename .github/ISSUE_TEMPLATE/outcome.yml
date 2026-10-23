@@ -1,0 +1,22 @@
+# Written by Claude Code (AI), 2026-10-23. Report form behind the app's "Report what actually happened" button.
+name: Dispatch report
+description: What happened at day dispatch. No names or reg numbers.
+title: "Report: "
+labels: [outcome]
+body:
+  - type: input
+    id: date
+    attributes: {label: Date of the shift (YYYY-MM-DD), placeholder: "2026-10-23"}
+    validations: {required: true}
+  - type: input
+    id: skill3_cut
+    attributes: {label: Last person to get a strad/top pick (their hours / spin), placeholder: "12 / 94", description: "Your best guess is fine. Write 'didn't run out' if every B who showed got one."}
+  - type: input
+    id: skill_cut
+    attributes: {label: Last person to get any skill job incl. trucks (hours / spin), placeholder: "18 / 283"}
+  - type: input
+    id: mine
+    attributes: {label: "Optional: your hours / spin and what you got", placeholder: "6 / 144, hustler at WUT"}
+  - type: textarea
+    id: notes
+    attributes: {label: Anything else (turnout, what ran out where)}

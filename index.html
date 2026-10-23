@@ -87,6 +87,16 @@
   #boardView th { color: #0ff; font-size: 12px; text-align: left; padding: 4px 6px; white-space: nowrap; }
   #boardView td { font-size: 13px; padding: 5px 6px; border-top: 1px solid #333; vertical-align: top; white-space: nowrap; }
   #boardView td:first-child { font-weight: 700; white-space: nowrap; }
+  #guessBtn {
+    position: fixed; top: max(8px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); z-index: 2;
+    background: none; border: 0; padding: 10px; color: var(--muted); font-size: 15px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+  .disclaimer { border: 1px solid var(--warn); color: var(--warn); border-radius: 14px; padding: 10px 12px; font-size: 14px; margin-bottom: 12px; }
+  .guess { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
+  .guess b { font-size: 18px; }
+  .guess p { margin: 6px 0 0; font-size: 16px; }
+  a.btn { display: block; text-align: center; text-decoration: none; color: var(--accent-fg); }
   h3 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
 </style>
 </head>
@@ -94,6 +104,7 @@
 
 <button id="gear" aria-label="Settings">⚙</button>
 <button id="boardsBtn" aria-label="Saved day and night boards">Boards</button>
+<button id="guessBtn" aria-label="Guess where skill jobs run out">Guess</button>
 
 <main id="main">
   <button class="big" id="hoursCard" aria-label="Log hours">
@@ -148,6 +159,14 @@
   </div>
   <div id="boardView"><p class="muted">Loading…</p></div>
   <p class="muted">Saved from ilwu23.com about once an hour, so a board is still here after the union clears its screen.</p>
+</section>
+
+<section class="panel hidden" id="guessPanel">
+  <h2>Guess <button class="close" data-close>×</button></h2>
+  <p class="disclaimer"><b>This model still sucks.</b> It's a rough simulation built from one person's timebook and the ship schedule, and it's often way off (it guessed skill 3 would run out near 14 hrs on 10/23; strads went past 25). It only gets better when people report what actually happened.</p>
+  <div id="guessView"><p class="muted">Loading…</p></div>
+  <a class="btn primary" id="reportLink" target="_blank" rel="noopener">Report what actually happened</a>
+  <p class="muted">Most useful: the hours and spin of the last person to get a strad/top pick, and the last to get any skill job (trucks included). No names or reg numbers.</p>
 </section>
 
 <section class="panel hidden" id="settingsPanel">
@@ -441,6 +460,28 @@ $("boardsBtn").onclick = async () => {
 document.querySelectorAll("#kindToggle .chip").forEach((c) => (c.onclick = () => { boardKind = c.dataset.kind; syncKind(); fillBoardDates(); }));
 $("boardDate").onchange = fillBoardVersions;
 $("boardVer").onchange = showBoard;
+
+// Guess panel: where skill jobs should run out, from guess.py (data/guess/latest.json)
+const REPORT_URL = "https://github.com/TheJoe1990/Ilwu/issues/new?template=outcome.yml";
+$("reportLink").href = REPORT_URL;
+function fmtCut(c) {
+  if (!c || c.p_runs_out === null) return "no guess";
+  if (!c.mid) return "probably won't run out";
+  const m = c.mid, sure = c.p_runs_out < 0.6 ? ` (only runs out ${Math.round(c.p_runs_out * 100)}% of the time)` : "";
+  return `around <b>${m.hours} hrs / spin ${m.spin}</b>${sure}`;
+}
+$("guessBtn").onclick = async () => {
+  openPanel("guessPanel");
+  const txt = await fetchBoardFile("../guess/latest.json");
+  let g = null; try { g = JSON.parse(txt); store.set("guess", g); } catch { g = store.get("guess", null); }
+  const view = $("guessView");
+  if (!g) { view.innerHTML = `<p class="muted">No guess available yet.</p>`; return; }
+  view.innerHTML = g.days.map((d) => `<div class="guess"><b>${fmtDate(parseYmd(d.date))}</b>
+    <span class="muted"> · ${d.ships} ships${d.pct ? ", PCT" : ""}</span>
+    ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
+    <p>All skill (incl. trucks) runs out ${fmtCut(d.skill)}.</p>`}</div>`).join("") +
+    `<p class="muted">Made ${fmtWhen(new Date(g.made))} from the ${g.basis}.</p>`;
+};
 
 // Week panel
 $("spinCard").onclick = () => { renderWeek(); openPanel("weekPanel"); };

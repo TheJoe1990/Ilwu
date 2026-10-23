@@ -155,7 +155,9 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
     pay = P["pay"]
     n = len(days)
     res = {"good": [0] * n, "work": [0] * n, "unsk": [0] * n, "matson": [0.0] * n, "shown": 0,
-           "earn": [], "worked": [], "matson_runs": []}
+           "earn": [], "worked": [], "matson_runs": [],
+           # per day, per run: (hours, spin) of the last B to get a skill-3 / any skill job; None = didn't run out
+           "cut_good": [[] for _ in range(n)], "cut_skill": [[] for _ in range(n)]}
     for _ in range(runs):
         dem = demand(world, P, draw_delays(world, P, rng))
         alias = rng.choice(others) if random_spin else REG
@@ -208,6 +210,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
             good_left = n_good
             n_other = jobs_left - n_good
             other_rank = 0          # position among people getting non-good jobs (earlier = more choice)
+            last_good = last_skill = None
             for r in avail:
                 if jobs_left == 0:
                     if not unsk_left:
@@ -220,11 +223,14 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                         res["work"][i] += 1
                         res["unsk"][i] += 1
                     continue
+                pos = (hours[r], spins.get(swap.get(r, r), 999))
                 if good_left and r in qualified:
+                    last_good = last_skill = pos
                     good_left -= 1
                     hours[r] += 10 if d["full"] else 8
                     got = "good"
                 elif jobs_left > good_left:
+                    last_skill = pos
                     hours[r] += 8 if d["full"] else 6
                     got = "other"
                     other_rank += 1
@@ -243,6 +249,8 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                         # people ahead of you take Matson and leave a WUT/Husky truck for you.
                         res["matson"][i] += 1
                         matson += 1
+            res["cut_good"][i].append(last_good if good_left == 0 and n_good else None)
+            res["cut_skill"][i].append(last_skill if jobs_left == 0 else None)
         res["earn"].append(earned)
         res["worked"].append(worked)
         res["matson_runs"].append(matson)
