@@ -1,5 +1,5 @@
 {
- "made": "2026-10-23T10:49-07:00",
+ "made": "2026-10-23T10:50-07:00",
  "days": [
   {
    "date": "2026-10-24",
@@ -36,33 +36,33 @@
    "ships": 5,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.98,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
-     "spin": 67
+     "spin": 60
     },
     "early": {
      "hours": 0.0,
-     "spin": 38
+     "spin": 35
     },
     "late": {
      "hours": 0.0,
-     "spin": 96
+     "spin": 89
     }
    },
    "skill": {
-    "p_runs_out": 0.14,
+    "p_runs_out": 0.12,
     "mid": {
      "hours": 0.0,
-     "spin": 298
+     "spin": 290
     },
     "early": {
      "hours": 0.0,
-     "spin": 264
+     "spin": 257
     },
     "late": {
      "hours": 0.0,
-     "spin": 324
+     "spin": 322
     }
    }
   },
@@ -99,30 +99,30 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
-     "spin": 191
+     "spin": 211
     },
     "early": {
      "hours": 0.0,
-     "spin": 118
+     "spin": 116
     },
     "late": {
      "hours": 0.0,
-     "spin": 276
+     "spin": 295
     }
    },
    "skill": {
-    "p_runs_out": 0.29,
+    "p_runs_out": 0.26,
     "mid": {
      "hours": 8.0,
-     "spin": 295
+     "spin": 305
     },
     "early": {
      "hours": 8.0,
-     "spin": 254
+     "spin": 262
     },
     "late": {
      "hours": 8.0,
-     "spin": 326
+     "spin": 346
     }
    }
   },
@@ -169,30 +169,285 @@
     "p_runs_out": 1.0,
     "mid": {
      "hours": 0.0,
-     "spin": 95
+     "spin": 94
     },
     "early": {
      "hours": 0.0,
-     "spin": 59
+     "spin": 57
     },
     "late": {
      "hours": 0.0,
-     "spin": 138
+     "spin": 133
     }
    },
    "skill": {
     "p_runs_out": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 306
+     "spin": 326
     },
     "early": {
      "hours": 0.0,
-     "spin": 279
+     "spin": 325
     },
     "late": {
      "hours": 0.0,
-     "spin": 306
+     "spin": 344
+    }
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ym Plum",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Salute",
+     "terminal": "PCT",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 3,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.99,
+    "mid": {
+     "hours": 0.0,
+     "spin": 304
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 182
+    },
+    "late": {
+     "hours": 6.0,
+     "spin": 33
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.03,
+    "mid": {
+     "hours": 8.0,
+     "spin": 76
+    },
+    "early": {
+     "hours": 6.0,
+     "spin": 298
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 110
+    }
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Salute",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Frankfurt Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Matson Kodiak",
+     "terminal": "MATSON/WST",
+     "kind": "container"
+    },
+    {
+     "name": "Patara",
+     "terminal": "EB1",
+     "kind": "car ship"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 5,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.99,
+    "mid": {
+     "hours": 8.0,
+     "spin": 176
+    },
+    "early": {
+     "hours": 6.0,
+     "spin": 229
+    },
+    "late": {
+     "hours": 12.0,
+     "spin": 51
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.01,
+    "mid": {
+     "hours": 12.0,
+     "spin": 242
+    },
+    "early": {
+     "hours": 12.0,
+     "spin": 228
+    },
+    "late": {
+     "hours": 14.0,
+     "spin": 312
+    }
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Salute",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Frankfurt Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Patara",
+     "terminal": "BLAIR",
+     "kind": "car ship"
+    },
+    {
+     "name": "One Durban",
+     "terminal": "WUT",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 5,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.98,
+    "mid": {
+     "hours": 14.0,
+     "spin": 71
+    },
+    "early": {
+     "hours": 8.0,
+     "spin": 253
+    },
+    "late": {
+     "hours": 16.0,
+     "spin": 60
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.02,
+    "mid": {
+     "hours": 22.0,
+     "spin": 183
+    },
+    "early": {
+     "hours": 18.0,
+     "spin": 341
+    },
+    "late": {
+     "hours": 24.0,
+     "spin": 55
+    }
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Frankfurt Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "One Durban",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Matson Anchorage",
+     "terminal": "MATSON/WST",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Mode",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Manulani",
+     "terminal": "MATSON/WST",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 6,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.98,
+    "mid": {
+     "hours": 14.0,
+     "spin": 262
+    },
+    "early": {
+     "hours": 8.0,
+     "spin": 233
+    },
+    "late": {
+     "hours": 20.0,
+     "spin": 56
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.03,
+    "mid": {
+     "hours": 26.0,
+     "spin": 233
+    },
+    "early": {
+     "hours": 24.0,
+     "spin": 337
+    },
+    "late": {
+     "hours": 30.0,
+     "spin": 192
     }
    }
   }

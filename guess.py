@@ -81,7 +81,7 @@ def guess(day, runs, boards):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--days", type=int, default=3, help="how many days to guess, starting with the next day shift")
+    ap.add_argument("--days", type=int, default=7, help="how many days to guess, starting with the next day shift")
     ap.add_argument("--runs", type=int, default=400)
     a = ap.parse_args()
     now = dt.datetime.now(PT)

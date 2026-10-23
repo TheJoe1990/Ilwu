@@ -470,7 +470,7 @@ $("reportLink").href = REPORT_URL;
 const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const TERM_NAMES = { PCT: "PCT (Evergreen)", HUSKY: "Husky", WUT: "WUT", "MATSON/WST": "Matson", T7: "T7", EB1: "EB1", TOTE: "TOTE", BLAIR: "Blair" };
 const termName = (t) => TERM_NAMES[t] || t;
-// "PCT (Evergreen): 1 container · Husky: 2 containers · T7: 1 car ship · + grain"
+// "PCT (Evergreen): 1 container · Husky: 2 containers · T7: 1 car ship" (grain left out: user, 2026-10-23)
 function shipSummary(d) {
   const groups = new Map();
   for (const v of d.list || []) {
@@ -482,7 +482,6 @@ function shipSummary(d) {
     return `${esc(t)}: ${n} ${esc(kind)}${n > 1 ? "s" : ""}`;
   });
   if (!parts.length) parts.push(`${d.ships} ships`);
-  parts.push(d.grain ? `${d.grain} grain` : d.grain === null ? "grain not on the schedule" : "no grain");
   return parts.join(" · ");
 }
 function fmtCut(c) {
@@ -499,6 +498,7 @@ $("guessBtn").onclick = async () => {
   if (!g) { view.innerHTML = `<p class="muted">No guess available yet.</p>`; return; }
   view.innerHTML = g.days.map((d) => `<div class="guess"><b>${fmtDate(parseYmd(d.date))}</b>
     <span class="tag ${d.basis === "board" ? "tag-board" : ""}">${d.basis === "board" ? "After board" : "Before board"}</span>
+    ${(() => { const m = spinFor(parseYmd(d.date)); return m && m.spin != null ? `<p>Your spin: <b>${m.spin}</b></p>` : ""; })()}
     <p>${shipSummary(d)}</p>
     ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(termName(v.terminal))})`).join(", ")}</p>` : ""}
     ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
