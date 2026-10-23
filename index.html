@@ -484,6 +484,13 @@ function shipSummary(d) {
   if (!parts.length) parts.push(`${d.ships} ships`);
   return parts.join(" · ");
 }
+// Scorecard from score.py: how far past guesses were from reported cutoffs
+async function scoreLine() {
+  let sc = null;
+  try { sc = JSON.parse(await fetchBoardFile("../guess/score.json")); } catch { return ""; }
+  const f = (s, label) => s && s.days ? `${label}: off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})` : `${label}: not scored yet`;
+  return `<p class="disclaimer"><b>Scorecard.</b> ${f(sc.summary.schedule, "Before board")}. ${f(sc.summary.board, "After board")}.</p>`;
+}
 function fmtCut(c) {
   if (!c || c.p_runs_out === null) return "no guess";
   if (!c.mid) return "probably won't run out";
@@ -503,6 +510,7 @@ $("guessBtn").onclick = async () => {
     ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(termName(v.terminal))})`).join(", ")}</p>` : ""}
     ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
     <p>All skill (incl. trucks) runs out ${fmtCut(d.skill)}.</p>`}</div>`).join("") +
+    (await scoreLine()) +
     `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;
 };
 

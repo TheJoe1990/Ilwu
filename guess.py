@@ -92,6 +92,13 @@ def main():
     p = HERE / "data" / "guess" / "latest.json"
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(out, indent=1) + "\n")
+    # Keep the last guess of each kind per day for scoring (score.py). Days drop out of the guess once dispatched,
+    # and the before-board guess stops changing once the board posts, so each entry freezes at its final version.
+    hp = HERE / "data" / "guess" / "history.json"
+    hist = json.loads(hp.read_text()) if hp.exists() else {}
+    for g in out["days"]:
+        hist.setdefault(g["date"], {})[g["basis"]] = {"made": out["made"], "skill3": g["skill3"], "skill": g["skill"]}
+    hp.write_text(json.dumps(hist, indent=1, sort_keys=True) + "\n")
     for g in out["days"]:
         s3, sk = g["skill3"], g["skill"]
         f = lambda s: f"{s['mid']['hours']:g} hrs / spin {s['mid']['spin']} (ran out in {s['p_runs_out']:.0%} of runs)" if "mid" in s else "didn't run out"

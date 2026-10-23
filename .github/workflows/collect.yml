@@ -20,7 +20,7 @@ jobs:
       - name: Collect
         run: python3 collect.py
       - name: Guess where skill runs out
-        run: python3 guess.py || echo "guess failed; keeping the last one"
+        run: python3 guess.py && python3 score.py || echo "guess failed; keeping the last one"
       - name: Commit if changed
         run: |
           git add data

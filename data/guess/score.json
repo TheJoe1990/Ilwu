@@ -1,0 +1,28 @@
+{
+ "summary": {
+  "schedule": {
+   "days": 1,
+   "avg_off_hours": 14.0
+  },
+  "board": {
+   "days": 0,
+   "avg_off_hours": null
+  }
+ },
+ "rows": [
+  {
+   "date": "2026-10-23",
+   "kind": "skill3",
+   "basis": "schedule",
+   "guess": [
+    14.0,
+    282
+   ],
+   "reported": [
+    28.0,
+    185
+   ],
+   "off_hours": -14.0
+  }
+ ]
+}

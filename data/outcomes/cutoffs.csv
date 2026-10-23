@@ -1,0 +1,5 @@
+date,shift,kind,hours,spin,bound,notes
+2026-10-20,day,skill,6,267,exact,"All skill ran out right in front of a 6-hr / spin-267 B (b-day-02)."
+2026-10-21,day,skill3,12,94,exact,"Last skill 3 went to a B believed at 12 hrs / spin ~94 (b-day-02)."
+2026-10-22,day,skill3,18,283,at_least,"A B at 18 / 283 got a strad at PCT; the last one went later in line (b-day-02)."
+2026-10-23,day,skill3,28,185,exact,"Strads past 25; ~28 / 185 likely the last (b-day-01)."
