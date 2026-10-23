@@ -3,7 +3,7 @@
 """Guess where skill jobs run out on upcoming day shifts, for the app's "Guess" button.
 
 Before a day's board posts (~2pm the day before) the guess comes from the vessel schedule. After it posts, the
-board's ship list replaces the schedule for that day ("basis": "board"); job counts still come from the model.
+board's ship list and skill-3 count replace the schedule's for that day ("basis": "board").
 
 For each target day, simulates the B line from the last hours reset (Sat/Mon) through that day with sim.py's
 model, and reports the typical (hours, spin) of the last B to get a skill-3 job (strad/top pick) and the last
@@ -56,7 +56,12 @@ def guess(day, runs, boards):
     world = sim.setup(start, (day - start).days + 1)
     # Past days and the target day use their posted boards when we have them
     world["board"] = {d: sim.board_vessels(world, rows) for d, rows in boards.items() if start <= d <= day}
-    res = sim.simulate(world, sim.load_params(), None, runs)
+    # Posted boards also give the skill-3 job count (board_jobs.py); it beat the per-ship guess in guess_backtest.py
+    P = sim.load_params()
+    counts = board_jobs.final_versions()
+    world["good_override"] = {d: board_jobs.count(counts[d.isoformat()])["skill3"] * P["board_skill3_share"]
+                              for d in world["board"] if d.isoformat() in counts}
+    res = sim.simulate(world, P, None, runs)
     i = len(world["days"]) - 1
     d = world["days"][i]
     ships = sim.demand(world, sim.load_params(), [dt.timedelta(0)] * len(world["vessels"]))[i]

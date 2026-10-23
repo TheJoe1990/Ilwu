@@ -214,6 +214,11 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
             else:
                 me = workdays is None or d["day"] in workdays
             boost = P["weekend_show_boost"] if d["full"] else 1.0
+            # Turnout follows the work: today's board and the day before (exponents 0 = flat show rate)
+            ref = P["day_jobs_base"] + 4 * P["day_jobs_per_ship"]
+            boost *= (m["day_mean"] / ref) ** P.get("turnout_today_exp", 0.0)
+            if i > 0:
+                boost *= (dem[i - 1]["day_mean"] / ref) ** P.get("turnout_prev_exp", 0.0)
             avail = [r for r in others if r not in night and rng.random() < min(1.0, habit[r] * boost)]
             if me:
                 avail.append(REG)
@@ -226,7 +231,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
             magnet = poisson(rng, m["magnet_mean"])
             a_cars = sum(rng.random() < P["a_magnet_share"] for _ in range(magnet))
             unsk_left = magnet - a_cars
-            n_good = poisson(rng, m["good_mean"])
+            n_good = poisson(rng, world.get("good_override", {}).get(d["day"], m["good_mean"]))
             jobs_left = max(n_good, poisson(rng, m["day_mean"])) + a_cars
             good_left = n_good
             n_other = jobs_left - n_good

@@ -1,5 +1,5 @@
 {
-  "_note": "Calibrated 2026-10-12: work 97% / good 26% of days shown, attendance 60%, other B's show 45%. Mostly guesses until daily feedback.. show_rate 0.45 + inactive_share 0.106 anchored to PMA 70% sheet (Aug-Sep 2026: 30.1 paid hrs/wk per active B). B's fill all skill jobs before unskilled (car/lash); a_magnet_share = A's taking car/lash shifts (guess 0.5). Rough, still mostly guesses.",
+  "_note": "Calibrated 2026-10-12: work 97% / good 26% of days shown, attendance 60%, other B's show 45%. Mostly guesses until daily feedback.. show_rate 0.45 + inactive_share 0.106 anchored to PMA 70% sheet (Aug-Sep 2026: 30.1 paid hrs/wk per active B). B's fill all skill jobs before unskilled (car/lash); a_magnet_share = A's taking car/lash shifts (guess 0.5). Rough, still mostly guesses. 2026-10-23: after-board guesses use the board's skill-3 count x board_skill3_share (1.0 best vs 10-21..23 cutoffs: 12/18/24 hrs vs reported 12/18/28). Turnout-follows-work exponents made it worse; left at 0.",
   "show_rate": 0.45,
   "night_share": 0.3,
   "qualified_share": 0.3,
@@ -38,5 +38,8 @@
   "pct_day_off_penalty": 0.5,
   "inactive_share": 0.106,
   "matson_pref_share": 0.33,
-  "a_magnet_share": 0.5
+  "a_magnet_share": 0.5,
+  "board_skill3_share": 1.0,
+  "turnout_today_exp": 0.0,
+  "turnout_prev_exp": 0.0
 }
