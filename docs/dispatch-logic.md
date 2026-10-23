@@ -53,3 +53,5 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - `outlook.py`: quick per-day heuristic table (ships by terminal × spin position).
 - **Known gaps:** turnout is a flat show rate (it should drop with ship count); the share of B's qualified for skill jobs is a guess (0.3); other B's hours are unknown beyond your own; board job codes for strad/top pick/hustler aren't decoded yet; weekend send-home risk isn't modeled.
 - `params.json` and `sim.py` still contain the original author's preferences (pay goal, terminal preference, avoiding Matson, the PCT lean). Copy `preferences.example.json`, change it, and adapt before trusting the output for yourself.
+
+- **Guess basis (2026-10-23):** guess.py labels each day "Before board" (vessel schedule only) or "After board" (the posted day board's ship list replaces the schedule for that day and for earlier days in the period). Job counts still come from the model; board job codes aren't used yet.

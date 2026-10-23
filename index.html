@@ -95,6 +95,8 @@
   .disclaimer { border: 1px solid var(--warn); color: var(--warn); border-radius: 14px; padding: 10px 12px; font-size: 14px; margin-bottom: 12px; }
   .guess { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; }
   .guess b { font-size: 18px; }
+  .tag { font-size: 13px; padding: 2px 8px; border-radius: 10px; margin-left: 6px; border: 1px solid var(--line); color: var(--muted); }
+  .tag-board { border-color: currentColor; color: var(--accent); font-weight: 600; }
   .guess p { margin: 6px 0 0; font-size: 16px; }
   a.btn { display: block; text-align: center; text-decoration: none; color: var(--accent-fg); }
   h3 { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 20px 0 8px; }
@@ -478,10 +480,11 @@ $("guessBtn").onclick = async () => {
   const view = $("guessView");
   if (!g) { view.innerHTML = `<p class="muted">No guess available yet.</p>`; return; }
   view.innerHTML = g.days.map((d) => `<div class="guess"><b>${fmtDate(parseYmd(d.date))}</b>
+    <span class="tag ${d.basis === "board" ? "tag-board" : ""}">${d.basis === "board" ? "After board" : "Before board"}</span>
     <span class="muted"> · ${d.ships} ships${d.pct ? ", PCT" : ""}</span>
     ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
     <p>All skill (incl. trucks) runs out ${fmtCut(d.skill)}.</p>`}</div>`).join("") +
-    `<p class="muted">Made ${fmtWhen(new Date(g.made))} from the ${g.basis}.</p>`;
+    `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;
 };
 
 // Week panel

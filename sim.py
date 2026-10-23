@@ -71,6 +71,25 @@ def setup(start, days):
             "good_rate": good_rate, "hustler_w": hustler_weights(tb)}
 
 
+BOARD_TERMINAL = [("PCT", "PCT"), ("P3", "HUSKY"), ("P-3", "HUSKY"), ("P4", "HUSKY"), ("P-4", "HUSKY"), ("HUSKY", "HUSKY"),
+                  ("WUT", "WUT"), ("SSAT", "WST"), ("WST", "WST"), ("P7", "T7"), ("T7", "T7"), ("EB", "EB1"),
+                  ("BLAIR", "BLAIR"), ("TOTE", "TOTE")]
+
+
+def board_vessels(world, rows):
+    """Ships on a posted day board as vessel dicts (schedule entry when the name matches). Grain is skipped."""
+    import board_backtest
+    out = []
+    for name, term, _ in rows:
+        t = term.replace(" ", "").upper()
+        if t.startswith(("CG", "C.G")):
+            continue
+        v = next((v for v in world["vessels"] if board_backtest.same(v["vessel"].upper(), name)), None)
+        code = next((c for k, c in BOARD_TERMINAL if t.startswith(k)), "?")
+        out.append(v or {"vessel": name, "terminal": code, "type": "Car Carrier" if code in ("T7", "EB1") else "Unknown"})
+    return out
+
+
 def on_shift(v, day, delay):
     lo, hi = dt.datetime.combine(day, outlook.SHIFT[0]), dt.datetime.combine(day, outlook.SHIFT[1])
     return v["eta"] + delay < hi and v["etd"] + delay > lo and outlook.arrived_for_day(v, day, delay) and outlook.stays_for_day(v, day, delay)
@@ -90,6 +109,8 @@ def demand(world, P, delays):
         wk = P["weekend_jobs_factor"] if d["full"] else 1.0
         in_port = [v for v, dl in zip(world["vessels"], delays) if dl is not None and on_shift(v, d["day"], dl)]
         here = [v for v in in_port if outlook.day_shift(v)]
+        if d["day"] in world.get("board", {}):   # the posted board is the real ship list: no slips or misses
+            here = world["board"][d["day"]]
         day0 = dt.datetime.combine(d["day"], dt.time(0))
         starting = finishing = 0
         for v, dl in zip(world["vessels"], delays):
