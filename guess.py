@@ -17,6 +17,7 @@ import json
 import pathlib
 
 import board_backtest
+import board_jobs
 import sim
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -40,17 +41,12 @@ def summary(cuts):
 
 
 def posted_boards():
-    """{date: board rows} for day boards that have posted (a version with ships whose header isn't the prior day)."""
-    idx = json.load(open(HERE / "data" / "boards" / "index.json"))["day"]
+    """{date: board ship rows} for day boards that have posted (see board_jobs.final_versions)."""
     out = {}
-    for d, versions in idx.items():
-        for e in reversed(versions):
-            if e.get("header", d) != d:
-                continue
-            rows = board_backtest.board_ships(HERE / "data" / "boards" / "day" / e["file"])
-            if rows:
-                out[dt.date.fromisoformat(d)] = rows
-                break
+    for d, path in board_jobs.final_versions().items():
+        rows = board_backtest.board_ships(path)
+        if rows:
+            out[dt.date.fromisoformat(d)] = rows
     return out
 
 
