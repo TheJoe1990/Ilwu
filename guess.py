@@ -18,6 +18,7 @@ import pathlib
 
 import board_backtest
 import board_jobs
+import outlook
 import sim
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -59,7 +60,17 @@ def guess(day, runs, boards):
     i = len(world["days"]) - 1
     d = world["days"][i]
     ships = sim.demand(world, sim.load_params(), [dt.timedelta(0)] * len(world["vessels"]))[i]
-    return {"date": day.isoformat(), "basis": "board" if day in world["board"] else "schedule", "no_work": d["no_work"], "ships": ships["ships"], "pct": ships["pct"],
+    if day in world["board"]:
+        here = world["board"][day]
+        grain = sum(t.replace(" ", "").upper().startswith(("CG", "C.G")) for _, t, _ in boards[day])
+    else:
+        here = [v for v in world["vessels"] if sim.on_shift(v, day, dt.timedelta(0)) and outlook.day_shift(v)]
+        grain = None   # the NWSA schedule doesn't list grain ships; only the board shows them
+    kinds = {"Container": "container", "Car Carrier": "car ship", "Ro-Ro": "ro-ro", "Multipurpose": "multipurpose"}
+    ship_list = [{"name": v["vessel"].title(), "terminal": outlook.TERMINAL.get(v["terminal"].upper(), v["terminal"]),
+                  "kind": kinds.get(v["type"], "ship")} for v in here]
+    return {"date": day.isoformat(), "basis": "board" if day in world["board"] else "schedule",
+            "list": ship_list, "grain": grain, "no_work": d["no_work"], "ships": ships["ships"], "pct": ships["pct"],
             "skill3": summary(res["cut_good"][i]), "skill": summary(res["cut_skill"][i])}
 
 

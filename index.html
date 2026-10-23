@@ -467,6 +467,7 @@ $("boardVer").onchange = showBoard;
 // Guess panel: where skill jobs should run out, from guess.py (data/guess/latest.json)
 const REPORT_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdjOJCw_i_JP1ph3CBZN8nsTeEFjuVj7Mg55SXvgwjY73VYxg/viewform";
 $("reportLink").href = REPORT_URL;
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 function fmtCut(c) {
   if (!c || c.p_runs_out === null) return "no guess";
   if (!c.mid) return "probably won't run out";
@@ -481,7 +482,8 @@ $("guessBtn").onclick = async () => {
   if (!g) { view.innerHTML = `<p class="muted">No guess available yet.</p>`; return; }
   view.innerHTML = g.days.map((d) => `<div class="guess"><b>${fmtDate(parseYmd(d.date))}</b>
     <span class="tag ${d.basis === "board" ? "tag-board" : ""}">${d.basis === "board" ? "After board" : "Before board"}</span>
-    <span class="muted"> · ${d.ships} ships${d.pct ? ", PCT" : ""}</span>
+    <span class="muted"> · ${d.ships} ships${d.grain ? ` + ${d.grain} grain` : d.grain === null ? " + grain (not on the schedule)" : ""}</span>
+    ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(v.terminal)} ${esc(v.kind)})`).join(", ")}</p>` : ""}
     ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
     <p>All skill (incl. trucks) runs out ${fmtCut(d.skill)}.</p>`}</div>`).join("") +
     `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;

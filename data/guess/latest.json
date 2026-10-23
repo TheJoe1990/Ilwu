@@ -1,73 +1,124 @@
 {
- "made": "2026-10-23T10:16-07:00",
+ "made": "2026-10-23T10:35-07:00",
  "days": [
   {
    "date": "2026-10-24",
    "basis": "schedule",
+   "list": [
+    {
+     "name": "Vienna Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Arc Independence",
+     "terminal": "T7",
+     "kind": "car ship"
+    },
+    {
+     "name": "Arc Endeavor",
+     "terminal": "T7",
+     "kind": "car ship"
+    },
+    {
+     "name": "Arc Honor",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
    "no_work": false,
    "ships": 5,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
      "hours": 0.0,
-     "spin": 65
+     "spin": 68
     },
     "early": {
      "hours": 0.0,
-     "spin": 35
+     "spin": 39
     },
     "late": {
      "hours": 0.0,
-     "spin": 93
+     "spin": 106
     }
    },
    "skill": {
-    "p_runs_out": 0.13,
+    "p_runs_out": 0.16,
     "mid": {
      "hours": 0.0,
-     "spin": 293
+     "spin": 315
     },
     "early": {
      "hours": 0.0,
-     "spin": 267
+     "spin": 270
     },
     "late": {
      "hours": 0.0,
-     "spin": 315
+     "spin": 337
     }
    }
   },
   {
    "date": "2026-10-25",
    "basis": "schedule",
+   "list": [
+    {
+     "name": "Vienna Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Red Cloud",
+     "terminal": "T7",
+     "kind": "ro-ro"
+    },
+    {
+     "name": "Ym Wealth",
+     "terminal": "WUT",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
    "no_work": false,
    "ships": 4,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
      "hours": 0.0,
-     "spin": 204
+     "spin": 194
     },
     "early": {
      "hours": 0.0,
-     "spin": 132
+     "spin": 119
     },
     "late": {
      "hours": 0.0,
-     "spin": 285
+     "spin": 293
     }
    },
    "skill": {
-    "p_runs_out": 0.24,
+    "p_runs_out": 0.27,
     "mid": {
      "hours": 8.0,
-     "spin": 296
+     "spin": 305
     },
     "early": {
      "hours": 8.0,
-     "spin": 252
+     "spin": 260
     },
     "late": {
      "hours": 8.0,
@@ -78,38 +129,59 @@
   {
    "date": "2026-10-26",
    "basis": "schedule",
+   "list": [
+    {
+     "name": "Vienna Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ym Tutorial",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Red Cloud",
+     "terminal": "T7",
+     "kind": "ro-ro"
+    },
+    {
+     "name": "Ym Wealth",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Polaris Mila",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
+     "name": "Ym Plum",
+     "terminal": "WUT",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
    "no_work": false,
    "ships": 6,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
-     "spin": 99
+     "spin": 102
     },
     "early": {
      "hours": 0.0,
-     "spin": 62
+     "spin": 61
     },
     "late": {
      "hours": 0.0,
-     "spin": 135
+     "spin": 143
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
-    "mid": {
-     "hours": 0.0,
-     "spin": 347
-    },
-    "early": {
-     "hours": 0.0,
-     "spin": 347
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 347
-    }
+    "p_runs_out": 0.0
    }
   }
  ]
