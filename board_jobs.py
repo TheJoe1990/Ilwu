@@ -10,7 +10,8 @@ Rules (user, 2026-10-23):
 - PCT (Evergreen): 4 strads per gang.
 - WUT: 5-6 trucks and at least one top pick per gang.
 - Husky (P3/P4): wild card, up to 8 trucks per gang.
-- Reach stacker counts as a top pick. H/LIFT = forklift, POWER = mechanic, DRIVERS/AUTOS = car ship,
+- Reach stacker and side pick (S/PICK) count as top picks. T/TAINER (transtainer) needs crane training and is
+  A men only, so it's not counted. H/LIFT = forklift, POWER = mechanic, DRIVERS/AUTOS = car ship,
   STRYKER = military equipment with its own certification: none of these are skill 3 or trucks.
 When a ship row lists STRAD or HUST explicitly, the explicit count wins over the per-gang rule.
 """
