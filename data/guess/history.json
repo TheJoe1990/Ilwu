@@ -16,30 +16,100 @@
  },
  "2026-10-24": {
   "board": {
-   "made": "2026-10-23T12:05-07:00",
+   "made": "2026-10-23T15:04-07:00",
    "skill": {
     "early": {
      "hours": 0.0,
-     "spin": 320
+     "spin": 319
     },
     "late": {
      "hours": 0.0,
-     "spin": 339
+     "spin": 348
     },
     "mid": {
      "hours": 0.0,
-     "spin": 322
+     "spin": 342
     },
     "p_runs_out": 0.03
    },
    "skill3": {
     "early": {
      "hours": 0.0,
-     "spin": 69
+     "spin": 106
     },
     "late": {
      "hours": 0.0,
-     "spin": 121
+     "spin": 174
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 138
+    },
+    "p_runs_out": 1.0
+   }
+  }
+ },
+ "2026-10-25": {
+  "schedule": {
+   "made": "2026-10-23T15:04-07:00",
+   "skill": {
+    "early": {
+     "hours": 8.0,
+     "spin": 246
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 346
+    },
+    "mid": {
+     "hours": 8.0,
+     "spin": 301
+    },
+    "p_runs_out": 0.53
+   },
+   "skill3": {
+    "early": {
+     "hours": 0.0,
+     "spin": 124
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 299
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 205
+    },
+    "p_runs_out": 0.99
+   }
+  }
+ },
+ "2026-10-26": {
+  "schedule": {
+   "made": "2026-10-23T15:04-07:00",
+   "skill": {
+    "early": {
+     "hours": 0.0,
+     "spin": 287
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 342
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 320
+    },
+    "p_runs_out": 0.03
+   },
+   "skill3": {
+    "early": {
+     "hours": 0.0,
+     "spin": 60
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 135
     },
     "mid": {
      "hours": 0.0,
@@ -49,106 +119,36 @@
    }
   }
  },
- "2026-10-25": {
-  "schedule": {
-   "made": "2026-10-23T12:05-07:00",
-   "skill": {
-    "early": {
-     "hours": 8.0,
-     "spin": 236
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 341
-    },
-    "mid": {
-     "hours": 8.0,
-     "spin": 296
-    },
-    "p_runs_out": 0.47
-   },
-   "skill3": {
-    "early": {
-     "hours": 0.0,
-     "spin": 107
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 265
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 194
-    },
-    "p_runs_out": 1.0
-   }
-  }
- },
- "2026-10-26": {
-  "schedule": {
-   "made": "2026-10-23T12:05-07:00",
-   "skill": {
-    "early": {
-     "hours": 0.0,
-     "spin": 327
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 327
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 327
-    },
-    "p_runs_out": 0.01
-   },
-   "skill3": {
-    "early": {
-     "hours": 0.0,
-     "spin": 60
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 144
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 92
-    },
-    "p_runs_out": 1.0
-   }
-  }
- },
  "2026-10-27": {
   "schedule": {
-   "made": "2026-10-23T12:05-07:00",
+   "made": "2026-10-23T15:04-07:00",
    "skill": {
     "early": {
-     "hours": 6.0,
-     "spin": 324
+     "hours": 8.0,
+     "spin": 43
     },
     "late": {
      "hours": 8.0,
-     "spin": 323
+     "spin": 189
     },
     "mid": {
      "hours": 8.0,
-     "spin": 109
+     "spin": 151
     },
-    "p_runs_out": 0.04
+    "p_runs_out": 0.03
    },
    "skill3": {
     "early": {
      "hours": 0.0,
-     "spin": 185
+     "spin": 191
     },
     "late": {
      "hours": 6.0,
-     "spin": 80
+     "spin": 52
     },
     "mid": {
      "hours": 0.0,
-     "spin": 322
+     "spin": 315
     },
     "p_runs_out": 0.99
    }
@@ -156,34 +156,34 @@
  },
  "2026-10-28": {
   "schedule": {
-   "made": "2026-10-23T12:05-07:00",
+   "made": "2026-10-23T15:04-07:00",
    "skill": {
     "early": {
-     "hours": 12.0,
-     "spin": 274
+     "hours": 14.0,
+     "spin": 14
     },
     "late": {
-     "hours": 16.0,
-     "spin": 194
+     "hours": 14.0,
+     "spin": 14
     },
     "mid": {
      "hours": 14.0,
-     "spin": 237
+     "spin": 14
     },
     "p_runs_out": 0.01
    },
    "skill3": {
     "early": {
      "hours": 6.0,
-     "spin": 250
+     "spin": 268
     },
     "late": {
      "hours": 12.0,
-     "spin": 12
+     "spin": 80
     },
     "mid": {
      "hours": 8.0,
-     "spin": 182
+     "spin": 189
     },
     "p_runs_out": 0.99
    }
@@ -191,71 +191,59 @@
  },
  "2026-10-29": {
   "schedule": {
-   "made": "2026-10-23T12:05-07:00",
+   "made": "2026-10-23T15:04-07:00",
    "skill": {
-    "early": {
-     "hours": 22.0,
-     "spin": 209
-    },
-    "late": {
-     "hours": 22.0,
-     "spin": 209
-    },
-    "mid": {
-     "hours": 22.0,
-     "spin": 209
-    },
-    "p_runs_out": 0.01
+    "p_runs_out": 0.0
    },
    "skill3": {
     "early": {
      "hours": 8.0,
-     "spin": 217
+     "spin": 235
     },
     "late": {
      "hours": 16.0,
-     "spin": 34
+     "spin": 21
     },
     "mid": {
      "hours": 14.0,
-     "spin": 44
+     "spin": 23
     },
-    "p_runs_out": 0.98
+    "p_runs_out": 0.99
    }
   }
  },
  "2026-10-30": {
   "schedule": {
-   "made": "2026-10-23T12:05-07:00",
+   "made": "2026-10-23T15:04-07:00",
    "skill": {
     "early": {
      "hours": 30.0,
-     "spin": 237
+     "spin": 191
     },
     "late": {
      "hours": 32.0,
-     "spin": 226
+     "spin": 42
     },
     "mid": {
      "hours": 30.0,
-     "spin": 326
+     "spin": 219
     },
     "p_runs_out": 0.01
    },
    "skill3": {
     "early": {
      "hours": 8.0,
-     "spin": 234
+     "spin": 261
     },
     "late": {
      "hours": 20.0,
-     "spin": 104
+     "spin": 93
     },
     "mid": {
      "hours": 14.0,
-     "spin": 275
+     "spin": 216
     },
-    "p_runs_out": 0.99
+    "p_runs_out": 0.97
    }
   }
  }
