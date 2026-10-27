@@ -1,54 +1,6 @@
 {
- "made": "2026-10-27T03:24-07:00",
+ "made": "2026-10-27T09:27-07:00",
  "days": [
-  {
-   "date": "2026-10-27",
-   "basis": "board",
-   "list": [
-    {
-     "name": "Ym Plum",
-     "terminal": "WUT",
-     "kind": "container"
-    },
-    {
-     "name": "Red Cloud",
-     "terminal": "T7",
-     "kind": "ro-ro"
-    },
-    {
-     "name": "Ym Tutorial",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "Ever Salute",
-     "terminal": "PCT",
-     "kind": "container"
-    }
-   ],
-   "grain": 1,
-   "no_work": false,
-   "ships": 4,
-   "pct": 1,
-   "skill3": {
-    "p_runs_out": 0.99,
-    "mid": {
-     "hours": 8.0,
-     "spin": 54
-    },
-    "early": {
-     "hours": 6.0,
-     "spin": 187
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 141
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.0
-   }
-  },
   {
    "date": "2026-10-28",
    "basis": "schedule",
@@ -89,22 +41,34 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 8.0,
-     "spin": 246
+     "spin": 251
     },
     "early": {
      "hours": 8.0,
-     "spin": 108
+     "spin": 101
     },
     "late": {
      "hours": 14.0,
-     "spin": 2
+     "spin": 55
     }
    },
    "skill": {
-    "p_runs_out": 0.0
+    "p_runs_out": 0.0,
+    "mid": {
+     "hours": 16.0,
+     "spin": 97
+    },
+    "early": {
+     "hours": 16.0,
+     "spin": 97
+    },
+    "late": {
+     "hours": 16.0,
+     "spin": 97
+    }
    }
   },
   {
@@ -150,31 +114,19 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 14.0,
-     "spin": 206
+     "spin": 288
     },
     "early": {
      "hours": 8.0,
-     "spin": 291
+     "spin": 276
     },
     "late": {
      "hours": 16.0,
-     "spin": 239
+     "spin": 216
     }
    },
    "skill": {
-    "p_runs_out": 0.01,
-    "mid": {
-     "hours": 24.0,
-     "spin": 252
-    },
-    "early": {
-     "hours": 24.0,
-     "spin": 252
-    },
-    "late": {
-     "hours": 24.0,
-     "spin": 252
-    }
+    "p_runs_out": 0.0
    }
   },
   {
@@ -230,30 +182,30 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 16.0,
-     "spin": 210
+     "spin": 240
     },
     "early": {
      "hours": 14.0,
-     "spin": 11
+     "spin": 72
     },
     "late": {
      "hours": 22.0,
-     "spin": 154
+     "spin": 151
     }
    },
    "skill": {
     "p_runs_out": 0.0,
     "mid": {
-     "hours": 30.0,
-     "spin": 330
+     "hours": 32.0,
+     "spin": 243
     },
     "early": {
-     "hours": 30.0,
-     "spin": 330
+     "hours": 32.0,
+     "spin": 243
     },
     "late": {
-     "hours": 30.0,
-     "spin": 330
+     "hours": 32.0,
+     "spin": 243
     }
    }
   },
@@ -290,11 +242,11 @@
     "p_runs_out": 0.98,
     "mid": {
      "hours": 0.0,
-     "spin": 61
+     "spin": 56
     },
     "early": {
      "hours": 0.0,
-     "spin": 32
+     "spin": 31
     },
     "late": {
      "hours": 0.0,
@@ -302,18 +254,18 @@
     }
    },
    "skill": {
-    "p_runs_out": 0.16,
+    "p_runs_out": 0.18,
     "mid": {
      "hours": 0.0,
-     "spin": 289
+     "spin": 298
     },
     "early": {
      "hours": 0.0,
-     "spin": 230
+     "spin": 257
     },
     "late": {
      "hours": 0.0,
-     "spin": 316
+     "spin": 325
     }
    }
   },
@@ -337,33 +289,33 @@
    "ships": 2,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.96,
+    "p_runs_out": 0.98,
     "mid": {
      "hours": 0.0,
-     "spin": 150
+     "spin": 148
     },
     "early": {
      "hours": 0.0,
-     "spin": 79
+     "spin": 71
     },
     "late": {
      "hours": 0.0,
-     "spin": 239
+     "spin": 248
     }
    },
    "skill": {
     "p_runs_out": 0.69,
     "mid": {
      "hours": 8.0,
-     "spin": 231
+     "spin": 221
     },
     "early": {
      "hours": 8.0,
-     "spin": 142
+     "spin": 156
     },
     "late": {
      "hours": 8.0,
-     "spin": 300
+     "spin": 283
     }
    }
   },
@@ -390,30 +342,85 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
-     "spin": 84
+     "spin": 83
     },
     "early": {
      "hours": 0.0,
-     "spin": 53
+     "spin": 52
     },
     "late": {
      "hours": 0.0,
-     "spin": 124
+     "spin": 121
     }
    },
    "skill": {
-    "p_runs_out": 0.32,
+    "p_runs_out": 0.31,
     "mid": {
      "hours": 0.0,
-     "spin": 301
+     "spin": 300
     },
     "early": {
      "hours": 0.0,
-     "spin": 272
+     "spin": 268
     },
     "late": {
      "hours": 0.0,
      "spin": 328
+    }
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Frankfurt Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "One Synergy",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Smile",
+     "terminal": "PCT",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 3,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.99,
+    "mid": {
+     "hours": 0.0,
+     "spin": 280
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 179
+    },
+    "late": {
+     "hours": 6.0,
+     "spin": 17
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.16,
+    "mid": {
+     "hours": 8.0,
+     "spin": 38
+    },
+    "early": {
+     "hours": 6.0,
+     "spin": 284
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 185
     }
    }
   }
