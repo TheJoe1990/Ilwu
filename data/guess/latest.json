@@ -1,5 +1,5 @@
 {
- "made": "2026-10-26T21:52-07:00",
+ "made": "2026-10-27T03:24-07:00",
  "days": [
   {
    "date": "2026-10-27",
@@ -31,18 +31,18 @@
    "ships": 4,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 8.0,
-     "spin": 68
+     "spin": 54
     },
     "early": {
      "hours": 6.0,
-     "spin": 243
+     "spin": 187
     },
     "late": {
      "hours": 8.0,
-     "spin": 128
+     "spin": 141
     }
    },
    "skill": {
@@ -69,13 +69,13 @@
      "kind": "container"
     },
     {
-     "name": "Liberty Passion",
-     "terminal": "BLAIR",
+     "name": "Liberty Peace",
+     "terminal": "T7",
      "kind": "car ship"
     },
     {
-     "name": "Liberty Peace",
-     "terminal": "T7",
+     "name": "Liberty Passion",
+     "terminal": "BLAIR",
      "kind": "car ship"
     },
     {
@@ -89,18 +89,18 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
      "hours": 8.0,
-     "spin": 224
+     "spin": 246
     },
     "early": {
      "hours": 8.0,
-     "spin": 89
+     "spin": 108
     },
     "late": {
      "hours": 14.0,
-     "spin": 37
+     "spin": 2
     }
    },
    "skill": {
@@ -150,30 +150,30 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 14.0,
-     "spin": 297
+     "spin": 206
     },
     "early": {
      "hours": 8.0,
-     "spin": 306
+     "spin": 291
     },
     "late": {
      "hours": 16.0,
-     "spin": 300
+     "spin": 239
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
+    "p_runs_out": 0.01,
     "mid": {
-     "hours": 22.0,
-     "spin": 234
+     "hours": 24.0,
+     "spin": 252
     },
     "early": {
-     "hours": 22.0,
-     "spin": 234
+     "hours": 24.0,
+     "spin": 252
     },
     "late": {
-     "hours": 22.0,
-     "spin": 234
+     "hours": 24.0,
+     "spin": 252
     }
    }
   },
@@ -230,19 +230,31 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 16.0,
-     "spin": 217
+     "spin": 210
     },
     "early": {
      "hours": 14.0,
-     "spin": 155
+     "spin": 11
     },
     "late": {
      "hours": 22.0,
-     "spin": 147
+     "spin": 154
     }
    },
    "skill": {
-    "p_runs_out": 0.0
+    "p_runs_out": 0.0,
+    "mid": {
+     "hours": 30.0,
+     "spin": 330
+    },
+    "early": {
+     "hours": 30.0,
+     "spin": 330
+    },
+    "late": {
+     "hours": 30.0,
+     "spin": 330
+    }
    }
   },
   {
@@ -278,30 +290,30 @@
     "p_runs_out": 0.98,
     "mid": {
      "hours": 0.0,
-     "spin": 60
+     "spin": 61
     },
     "early": {
      "hours": 0.0,
-     "spin": 36
+     "spin": 32
     },
     "late": {
      "hours": 0.0,
-     "spin": 85
+     "spin": 90
     }
    },
    "skill": {
     "p_runs_out": 0.16,
     "mid": {
      "hours": 0.0,
-     "spin": 279
+     "spin": 289
     },
     "early": {
      "hours": 0.0,
-     "spin": 233
+     "spin": 230
     },
     "late": {
      "hours": 0.0,
-     "spin": 321
+     "spin": 316
     }
    }
   },
@@ -325,33 +337,33 @@
    "ships": 2,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.97,
+    "p_runs_out": 0.96,
     "mid": {
      "hours": 0.0,
-     "spin": 162
+     "spin": 150
     },
     "early": {
      "hours": 0.0,
-     "spin": 85
+     "spin": 79
     },
     "late": {
      "hours": 0.0,
-     "spin": 256
+     "spin": 239
     }
    },
    "skill": {
-    "p_runs_out": 0.68,
+    "p_runs_out": 0.69,
     "mid": {
      "hours": 8.0,
-     "spin": 222
+     "spin": 231
     },
     "early": {
      "hours": 8.0,
-     "spin": 152
+     "spin": 142
     },
     "late": {
      "hours": 8.0,
-     "spin": 283
+     "spin": 300
     }
    }
   },
@@ -382,26 +394,26 @@
     },
     "early": {
      "hours": 0.0,
-     "spin": 50
+     "spin": 53
     },
     "late": {
      "hours": 0.0,
-     "spin": 121
+     "spin": 124
     }
    },
    "skill": {
-    "p_runs_out": 0.33,
+    "p_runs_out": 0.32,
     "mid": {
      "hours": 0.0,
-     "spin": 300
+     "spin": 301
     },
     "early": {
      "hours": 0.0,
-     "spin": 268
+     "spin": 272
     },
     "late": {
      "hours": 0.0,
-     "spin": 331
+     "spin": 328
     }
    }
   }
