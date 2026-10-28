@@ -488,13 +488,19 @@ function shipSummary(d) {
 async function scoreLine() {
   let sc = null;
   try { sc = JSON.parse(await fetchBoardFile("../guess/score.json")); } catch { return ""; }
-  const f = (s, label) => s && s.days ? `${label}: off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})` : `${label}: not scored yet`;
+  const f = (s, label) => {
+    if (!s || (!s.days && !s.missed_not_out)) return `${label}: not scored yet`;
+    const parts = [];
+    if (s.days) parts.push(`off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})`);
+    if (s.missed_not_out) parts.push(`said jobs would run out when they didn't (${s.missed_not_out} day${s.missed_not_out > 1 ? "s" : ""})`);
+    return `${label}: ${parts.join("; ")}`;
+  };
   return `<p class="disclaimer"><b>Scorecard.</b> ${f(sc.summary.schedule, "Before board")}. ${f(sc.summary.board, "After board")}.</p>`;
 }
-// "Skill 3 runs out around 14 hrs / spin 301" or "Skill likely makes it to casuals"
-function cutLine(label, c) {
+// "Skill 3 runs out around 14 hrs / spin 301", "Skill likely makes it to casuals" (casuals can't do skill 3)
+function cutLine(label, c, casual) {
   if (!c || c.p_runs_out === null) return `${label}: no guess.`;
-  if (!c.mid || c.p_runs_out < 0.5) return `${label} likely makes it to casuals.`;
+  if (!c.mid || c.p_runs_out < 0.5) return casual ? `${label} likely makes it to casuals.` : `${label} likely still hanging after every B man.`;
   const m = c.mid, odds = c.p_runs_out < 0.8 ? ` (runs out in ${Math.round(c.p_runs_out * 100)}% of guesses)` : "";
   return `${label} runs out around <b>${m.hours} hrs / spin ${m.spin}</b>${odds}.`;
 }
@@ -510,7 +516,7 @@ $("guessBtn").onclick = async () => {
     <p>${shipSummary(d)}</p>
     ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(termName(v.terminal))})`).join(", ")}</p>` : ""}
     ${d.no_work ? "<p>No work (holiday).</p>" : `<p>${cutLine("Skill 3 (strad/top pick)", d.skill3)}</p>
-    <p>${cutLine("Skill (incl. trucks)", d.skill)}</p>`}</div>`).join("") +
+    <p>${cutLine("Skill (incl. trucks)", d.skill, true)}</p>`}</div>`).join("") +
     (await scoreLine()) +
     `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;
 };

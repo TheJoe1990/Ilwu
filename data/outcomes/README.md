@@ -28,4 +28,4 @@ line, but "last strad went to a 0-hr B with spin 174" shows where the line cut o
 
 ## cutoffs.csv
 
-Where the line ran out on a day (from anyone's report): `date, shift, kind` (`skill3` = last strad/top pick, `skill` = last skill job incl. trucks), `hours, spin` of the last person to get one, `bound` (`exact`, or `at_least` when someone that deep still got one), `notes`. `score.py` scores the app's saved guesses against it.
+Where the line ran out on a day (from anyone's report): `date, shift, kind` (`skill3` = last strad/top pick, `skill` = last skill job incl. trucks), `hours, spin` of the last person to get one, `bound` (`exact`; `at_least` when someone that deep still got one; `not_out` when it never ran out among B men, hours/spin blank), `notes`. `score.py` scores the app's saved guesses against it.
