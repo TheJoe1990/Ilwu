@@ -69,8 +69,8 @@ def main():
                     "cutoff": get(r, "cutoff"), "notes": get(r, "notes")})
         c = hours_spin(get(r, "cutoff"))
         if c and shift == "day" and pick == "regular":
-            # Kind from the cutoff answer, else the notes ("I got the last strad"), else the job the reporter got.
-            kind = cutoff_kind(get(r, "cutoff")) or cutoff_kind(get(r, "notes")) or cutoff_kind(get(r, "got"))
+            # Cutoff answers are skill 3 unless they say trucks (user, 2026-10-28: truck cutoffs are rarely seen).
+            kind = cutoff_kind(get(r, "cutoff")) or "skill3"
             if kind:
                 cuts.append({"date": day.isoformat(), "shift": "day", "kind": kind, "hours": c[0], "spin": c[1],
                              "bound": "exact", "notes": f"Form report: {get(r, 'cutoff')}"})
