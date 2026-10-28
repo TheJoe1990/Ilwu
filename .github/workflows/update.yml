@@ -49,7 +49,7 @@ jobs:
         run: |
           git rebase --abort 2>/dev/null || true
           python3 -c "import json; json.load(open('spins.json'))"
-          ! grep -rlE '^(<<<<<<<|>>>>>>>) ' --include='*.json' --include='*.html' --include='*.js' .
+          ! grep -rlE --exclude-dir=.git '^(<<<<<<<|>>>>>>>) ' --include='*.json' --include='*.html' --include='*.js' .
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
