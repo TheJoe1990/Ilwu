@@ -366,7 +366,11 @@ async function loadSpins(force) {
     store.set("mySpins", mine);
     $("regNote").textContent = weeks.length ? "" : `Reg ${settings.reg} isn't on any posted spin sheet.`;
   } catch (err) {
-    // Offline: keep showing the cached copy.
+    // Offline or a bad file: keep showing the cached copy, say so if there's none, and retry shortly.
+    render();
+    if (!mine) $("spinSub").textContent = "Couldn't load spins. Retrying…";
+    setTimeout(() => loadSpins(true), 30e3);
+    return;
   }
   render();
 }
