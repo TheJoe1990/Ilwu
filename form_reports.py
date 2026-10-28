@@ -22,15 +22,15 @@ Q = {"date": "date you are reporting", "shift": "day or night", "class": "b man 
 
 
 def hours_spin(text):
-    """'12/94', '12 hrs spin 94', '12 / 94' -> (12.0, 94); None if not found."""
-    m = re.search(r"(\d+(?:\.\d+)?)\s*(?:hrs?|hours?)?\s*[/,\s]\s*(?:spin\s*)?(\d{1,3})\b", text or "", re.I)
-    return (float(m.group(1)), int(m.group(2))) if m else None
+    """'12/94', '12 hrs spin 94', '8 with a 122' -> (12.0, 94): first number is hours, second is spin; None if not two."""
+    n = re.findall(r"\d+(?:\.\d+)?", text or "")
+    return (float(n[0]), int(float(n[1]))) if len(n) >= 2 and float(n[1]) <= 400 else None
 
 
 def cutoff_kind(text):
     """Which cutoff a free-text answer describes: 'skill3' (strad/top pick), 'skill' (trucks etc.), or None if unclear."""
     t = (text or "").lower()
-    if re.search(r"skill\s*3|strad|top\s*pick|t/?p\b|skill3", t):
+    if re.search(r"skill\s*3|strad|top\s*pick|toppick|t/?p\b|skill3", t):
         return "skill3"
     if re.search(r"truck|hust|\bskill\b", t):
         return "skill"
@@ -69,7 +69,8 @@ def main():
                     "cutoff": get(r, "cutoff"), "notes": get(r, "notes")})
         c = hours_spin(get(r, "cutoff"))
         if c and shift == "day" and pick == "regular":
-            kind = cutoff_kind(get(r, "cutoff"))
+            # Kind from the cutoff answer, else the notes ("I got the last strad"), else the job the reporter got.
+            kind = cutoff_kind(get(r, "cutoff")) or cutoff_kind(get(r, "notes")) or cutoff_kind(get(r, "got"))
             if kind:
                 cuts.append({"date": day.isoformat(), "shift": "day", "kind": kind, "hours": c[0], "spin": c[1],
                              "bound": "exact", "notes": f"Form report: {get(r, 'cutoff')}"})
