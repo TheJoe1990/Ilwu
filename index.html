@@ -491,11 +491,12 @@ async function scoreLine() {
   const f = (s, label) => s && s.days ? `${label}: off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})` : `${label}: not scored yet`;
   return `<p class="disclaimer"><b>Scorecard.</b> ${f(sc.summary.schedule, "Before board")}. ${f(sc.summary.board, "After board")}.</p>`;
 }
-function fmtCut(c) {
-  if (!c || c.p_runs_out === null) return "no guess";
-  if (!c.mid) return "probably won't run out";
-  const m = c.mid, sure = c.p_runs_out < 0.6 ? ` (only runs out ${Math.round(c.p_runs_out * 100)}% of the time)` : "";
-  return `around <b>${m.hours} hrs / spin ${m.spin}</b>${sure}`;
+// "Skill 3 runs out around 14 hrs / spin 301" or "Skill likely makes it to casuals"
+function cutLine(label, c) {
+  if (!c || c.p_runs_out === null) return `${label}: no guess.`;
+  if (!c.mid || c.p_runs_out < 0.5) return `${label} likely makes it to casuals.`;
+  const m = c.mid, odds = c.p_runs_out < 0.8 ? ` (runs out in ${Math.round(c.p_runs_out * 100)}% of guesses)` : "";
+  return `${label} runs out around <b>${m.hours} hrs / spin ${m.spin}</b>${odds}.`;
 }
 $("guessBtn").onclick = async () => {
   openPanel("guessPanel");
@@ -508,8 +509,8 @@ $("guessBtn").onclick = async () => {
     ${(() => { const m = spinFor(parseYmd(d.date)); return m && m.spin != null ? `<p>Your spin: <b>${m.spin}</b></p>` : ""; })()}
     <p>${shipSummary(d)}</p>
     ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(termName(v.terminal))})`).join(", ")}</p>` : ""}
-    ${d.no_work ? "<p>No work (holiday).</p>" : `<p>Skill 3 (strad/top pick) runs out ${fmtCut(d.skill3)}.</p>
-    <p>All skill (incl. trucks) runs out ${fmtCut(d.skill)}.</p>`}</div>`).join("") +
+    ${d.no_work ? "<p>No work (holiday).</p>" : `<p>${cutLine("Skill 3 (strad/top pick)", d.skill3)}</p>
+    <p>${cutLine("Skill (incl. trucks)", d.skill)}</p>`}</div>`).join("") +
     (await scoreLine()) +
     `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;
 };
