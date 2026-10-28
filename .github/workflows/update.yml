@@ -40,8 +40,16 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git commit -m "Update spins $(date -u +%F)"
-            for i in 1 2 3; do git pull --rebase -q && git push && break; sleep 5; done
+            # On a conflict keep this run's fresh spins (-X theirs = our commit during a rebase); never leave a
+            # half-done rebase behind, or the deploy below would publish a file with conflict markers.
+            for i in 1 2 3; do git pull --rebase -q -X theirs && git push && break; git rebase --abort 2>/dev/null; sleep 5; done
           fi
+
+      - name: Check the site files are valid before deploying
+        run: |
+          git rebase --abort 2>/dev/null || true
+          python3 -c "import json; json.load(open('spins.json'))"
+          ! grep -rlE '^(<<<<<<<|>>>>>>>) ' --include='*.json' --include='*.html' --include='*.js' .
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
