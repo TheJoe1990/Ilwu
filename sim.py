@@ -381,7 +381,7 @@ def main():
             if k not in fixed or key > fixed[k][0]:
                 fixed[k] = (key, set(combo), s)
     # 2) Fixed plan + one backup day (only worked if you're behind by then): the top few 2- and 3-day
-    #    plans, plus the best ones with a single weekend day (the Melissa option).
+    #    plans, plus the best ones with a single weekend day (the Alyssa option).
     bases = []
     for k in (2, 3):
         top = sorted(ranked[k], key=lambda x: x[0], reverse=True)
@@ -426,7 +426,7 @@ def main():
     print("  bad wk = pay in a bad week (10th percentile). Matson = expected Matson Hustler shifts.")
     if pct_days:
         print(f"  PCT ship days ({names(pct_days)}) are weighted as worth working (your preference).")
-    # Bonus (Melissa): best plan with at most one weekend shift, shown when it's close to the pick.
+    # Bonus (Alyssa): best plan with at most one weekend shift, shown when it's close to the pick.
     one_wknd = []
     for _, c, s2 in fixed.values():
         if sum(x.weekday() >= 5 for x in c) <= 1:
@@ -446,7 +446,7 @@ def main():
         print(f"\nNo plan reaches ${goal:,.0f} with >= {a.confidence:.0%} confidence.")
     if mel:
         label = f"{mel[0]}" + (f", backup {mel[1]:%a %m-%d}" if mel[1] else "")
-        print(f"ONE-WEEKEND-DAY option (Melissa): work {label}: {mel[2]['p_goal']:.0%} chance, "
+        print(f"ONE-WEEKEND-DAY option (Alyssa): work {label}: {mel[2]['p_goal']:.0%} chance, "
               f"expected ${round(mel[2]['expected']):,}, bad week ${round(mel[2]['p10']):,}, ~{mel[2]['days_worked']:.1f} days")
 
 
