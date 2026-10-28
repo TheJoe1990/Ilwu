@@ -16,7 +16,11 @@ HERE = pathlib.Path(__file__).resolve().parent
 def main():
     hist = json.loads((HERE / "data" / "guess" / "history.json").read_text())
     rows, tot, missed = [], {"schedule": [], "board": []}, {"schedule": [], "board": []}
-    for c in csv.DictReader(open(HERE / "data" / "outcomes" / "cutoffs.csv")):
+    reports = list(csv.DictReader(open(HERE / "data" / "outcomes" / "cutoffs.csv")))
+    form = HERE / "data" / "outcomes" / "form_cutoffs.csv"   # from form_reports.py
+    if form.exists():
+        reports += list(csv.DictReader(open(form)))
+    for c in reports:
         if c["shift"] != "day":
             continue
         for basis, g in hist.get(c["date"], {}).items():
