@@ -20,7 +20,9 @@ jobs:
       - name: Collect
         run: python3 collect.py
       - name: Guess where skill runs out
-        run: { [ ! -f form_csv_url.txt ] || python3 form_reports.py || echo "form import failed"; } && python3 guess.py && python3 score.py || echo "guess failed; keeping the last one"
+        run: |
+          if [ -f form_csv_url.txt ]; then python3 form_reports.py || echo "form import failed"; fi
+          python3 guess.py && python3 score.py || echo "guess failed; keeping the last one"
       - name: Commit if changed
         run: |
           git add data
