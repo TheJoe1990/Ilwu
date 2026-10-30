@@ -38,7 +38,7 @@ def main():
             if c["bound"] == "at_least" and err >= 0:
                 err = 0.0
             rows.append({"date": c["date"], "kind": c["kind"], "basis": basis, "guess": [mid["hours"], mid["spin"]],
-                         "reported": [float(c["hours"]), int(c["spin"])], "off_hours": err})
+                         "reported": [float(c["hours"]), int(c["spin"]) if c["spin"] else None], "off_hours": err})
             tot[basis].append(abs(err))
     summary = {b: {"days": len(v), "avg_off_hours": round(sum(v) / len(v), 1) if v else None,
                    "missed_not_out": len(missed[b])} for b, v in tot.items()}
