@@ -197,10 +197,17 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
         qualified = {r for r in others if rng.random() < P["qualified_share"]} | {REG}
         hours = dict.fromkeys(regs, 0.0)
         hours[REG] = start_hours
+        # Target earners (user, 2026-10-31): each B has a weekly pay target (in weekday-shift equivalents). Once
+        # it's met they mostly stay home, so a run of heavy days thins the line and slow days pack the next big one.
+        tgt_mean = P.get("earn_target_shifts")
+        target = {r: max(1.0, rng.gauss(tgt_mean, P.get("earn_target_sd", 1.0))) for r in others} if tgt_mean else {}
+        paid = dict.fromkeys(regs, 0.0)
         earned, worked, matson = 0.0, 0, 0.0
         for i, d in enumerate(days):
             if i > 0 and period_start(d["day"]):
                 hours = dict.fromkeys(regs, 0.0)
+            if i > 0 and d["day"].weekday() == 5:   # pay period starts Saturday
+                paid = dict.fromkeys(regs, 0.0)
             if d["no_work"]:
                 continue
             m = dem[i]
@@ -209,6 +216,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                            key=lambda r: (hours[r], rng.random()))[:n_night]
             for r in night:
                 hours[r] += 8
+                paid[r] += 1.0
             if attend is not None:
                 me = rng.random() < attend
             elif backup is not None and d["day"] == backup:
@@ -222,7 +230,9 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
             boost *= (m["day_mean"] / ref) ** P.get("turnout_today_exp", 0.0)
             if i > 0:
                 boost *= (dem[i - 1]["day_mean"] / ref) ** P.get("turnout_prev_exp", 0.0)
-            avail = [r for r in others if r not in night and rng.random() < min(1.0, habit[r] * boost)]
+            met = P.get("met_show_factor", 1.0)
+            avail = [r for r in others if r not in night and rng.random() < min(1.0, habit[r] * boost
+                     * (met if target and paid[r] >= target[r] else 1.0))]
             if me:
                 avail.append(REG)
                 res["shown"] += 1
@@ -246,6 +256,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                         break
                     unsk_left -= 1            # skill jobs are gone: next B in line takes an unskilled job
                     hours[r] += 8 if d["full"] else 6
+                    paid[r] += 1.5 if d["full"] else 1.0
                     if r == REG:
                         worked += 1
                         earned += pay["other"][1 if d["full"] else 0]
@@ -266,6 +277,7 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                 else:
                     continue   # only good jobs left and r isn't qualified
                 jobs_left -= 1
+                paid[r] += (1.5 if d["full"] else 1.0) * (1.45 if got == "good" else 1.0)
                 if r == REG:
                     worked += 1
                     earned += pay[got][1 if d["full"] else 0]

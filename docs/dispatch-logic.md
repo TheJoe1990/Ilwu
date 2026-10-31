@@ -65,3 +65,8 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Aug 22 – Sep 18 2026 (4 weeks): 235 of 263 Tacoma B's counted, average 120.5 paid hrs (~30.1/wk), 70% bar 84.
 - Posted 10-30-2026 (likely Sep 19 – Oct 23, 5 weeks): 236 of 261 counted (25 excluded), 36,503.75 total hrs, average 154.68 (~30.9/wk), 70% bar 108.27 → 108.
 - These are paid hours (strad = 10, truck = 8), not lineup hours. B's with zero hours (medical, school) are excluded.
+
+## Target earners (user idea, 2026-10-31; tested, not adopted yet)
+- Idea: B's have a weekly money goal. After a run of heavy days many have hit it and stay home, so the line is thin; after slow days everyone shows for the big day.
+- sim.py has it behind `earn_target_shifts` (weekday-shift equivalents, weekend 1.5x, skill 3 1.45x) and `met_show_factor` (show-rate multiplier once met). Off by default.
+- Tested 2026-10-31 against six reported skill-3 cutoffs (10-21, 10-22, 10-23, 10-28, 10-30, 10-31), with and without a lower weekday job volume and a Monday house-job discount. Nothing beat the current settings. Every variant guesses Wed 10-28 at 14 hrs vs the real 8. Retest as reports come in.
