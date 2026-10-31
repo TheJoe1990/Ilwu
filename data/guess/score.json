@@ -2,12 +2,12 @@
  "summary": {
   "schedule": {
    "days": 6,
-   "avg_off_hours": 3.3,
+   "avg_off_hours": 3.4,
    "missed_not_out": 1
   },
   "board": {
    "days": 6,
-   "avg_off_hours": 2.0,
+   "avg_off_hours": 2.3,
    "missed_not_out": 1
   }
  },
@@ -24,7 +24,7 @@
     28.0,
     185
    ],
-   "off_hours": -14.0
+   "off_hours": -13.4
   },
   {
    "date": "2026-10-24",
@@ -118,7 +118,7 @@
     0.0,
     99
    ],
-   "off_hours": 0.0
+   "off_hours": 0.7
   },
   {
    "date": "2026-10-31",
@@ -132,7 +132,7 @@
     0.0,
     99
    ],
-   "off_hours": 0.0
+   "off_hours": -0.2
   },
   {
    "date": "2026-10-31",
@@ -168,7 +168,7 @@
     8.0,
     128
    ],
-   "off_hours": 6.0
+   "off_hours": 6.9
   },
   {
    "date": "2026-10-28",
@@ -182,7 +182,7 @@
     8.0,
     128
    ],
-   "off_hours": 0.0
+   "off_hours": 0.7
   }
  ]
 }

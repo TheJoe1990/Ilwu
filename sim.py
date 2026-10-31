@@ -54,8 +54,11 @@ def setup(start, days):
     good_rate = {b: v["rate"] for b, v in outlook.terminal_odds(tb).items()}
     vessels, source = outlook.load_vessels()
     data = json.load(open(HERE / "spins.json"))
+    # The union drops past weeks from spins.json; data/spins/ keeps every week ever posted (for backtests)
+    weeks = {w["start"]: w for f in sorted((HERE / "data" / "spins").glob("*.json")) for w in [json.load(open(f))]}
+    weeks.update({w["start"]: w for w in data["weeks"]})
     spins = {}
-    for w in data["weeks"]:
+    for w in weeks.values():
         s0 = dt.date.fromisoformat(w["start"])
         for i in range(7):
             spins[s0 + dt.timedelta(days=i)] = {r: v[1 + i] for r, v in w["regs"].items()
