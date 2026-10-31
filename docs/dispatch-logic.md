@@ -76,3 +76,4 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Catch-up turnout (B's who skipped recent days come in more; `catchup_per_rest_day`, `worked_yesterday_factor` in sim.py) was tested in the same run and made things worse in every variant. Off by default.
 - PMA daily dispatch summaries would give a turnout count every day, but pmanet.org now serves a Cloudflare bot check, so they can't be fetched automatically.
 - Every variant still guesses Wed 10-28 at 14 hrs vs the real 8. No reports came in for Mon/Tue that week, so nothing could steer it. More form reports fix this.
+- "Hanging" (user, 2026-10-31) = jobs left unfilled: more jobs than people who could do them. The sim records that as None; a day with no such jobs at all is "none" and is never called hanging.

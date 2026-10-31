@@ -36,9 +36,13 @@ def last_reset(day):
 
 
 def summary(cuts):
-    """cuts: per-run (hours, spin) or None. Middle of the runs that ran out, in line order, plus a range."""
+    """cuts: per-run (hours, spin), None (jobs left hanging) or "none" (no such jobs that day). Middle of the runs
+    that ran out, in line order, plus a range. p_runs_out counts only runs that had jobs; p_no_jobs is the rest."""
+    none = sum(c == "none" for c in cuts)
+    cuts = [c for c in cuts if c != "none"]
     hit = sorted(c for c in cuts if c is not None)
-    out = {"p_runs_out": round(len(hit) / len(cuts), 2) if cuts else None}
+    out = {"p_runs_out": round(len(hit) / len(cuts), 2) if cuts else None,
+           "p_no_jobs": round(none / (none + len(cuts)), 2) if none + len(cuts) else None}
     if hit:
         q = lambda f: {"hours": hit[int(f * (len(hit) - 1))][0], "spin": hit[int(f * (len(hit) - 1))][1]}
         out.update(mid=q(.5), early=q(.25), late=q(.75))
@@ -71,9 +75,13 @@ def weights(res, days, reports):
             if not rep:
                 continue
             h, s, bound = rep
+            if len(res[key][j]) != n:
+                continue   # no-work day: nothing simulated
             for r in range(n):
                 c = res[key][j][r]
-                if bound == "not_out":
+                if c == "none":
+                    w[r] *= 0.2   # a reported cutoff or hanging jobs means there were jobs
+                elif bound == "not_out":
                     w[r] *= 1.0 if c is None else 0.2
                 elif h is not None:
                     e = 6.0 if c is None else pos(c[0], c[1] if s is not None else None) - pos(h, s)
