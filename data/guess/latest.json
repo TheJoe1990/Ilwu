@@ -1,5 +1,5 @@
 {
- "made": "2026-10-30T19:16-07:00",
+ "made": "2026-10-31T02:31-07:00",
  "days": [
   {
    "date": "2026-10-31",
@@ -31,33 +31,33 @@
    "ships": 4,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.96,
+    "p_runs_out": 0.98,
     "mid": {
      "hours": 0.0,
-     "spin": 215
+     "spin": 225
     },
     "early": {
      "hours": 0.0,
-     "spin": 166
+     "spin": 186
     },
     "late": {
      "hours": 0.0,
-     "spin": 257
+     "spin": 259
     }
    },
    "skill": {
-    "p_runs_out": 0.24,
+    "p_runs_out": 0.39,
     "mid": {
      "hours": 0.0,
-     "spin": 332
+     "spin": 329
     },
     "early": {
      "hours": 0.0,
-     "spin": 317
+     "spin": 311
     },
     "late": {
      "hours": 0.0,
-     "spin": 343
+     "spin": 346
     }
    }
   },
@@ -86,33 +86,33 @@
    "ships": 3,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 0.98,
     "mid": {
      "hours": 0.0,
-     "spin": 187
+     "spin": 183
     },
     "early": {
      "hours": 0.0,
-     "spin": 103
+     "spin": 95
     },
     "late": {
      "hours": 0.0,
-     "spin": 302
+     "spin": 297
     }
    },
    "skill": {
-    "p_runs_out": 0.55,
+    "p_runs_out": 0.62,
     "mid": {
      "hours": 8.0,
-     "spin": 298
+     "spin": 307
     },
     "early": {
      "hours": 8.0,
-     "spin": 230
+     "spin": 242
     },
     "late": {
      "hours": 10.0,
-     "spin": 72
+     "spin": 74
     }
    }
   },
@@ -146,7 +146,7 @@
    "ships": 4,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
      "spin": 91
@@ -157,22 +157,22 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 130
+     "spin": 129
     }
    },
    "skill": {
     "p_runs_out": 0.07,
     "mid": {
      "hours": 0.0,
-     "spin": 328
+     "spin": 303
     },
     "early": {
      "hours": 0.0,
-     "spin": 301
+     "spin": 283
     },
     "late": {
      "hours": 0.0,
-     "spin": 339
+     "spin": 328
     }
    }
   },
@@ -204,30 +204,30 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 0.0,
-     "spin": 326
+     "spin": 346
     },
     "early": {
      "hours": 0.0,
-     "spin": 198
+     "spin": 223
     },
     "late": {
      "hours": 6.0,
-     "spin": 84
+     "spin": 111
     }
    },
    "skill": {
-    "p_runs_out": 0.08,
+    "p_runs_out": 0.07,
     "mid": {
      "hours": 8.0,
-     "spin": 107
+     "spin": 111
     },
     "early": {
      "hours": 6.0,
-     "spin": 311
+     "spin": 320
     },
     "late": {
      "hours": 8.0,
-     "spin": 183
+     "spin": 240
     }
    }
   },
@@ -271,33 +271,33 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
-     "hours": 8.0,
-     "spin": 26
+     "hours": 6.0,
+     "spin": 342
     },
     "early": {
      "hours": 6.0,
-     "spin": 118
+     "spin": 39
     },
     "late": {
      "hours": 8.0,
-     "spin": 237
+     "spin": 221
     }
    },
    "skill": {
-    "p_runs_out": 0.04,
+    "p_runs_out": 0.03,
     "mid": {
      "hours": 14.0,
-     "spin": 117
+     "spin": 182
     },
     "early": {
      "hours": 12.0,
-     "spin": 277
+     "spin": 264
     },
     "late": {
      "hours": 16.0,
-     "spin": 165
+     "spin": 50
     }
    }
   },
@@ -341,33 +341,33 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.98,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 8.0,
-     "spin": 265
+     "spin": 304
     },
     "early": {
-     "hours": 6.0,
-     "spin": 337
+     "hours": 8.0,
+     "spin": 12
     },
     "late": {
      "hours": 14.0,
-     "spin": 96
+     "spin": 146
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
+    "p_runs_out": 0.01,
     "mid": {
-     "hours": 20.0,
-     "spin": 223
+     "hours": 22.0,
+     "spin": 158
     },
     "early": {
-     "hours": 20.0,
-     "spin": 223
+     "hours": 22.0,
+     "spin": 65
     },
     "late": {
-     "hours": 20.0,
-     "spin": 223
+     "hours": 24.0,
+     "spin": 129
     }
    }
   },
@@ -401,33 +401,33 @@
    "ships": 4,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.98,
+    "p_runs_out": 0.99,
     "mid": {
      "hours": 12.0,
-     "spin": 341
+     "spin": 110
     },
     "early": {
      "hours": 8.0,
-     "spin": 104
+     "spin": 48
     },
     "late": {
      "hours": 16.0,
-     "spin": 186
+     "spin": 195
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.04,
     "mid": {
-     "hours": 28.0,
-     "spin": 48
+     "hours": 30.0,
+     "spin": 1
     },
     "early": {
-     "hours": 24.0,
-     "spin": 240
+     "hours": 26.0,
+     "spin": 192
     },
     "late": {
      "hours": 30.0,
-     "spin": 178
+     "spin": 234
     }
    }
   }
