@@ -505,7 +505,7 @@ async function scoreLine() {
 function cutLine(label, c, casual) {
   if (c && c.p_no_jobs >= 0.5) return `${label}: likely none that day.`;
   if (!c || c.p_runs_out === null) return `${label}: no guess.`;
-  if (!c.mid || c.p_runs_out < 0.5) return casual ? `${label} likely makes it to casuals.` : `${label} likely left hanging (more jobs than B men).`;
+  if (!c.mid || c.p_runs_out < 0.5) return casual ? `${label} likely makes it to casuals.` : `${label} likely makes it past every B man.`;
   const m = c.mid, odds = c.p_runs_out < 0.8 ? ` (runs out in ${Math.round(c.p_runs_out * 100)}% of guesses)` : "";
   return `${label} runs out around <b>${m.hours} hrs / spin ${m.spin}</b>${odds}.`;
 }

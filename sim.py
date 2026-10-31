@@ -299,8 +299,8 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                         # people ahead of you take Matson and leave a WUT/Husky truck for you.
                         res["matson"][i] += 1
                         matson += 1
-            # (hours, spin) of the last B to get one; None = jobs left hanging (unfilled after every B in line);
-            # "none" = there were no such jobs that day (not the same as hanging).
+            # (hours, spin) of the last B to get one; None = some were left after every B in line (they went on to
+            # casuals, or unfilled; the model can't tell which); "none" = there were no such jobs that day.
             res["cut_good"][i].append("none" if not n_good else last_good if good_left == 0 else None)
             res["cut_skill"][i].append(last_skill if jobs_left == 0 else None)
         res["earn"].append(earned)

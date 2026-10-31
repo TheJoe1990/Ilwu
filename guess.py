@@ -36,7 +36,7 @@ def last_reset(day):
 
 
 def summary(cuts):
-    """cuts: per-run (hours, spin), None (jobs left hanging) or "none" (no such jobs that day). Middle of the runs
+    """cuts: per-run (hours, spin), None (made it past every B man) or "none" (no such jobs that day). Middle of the runs
     that ran out, in line order, plus a range. p_runs_out counts only runs that had jobs; p_no_jobs is the rest."""
     none = sum(c == "none" for c in cuts)
     cuts = [c for c in cuts if c != "none"]
@@ -80,7 +80,7 @@ def weights(res, days, reports):
             for r in range(n):
                 c = res[key][j][r]
                 if c == "none":
-                    w[r] *= 0.2   # a reported cutoff or hanging jobs means there were jobs
+                    w[r] *= 0.2   # a reported cutoff or "made it past the B's" means there were jobs
                 elif bound == "not_out":
                     w[r] *= 1.0 if c is None else 0.2
                 elif h is not None:
