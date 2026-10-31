@@ -60,3 +60,8 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - **Earlier days set the line (user, 2026-10-23):** the biggest driver of where jobs go is how much work the earlier days of the period had. A light day means fewer B's pick up hours, so the next day's jobs don't go as deep; a run of heavy days pushes the typical B's hours up by Friday. The sim carries hours forward day by day. Tested 2026-10-23: replacing earlier days' job totals with board strad+truck counts made guesses shallower (the board's truck/strad lists leave out lashing, X-men, PD/SK etc. that B's also fill), so the sim's own day totals stay until all board columns are understood.
 - **Casuals can't do skill 3 (rule, user 2026-10-28).** Strads/top picks stay with A and B men; only other skill (trucks etc.) can reach casuals.
 - **Weekend 10-24/25 (observed, flex pick):** jobs hanging Sat (a spin-292 B got a flex SK on a ro-ro); strads hanging Sun. The model said skill 3 would run out at 0 hrs on Sunday, so weekend skill-3 demand or turnout is off.
+
+## PMA 70% hours sheet (observed)
+- Aug 22 – Sep 18 2026 (4 weeks): 235 of 263 Tacoma B's counted, average 120.5 paid hrs (~30.1/wk), 70% bar 84.
+- Posted 10-30-2026 (likely Sep 19 – Oct 23, 5 weeks): 236 of 261 counted (25 excluded), 36,503.75 total hrs, average 154.68 (~30.9/wk), 70% bar 108.27 → 108.
+- These are paid hours (strad = 10, truck = 8), not lineup hours. B's with zero hours (medical, school) are excluded.
