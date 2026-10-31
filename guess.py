@@ -3,7 +3,8 @@
 """Guess where skill jobs run out on upcoming day shifts, for the app's "Guess" button.
 
 Before a day's board posts (~2pm the day before) the guess comes from the vessel schedule. After it posts, the
-board's ship list and skill-3 count replace the schedule's for that day ("basis": "board").
+board's ship list and skill-3 count replace the schedule's for that day ("basis": "board"). Reported cutoffs on
+earlier days of the same hours period steer the guess toward runs that matched them (weights()).
 
 For each target day, simulates the B line from the last hours reset (Sat/Mon) through that day with sim.py's
 model, and reports the typical (hours, spin) of the last B to get a skill-3 job (strad/top pick) and the last
@@ -12,9 +13,12 @@ B to get any skill job (incl. trucks). Writes data/guess/latest.json.
 The model is still rough: it is calibrated on one person's timebook and gets better with reported outcomes.
 """
 import argparse
+import csv
 import datetime as dt
 import json
+import math
 import pathlib
+import random
 
 import board_backtest
 import board_jobs
@@ -41,6 +45,44 @@ def summary(cuts):
     return out
 
 
+def reported():
+    """{(date, kind): (hours, spin or None, bound)} from data/outcomes/cutoffs.csv and the form import."""
+    out = {}
+    for name in ("cutoffs.csv", "form_cutoffs.csv"):
+        f = HERE / "data" / "outcomes" / name
+        if f.exists():
+            for c in csv.DictReader(open(f)):
+                if c["shift"] == "day":
+                    out[(c["date"], c["kind"])] = (float(c["hours"]) if c["hours"] else None,
+                                                   int(c["spin"]) if c["spin"] else None, c["bound"])
+    return out
+
+
+def weights(res, days, reports):
+    """Per-run weights from reported cutoffs on the days before the target (user, 2026-10-31: yesterday's
+    dispatch tells us who showed up and who is still low on hours). Runs whose earlier days ran out near where
+    they really did count more. Beat the unweighted guess on the 6 reported days (15.1 vs 16.8 hrs off)."""
+    n = len(res["cut_good"][0]) if res["cut_good"] else 0
+    w = [1.0] * n
+    pos = lambda h, s: h + (s if s is not None else 175) / 175   # a full spin range ~= 2 hrs
+    for j, d in enumerate(days[:-1]):
+        for kind, key in (("skill3", "cut_good"), ("skill", "cut_skill")):
+            rep = reports.get((d["day"].isoformat(), kind))
+            if not rep:
+                continue
+            h, s, bound = rep
+            for r in range(n):
+                c = res[key][j][r]
+                if bound == "not_out":
+                    w[r] *= 1.0 if c is None else 0.2
+                elif h is not None:
+                    e = 6.0 if c is None else pos(c[0], c[1] if s is not None else None) - pos(h, s)
+                    if bound == "at_least":
+                        e = min(e, 0)
+                    w[r] *= math.exp(-0.5 * (e / 1.5) ** 2)
+    return w
+
+
 def posted_boards():
     """{date: board ship rows} for day boards that have posted (see board_jobs.final_versions)."""
     out = {}
@@ -63,6 +105,11 @@ def guess(day, runs, boards):
                               for d in world["board"] if d.isoformat() in counts}
     res = sim.simulate(world, P, None, runs)
     i = len(world["days"]) - 1
+    w = weights(res, world["days"], reported())
+    if sum(w) > 0 and min(w) < 1:
+        pick = random.Random(day.toordinal()).choices(range(len(w)), weights=w, k=len(w))
+        for key in ("cut_good", "cut_skill"):
+            res[key][i] = [res[key][i][r] for r in pick]
     d = world["days"][i]
     ships = sim.demand(world, sim.load_params(), [dt.timedelta(0)] * len(world["vessels"]))[i]
     if day in world["board"]:

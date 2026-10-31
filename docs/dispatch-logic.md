@@ -70,3 +70,9 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Idea: B's have a weekly money goal. After a run of heavy days many have hit it and stay home, so the line is thin; after slow days everyone shows for the big day.
 - sim.py has it behind `earn_target_shifts` (weekday-shift equivalents, weekend 1.5x, skill 3 1.45x) and `met_show_factor` (show-rate multiplier once met). Off by default.
 - Tested 2026-10-31 against six reported skill-3 cutoffs (10-21, 10-22, 10-23, 10-28, 10-30, 10-31), with and without a lower weekday job volume and a Monday house-job discount. Nothing beat the current settings. Every variant guesses Wed 10-28 at 14 hrs vs the real 8. Retest as reports come in.
+
+## Yesterday's report steers today's guess (adopted 2026-10-31)
+- guess.py weights the simulated runs by how close each run's earlier-day cutoffs came to the reported ones (same hours period). Tested on the 6 reported days: 15.1 hrs total off vs 16.8 unweighted; Fri 10-30 went from 14 to 8 hrs (real ~10).
+- Catch-up turnout (B's who skipped recent days come in more; `catchup_per_rest_day`, `worked_yesterday_factor` in sim.py) was tested in the same run and made things worse in every variant. Off by default.
+- PMA daily dispatch summaries would give a turnout count every day, but pmanet.org now serves a Cloudflare bot check, so they can't be fetched automatically.
+- Every variant still guesses Wed 10-28 at 14 hrs vs the real 8. No reports came in for Mon/Tue that week, so nothing could steer it. More form reports fix this.

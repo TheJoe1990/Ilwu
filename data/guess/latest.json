@@ -1,66 +1,6 @@
 {
- "made": "2026-10-31T02:31-07:00",
+ "made": "2026-10-31T08:08-07:00",
  "days": [
-  {
-   "date": "2026-10-31",
-   "basis": "board",
-   "list": [
-    {
-     "name": "Ever Mode",
-     "terminal": "PCT",
-     "kind": "container"
-    },
-    {
-     "name": "Lavender Ace",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
-     "name": "Frankfurt Express",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "One Durban",
-     "terminal": "WUT",
-     "kind": "container"
-    }
-   ],
-   "grain": 1,
-   "no_work": false,
-   "ships": 4,
-   "pct": 1,
-   "skill3": {
-    "p_runs_out": 0.98,
-    "mid": {
-     "hours": 0.0,
-     "spin": 225
-    },
-    "early": {
-     "hours": 0.0,
-     "spin": 186
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 259
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.39,
-    "mid": {
-     "hours": 0.0,
-     "spin": 329
-    },
-    "early": {
-     "hours": 0.0,
-     "spin": 311
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 346
-    }
-   }
-  },
   {
    "date": "2026-11-01",
    "basis": "schedule",
@@ -86,33 +26,33 @@
    "ships": 3,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.98,
+    "p_runs_out": 0.96,
     "mid": {
      "hours": 0.0,
-     "spin": 183
+     "spin": 197
     },
     "early": {
      "hours": 0.0,
-     "spin": 95
+     "spin": 106
     },
     "late": {
      "hours": 0.0,
-     "spin": 297
+     "spin": 296
     }
    },
    "skill": {
-    "p_runs_out": 0.62,
+    "p_runs_out": 0.63,
     "mid": {
      "hours": 8.0,
-     "spin": 307
+     "spin": 306
     },
     "early": {
      "hours": 8.0,
-     "spin": 242
+     "spin": 243
     },
     "late": {
      "hours": 10.0,
-     "spin": 74
+     "spin": 19
     }
    }
   },
@@ -146,33 +86,33 @@
    "ships": 4,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
      "hours": 0.0,
-     "spin": 91
+     "spin": 90
     },
     "early": {
      "hours": 0.0,
-     "spin": 58
+     "spin": 59
     },
     "late": {
      "hours": 0.0,
-     "spin": 129
+     "spin": 125
     }
    },
    "skill": {
-    "p_runs_out": 0.07,
+    "p_runs_out": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 303
+     "spin": 321
     },
     "early": {
      "hours": 0.0,
-     "spin": 283
+     "spin": 295
     },
     "late": {
      "hours": 0.0,
-     "spin": 328
+     "spin": 334
     }
    }
   },
@@ -201,33 +141,33 @@
    "ships": 3,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "mid": {
-     "hours": 0.0,
-     "spin": 346
+     "hours": 6.0,
+     "spin": 4
     },
     "early": {
      "hours": 0.0,
-     "spin": 223
+     "spin": 231
     },
     "late": {
      "hours": 6.0,
-     "spin": 111
+     "spin": 123
     }
    },
    "skill": {
-    "p_runs_out": 0.07,
+    "p_runs_out": 0.05,
     "mid": {
      "hours": 8.0,
-     "spin": 111
+     "spin": 182
     },
     "early": {
-     "hours": 6.0,
-     "spin": 320
+     "hours": 8.0,
+     "spin": 37
     },
     "late": {
      "hours": 8.0,
-     "spin": 240
+     "spin": 253
     }
    }
   },
@@ -271,33 +211,33 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "mid": {
-     "hours": 6.0,
-     "spin": 342
+     "hours": 8.0,
+     "spin": 64
     },
     "early": {
      "hours": 6.0,
-     "spin": 39
+     "spin": 82
     },
     "late": {
      "hours": 8.0,
-     "spin": 221
+     "spin": 278
     }
    },
    "skill": {
     "p_runs_out": 0.03,
     "mid": {
      "hours": 14.0,
-     "spin": 182
+     "spin": 269
     },
     "early": {
-     "hours": 12.0,
-     "spin": 264
+     "hours": 14.0,
+     "spin": 121
     },
     "late": {
      "hours": 16.0,
-     "spin": 50
+     "spin": 152
     }
    }
   },
@@ -344,30 +284,30 @@
     "p_runs_out": 0.99,
     "mid": {
      "hours": 8.0,
-     "spin": 304
+     "spin": 278
     },
     "early": {
      "hours": 8.0,
-     "spin": 12
+     "spin": 25
     },
     "late": {
      "hours": 14.0,
-     "spin": 146
+     "spin": 78
     }
    },
    "skill": {
     "p_runs_out": 0.01,
     "mid": {
-     "hours": 22.0,
-     "spin": 158
+     "hours": 18.0,
+     "spin": 278
     },
     "early": {
-     "hours": 22.0,
-     "spin": 65
+     "hours": 18.0,
+     "spin": 234
     },
     "late": {
-     "hours": 24.0,
-     "spin": 129
+     "hours": 18.0,
+     "spin": 280
     }
    }
   },
@@ -403,31 +343,86 @@
    "skill3": {
     "p_runs_out": 0.99,
     "mid": {
-     "hours": 12.0,
-     "spin": 110
+     "hours": 14.0,
+     "spin": 8
     },
     "early": {
      "hours": 8.0,
-     "spin": 48
+     "spin": 96
     },
     "late": {
      "hours": 16.0,
-     "spin": 195
+     "spin": 236
     }
    },
    "skill": {
-    "p_runs_out": 0.04,
+    "p_runs_out": 0.05,
     "mid": {
-     "hours": 30.0,
-     "spin": 1
+     "hours": 24.0,
+     "spin": 351
     },
     "early": {
-     "hours": 26.0,
-     "spin": 192
+     "hours": 24.0,
+     "spin": 255
     },
     "late": {
      "hours": 30.0,
-     "spin": 234
+     "spin": 63
+    }
+   }
+  },
+  {
+   "date": "2026-11-07",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "One Synergy",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Most",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Tongala",
+     "terminal": "EB1",
+     "kind": "car ship"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 3,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.97,
+    "mid": {
+     "hours": 0.0,
+     "spin": 50
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 23
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 78
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.43,
+    "mid": {
+     "hours": 0.0,
+     "spin": 264
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 229
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 308
     }
    }
   }
