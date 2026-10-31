@@ -519,10 +519,10 @@ $("guessBtn").onclick = async () => {
     ${(() => { const m = spinFor(parseYmd(d.date)); return m && m.spin != null ? `<p>Your spin: <b>${m.spin}</b></p>` : ""; })()}
     <p>${shipSummary(d)}</p>
     ${(d.list || []).length ? `<p class="muted">${d.list.map((v) => `${esc(v.name)} (${esc(termName(v.terminal))})`).join(", ")}</p>` : ""}
-    ${d.no_work ? "<p>No work (holiday).</p>" : `<p>${cutLine("Skill 3 (strad/top pick)", d.skill3)}</p>
+    ${d.no_work ? "<p>No work (holiday).</p>" : `<p>${d.skill3_jobs === 0 ? "Skill 3 (strad/top pick): none on the board." : cutLine("Skill 3 (strad/top pick)", d.skill3)}</p>
     <p>${cutLine("Skill (incl. trucks)", d.skill, true)}</p>`}</div>`).join("") +
     (await scoreLine()) +
-    `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the ships on the posted board (~2pm the day before), so it's a better guess.</p>`;
+    `<p class="muted">Made ${fmtWhen(new Date(g.made))}. <b>Before board</b> = guessed from the ship schedule only. <b>After board</b> = uses the finished board (posted ~2–4pm the day before), so it's a better guess.</p>`;
 };
 
 // Week panel

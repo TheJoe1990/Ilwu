@@ -72,6 +72,25 @@ def count(path):
     return {"skill3": s3, "trucks": tr, "detail": detail}
 
 
+def is_final(date):
+    """True once the day board for `date` (YYYY-MM-DD) looks finished. The hall builds it through the afternoon:
+    ship names first, job counts later, final ~2-4pm the day before. Final = a version saved at/after 2pm Pacific
+    the day before with every PCT/WUT/Husky ship's UNITS filled in, or any version saved at/after 4pm."""
+    import datetime as dt
+    versions = json.load(open(HERE / "data" / "boards" / "index.json"))["day"].get(date, [])
+    eve = dt.datetime.fromisoformat(date + "T00:00-07:00") - dt.timedelta(hours=10)   # 2pm PDT the day before
+    for e in versions:
+        saved = dt.datetime.fromisoformat(e["saved"])
+        if saved < eve:
+            continue
+        if saved >= eve + dt.timedelta(hours=2):
+            return True
+        rows_ = list(rows(HERE / "data" / "boards" / "day" / e["file"]))
+        if rows_ and not any(len(c) > 2 and terminal(c[1]) in ("PCT", "WUT", "HUSKY") and not c[2].strip() for c in rows_):
+            return True
+    return False
+
+
 def final_versions():
     idx = json.load(open(HERE / "data" / "boards" / "index.json"))["day"]
     out = {}

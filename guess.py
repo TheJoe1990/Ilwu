@@ -97,7 +97,10 @@ def guess(day, runs, boards):
     start = last_reset(day)
     world = sim.setup(start, (day - start).days + 1)
     # Past days and the target day use their posted boards when we have them
-    world["board"] = {d: sim.board_vessels(world, rows) for d, rows in boards.items() if start <= d <= day}
+    # The target day only counts as "after board" once its board looks finished (board_jobs.is_final); a
+    # half-built board (ship names, no job counts) would read as zero jobs.
+    world["board"] = {d: sim.board_vessels(world, rows) for d, rows in boards.items()
+                      if start <= d < day or (d == day and board_jobs.is_final(d.isoformat()))}
     # Posted boards also give the skill-3 job count (board_jobs.py); it beat the per-ship guess in guess_backtest.py
     P = sim.load_params()
     counts = board_jobs.final_versions()
@@ -123,7 +126,8 @@ def guess(day, runs, boards):
                   "kind": kinds.get(v["type"], "ship")} for v in here]
     return {"date": day.isoformat(), "basis": "board" if day in world["board"] else "schedule",
             "list": ship_list, "grain": grain, "no_work": d["no_work"], "ships": ships["ships"], "pct": ships["pct"],
-            "skill3": summary(res["cut_good"][i]), "skill": summary(res["cut_skill"][i])}
+            "skill3": summary(res["cut_good"][i]), "skill": summary(res["cut_skill"][i]),
+            "skill3_jobs": world["good_override"].get(day)}
 
 
 def main():
