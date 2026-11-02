@@ -19,6 +19,7 @@ import json
 import math
 import pathlib
 import random
+from zoneinfo import ZoneInfo
 
 import board_backtest
 import board_jobs
@@ -26,7 +27,7 @@ import outlook
 import sim
 
 HERE = pathlib.Path(__file__).resolve().parent
-PT = dt.timezone(dt.timedelta(hours=-7))   # close enough for picking "today"; DST error only shifts the cutoff hour
+PT = ZoneInfo("America/Los_Angeles")
 
 
 def last_reset(day):

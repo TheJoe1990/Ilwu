@@ -78,7 +78,9 @@ def is_final(date):
     the day before with every PCT/WUT/Husky ship's UNITS filled in, or any version saved at/after 4pm."""
     import datetime as dt
     versions = json.load(open(HERE / "data" / "boards" / "index.json"))["day"].get(date, [])
-    eve = dt.datetime.fromisoformat(date + "T00:00-07:00") - dt.timedelta(hours=10)   # 2pm PDT the day before
+    from zoneinfo import ZoneInfo
+    day = dt.date.fromisoformat(date) - dt.timedelta(days=1)
+    eve = dt.datetime.combine(day, dt.time(14), ZoneInfo("America/Los_Angeles"))   # 2pm Pacific the day before
     for e in versions:
         saved = dt.datetime.fromisoformat(e["saved"])
         if saved < eve:
