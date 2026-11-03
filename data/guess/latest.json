@@ -1,64 +1,6 @@
 {
- "made": "2026-11-03T07:47-08:00",
+ "made": "2026-11-03T10:22-08:00",
  "days": [
-  {
-   "date": "2026-11-03",
-   "basis": "board",
-   "list": [
-    {
-     "name": "One Synergy",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "Ever Smile",
-     "terminal": "PCT",
-     "kind": "container"
-    },
-    {
-     "name": "European Highway",
-     "terminal": "BLAIR",
-     "kind": "ship"
-    }
-   ],
-   "grain": 1,
-   "no_work": false,
-   "ships": 3,
-   "pct": 1,
-   "skill3": {
-    "p_runs_out": 0.5,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 8.0,
-     "spin": 249
-    },
-    "early": {
-     "hours": 8.0,
-     "spin": 197
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 298
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.0,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 8.0,
-     "spin": 294
-    },
-    "early": {
-     "hours": 8.0,
-     "spin": 294
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 294
-    }
-   },
-   "skill3_jobs": 31.0
-  },
   {
    "date": "2026-11-04",
    "basis": "schedule",
@@ -103,31 +45,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 163
+     "spin": 134
     },
     "early": {
      "hours": 8.0,
-     "spin": 50
+     "spin": 31
     },
     "late": {
      "hours": 8.0,
-     "spin": 311
+     "spin": 285
     }
    },
    "skill": {
-    "p_runs_out": 0.04,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 16.0,
-     "spin": 251
+     "hours": 14.0,
+     "spin": 149
     },
     "early": {
-     "hours": 16.0,
-     "spin": 221
+     "hours": 12.0,
+     "spin": 242
     },
     "late": {
      "hours": 16.0,
-     "spin": 251
+     "spin": 214
     }
    },
    "skill3_jobs": null
@@ -172,36 +114,24 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.98,
+    "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 68
+     "spin": 31
     },
     "early": {
      "hours": 8.0,
-     "spin": 171
+     "spin": 126
     },
     "late": {
      "hours": 16.0,
-     "spin": 179
+     "spin": 48
     }
    },
    "skill": {
-    "p_runs_out": 0.02,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 24.0,
-     "spin": 322
-    },
-    "early": {
-     "hours": 22.0,
-     "spin": 145
-    },
-    "late": {
-     "hours": 24.0,
-     "spin": 322
-    }
+    "p_runs_out": 0.0,
+    "p_no_jobs": 0.0
    },
    "skill3_jobs": null
   },
@@ -239,31 +169,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 16.0,
-     "spin": 311
+     "spin": 16
     },
     "early": {
-     "hours": 16.0,
-     "spin": 134
+     "hours": 8.0,
+     "spin": 207
     },
     "late": {
      "hours": 16.0,
-     "spin": 311
+     "spin": 298
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 28.0,
-     "spin": 337
+     "spin": 326
     },
     "early": {
      "hours": 28.0,
-     "spin": 337
+     "spin": 326
     },
     "late": {
-     "hours": 28.0,
-     "spin": 337
+     "hours": 30.0,
+     "spin": 267
     }
    },
    "skill3_jobs": null
@@ -294,34 +224,34 @@
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.03,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 53
+     "spin": 60
     },
     "early": {
      "hours": 0.0,
-     "spin": 26
+     "spin": 32
     },
     "late": {
      "hours": 0.0,
-     "spin": 90
+     "spin": 92
     }
    },
    "skill": {
-    "p_runs_out": 0.43,
+    "p_runs_out": 0.44,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 283
+     "spin": 271
     },
     "early": {
      "hours": 0.0,
-     "spin": 237
+     "spin": 235
     },
     "late": {
      "hours": 0.0,
-     "spin": 314
+     "spin": 308
     }
    },
    "skill3_jobs": null
@@ -345,31 +275,31 @@
     "p_no_jobs": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 130
+     "spin": 129
     },
     "early": {
      "hours": 0.0,
-     "spin": 65
+     "spin": 67
     },
     "late": {
      "hours": 0.0,
-     "spin": 255
+     "spin": 263
     }
    },
    "skill": {
-    "p_runs_out": 0.7,
+    "p_runs_out": 0.69,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 240
+     "spin": 225
     },
     "early": {
      "hours": 8.0,
-     "spin": 171
+     "spin": 149
     },
     "late": {
      "hours": 8.0,
-     "spin": 310
+     "spin": 296
     }
    },
    "skill3_jobs": null
@@ -379,22 +309,22 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
      "name": "Budapest Express",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "Glovis Legend",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Supreme Ace",
      "terminal": "BLAIR",
      "kind": "car ship"
     },
     {
-     "name": "Supreme Ace",
+     "name": "Glovis Legend",
      "terminal": "BLAIR",
      "kind": "car ship"
     }
@@ -408,23 +338,23 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 79
+     "spin": 81
     },
     "early": {
      "hours": 0.0,
-     "spin": 45
+     "spin": 49
     },
     "late": {
      "hours": 0.0,
-     "spin": 114
+     "spin": 107
     }
    },
    "skill": {
-    "p_runs_out": 0.11,
+    "p_runs_out": 0.15,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 295
+     "spin": 297
     },
     "early": {
      "hours": 0.0,
@@ -432,7 +362,80 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 323
+     "spin": 328
+    }
+   },
+   "skill3_jobs": null
+  },
+  {
+   "date": "2026-11-10",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Budapest Express",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Glovis Legend",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
+     "name": "Ever Strong",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Nocc Adriatic",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
+     "name": "Pavo Leader",
+     "terminal": "EB1",
+     "kind": "car ship"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 6,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.99,
+    "p_no_jobs": 0.0,
+    "mid": {
+     "hours": 6.0,
+     "spin": 2
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 240
+    },
+    "late": {
+     "hours": 6.0,
+     "spin": 106
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.03,
+    "p_no_jobs": 0.0,
+    "mid": {
+     "hours": 8.0,
+     "spin": 137
+    },
+    "early": {
+     "hours": 8.0,
+     "spin": 127
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 210
     }
    },
    "skill3_jobs": null
