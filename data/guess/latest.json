@@ -1,9 +1,9 @@
 {
- "made": "2026-11-03T10:22-08:00",
+ "made": "2026-11-03T15:57-08:00",
  "days": [
   {
    "date": "2026-11-04",
-   "basis": "schedule",
+   "basis": "board",
    "list": [
     {
      "name": "One Synergy",
@@ -16,13 +16,8 @@
      "kind": "container"
     },
     {
-     "name": "Hyundai Forward",
+     "name": "One Majesty",
      "terminal": "WUT",
-     "kind": "container"
-    },
-    {
-     "name": "R.J. Pfeiffer",
-     "terminal": "MATSON/WST",
      "kind": "container"
     },
     {
@@ -31,48 +26,36 @@
      "kind": "car ship"
     },
     {
-     "name": "One Majesty",
-     "terminal": "WUT",
+     "name": "R.J. Pfeiffer",
+     "terminal": "MATSON/WST",
      "kind": "container"
     }
    ],
-   "grain": null,
+   "grain": 1,
    "no_work": false,
-   "ships": 6,
+   "ships": 5,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.04,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 8.0,
-     "spin": 134
+     "hours": 16.0,
+     "spin": 238
     },
     "early": {
-     "hours": 8.0,
-     "spin": 31
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 285
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.01,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 14.0,
-     "spin": 149
-    },
-    "early": {
-     "hours": 12.0,
-     "spin": 242
+     "hours": 16.0,
+     "spin": 193
     },
     "late": {
      "hours": 16.0,
-     "spin": 214
+     "spin": 339
     }
    },
-   "skill3_jobs": null
+   "skill": {
+    "p_runs_out": 0.0,
+    "p_no_jobs": 0.0
+   },
+   "skill3_jobs": 41.0
   },
   {
    "date": "2026-11-05",
@@ -100,7 +83,7 @@
     },
     {
      "name": "Morning Lucy",
-     "terminal": "BLAIR",
+     "terminal": "T7",
      "kind": "car ship"
     },
     {
@@ -117,16 +100,16 @@
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 14.0,
-     "spin": 31
+     "hours": 8.0,
+     "spin": 337
     },
     "early": {
      "hours": 8.0,
-     "spin": 126
+     "spin": 337
     },
     "late": {
-     "hours": 16.0,
-     "spin": 48
+     "hours": 8.0,
+     "spin": 337
     }
    },
    "skill": {
@@ -165,35 +148,35 @@
    "ships": 4,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 16.0,
-     "spin": 16
+     "spin": 87
     },
     "early": {
      "hours": 8.0,
-     "spin": 207
+     "spin": 156
     },
     "late": {
      "hours": 16.0,
-     "spin": 298
+     "spin": 321
     }
    },
    "skill": {
-    "p_runs_out": 0.01,
+    "p_runs_out": 0.04,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 28.0,
-     "spin": 326
+     "hours": 30.0,
+     "spin": 70
     },
     "early": {
      "hours": 28.0,
-     "spin": 326
+     "spin": 291
     },
     "late": {
      "hours": 30.0,
-     "spin": 267
+     "spin": 151
     }
    },
    "skill3_jobs": null
@@ -227,27 +210,27 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 60
+     "spin": 54
     },
     "early": {
      "hours": 0.0,
-     "spin": 32
+     "spin": 28
     },
     "late": {
      "hours": 0.0,
-     "spin": 92
+     "spin": 82
     }
    },
    "skill": {
-    "p_runs_out": 0.44,
+    "p_runs_out": 0.47,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 271
+     "spin": 268
     },
     "early": {
      "hours": 0.0,
-     "spin": 235
+     "spin": 236
     },
     "late": {
      "hours": 0.0,
@@ -272,34 +255,34 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.06,
+    "p_no_jobs": 0.09,
     "mid": {
      "hours": 0.0,
-     "spin": 129
+     "spin": 152
     },
     "early": {
      "hours": 0.0,
-     "spin": 67
+     "spin": 80
     },
     "late": {
      "hours": 0.0,
-     "spin": 263
+     "spin": 280
     }
    },
    "skill": {
-    "p_runs_out": 0.69,
+    "p_runs_out": 0.68,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 225
+     "spin": 223
     },
     "early": {
      "hours": 8.0,
-     "spin": 149
+     "spin": 154
     },
     "late": {
      "hours": 8.0,
-     "spin": 296
+     "spin": 291
     }
    },
    "skill3_jobs": null
@@ -309,12 +292,12 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Budapest Express",
+     "name": "One Fantastic",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "One Fantastic",
+     "name": "Budapest Express",
      "terminal": "HUSKY",
      "kind": "container"
     },
@@ -338,31 +321,31 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 81
+     "spin": 83
     },
     "early": {
      "hours": 0.0,
-     "spin": 49
+     "spin": 45
     },
     "late": {
      "hours": 0.0,
-     "spin": 107
+     "spin": 120
     }
    },
    "skill": {
-    "p_runs_out": 0.15,
+    "p_runs_out": 0.11,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 297
+     "spin": 303
     },
     "early": {
      "hours": 0.0,
-     "spin": 269
+     "spin": 256
     },
     "late": {
      "hours": 0.0,
-     "spin": 328
+     "spin": 322
     }
    },
    "skill3_jobs": null
@@ -372,12 +355,12 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Budapest Express",
+     "name": "One Fantastic",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "One Fantastic",
+     "name": "Budapest Express",
      "terminal": "HUSKY",
      "kind": "container"
     },
@@ -407,35 +390,35 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 6.0,
-     "spin": 2
+     "hours": 0.0,
+     "spin": 329
     },
     "early": {
      "hours": 0.0,
-     "spin": 240
+     "spin": 219
     },
     "late": {
      "hours": 6.0,
-     "spin": 106
+     "spin": 99
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 137
+     "spin": 202
     },
     "early": {
      "hours": 8.0,
-     "spin": 127
+     "spin": 65
     },
     "late": {
      "hours": 8.0,
-     "spin": 210
+     "spin": 212
     }
    },
    "skill3_jobs": null
