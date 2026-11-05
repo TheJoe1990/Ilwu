@@ -3,6 +3,9 @@ name: Archive boards and vessel schedule
 on:
   schedule:
     - cron: "7 * * * *"   # hourly; only changed content gets committed
+    # GitHub often delays or drops scheduled runs (hours apart on 11-04), so add extra tries while the next
+    # day's board is being finished (~2-5pm Pacific = 21:00-01:00 UTC in winter, 22:00-02:00 in summer).
+    - cron: "22,37,52 21-23,0-1 * * *"
   workflow_dispatch:
 
 permissions:
