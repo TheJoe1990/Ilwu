@@ -56,6 +56,8 @@ def count(path):
         if term.startswith(("CG", "C.G")) or name.startswith("C.G"):
             continue   # grain: HT/WD there aren't skill trucks
         cells = " | ".join(c[1:])
+        if "FLEX ALL" in cells:
+            continue   # every job on this ship goes at flex pick, not the regular pick the guess is for
         a = sum(int(n) for n in SKILL3.findall(cells))
         b = sum(int(n) for n in TRUCK.findall(cells))
         gangs = sum(int(n) for n in GANGS.findall(c[2] if len(c) > 2 else ""))
