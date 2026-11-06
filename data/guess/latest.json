@@ -1,9 +1,9 @@
 {
- "made": "2026-11-05T10:41-08:00",
+ "made": "2026-11-05T16:08-08:00",
  "days": [
   {
    "date": "2026-11-06",
-   "basis": "schedule",
+   "basis": "board",
    "list": [
     {
      "name": "One Synergy",
@@ -11,58 +11,56 @@
      "kind": "container"
     },
     {
+     "name": "Hyundai Forward",
+     "terminal": "WUT",
+     "kind": "ship"
+    },
+    {
      "name": "Matson Kodiak",
      "terminal": "MATSON/WST",
      "kind": "container"
     },
     {
-     "name": "Glovis Treasure",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
      "name": "Maunawili",
      "terminal": "MATSON/WST",
      "kind": "container"
+    },
+    {
+     "name": "Glovis Treasure",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
+     "name": "Eva Instanbul",
+     "terminal": "?",
+     "kind": "ship"
     }
    ],
-   "grain": null,
+   "grain": 1,
    "no_work": false,
-   "ships": 4,
+   "ships": 6,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.39,
     "mid": {
-     "hours": 16.0,
-     "spin": 21
+     "hours": 0.0,
+     "spin": 177
     },
     "early": {
-     "hours": 8.0,
-     "spin": 140
+     "hours": 0.0,
+     "spin": 88
     },
     "late": {
-     "hours": 22.0,
-     "spin": 24
+     "hours": 0.0,
+     "spin": 327
     }
    },
    "skill": {
-    "p_runs_out": 0.05,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 30.0,
-     "spin": 125
-    },
-    "early": {
-     "hours": 24.0,
-     "spin": 210
-    },
-    "late": {
-     "hours": 30.0,
-     "spin": 136
-    }
+    "p_runs_out": 0.0,
+    "p_no_jobs": 0.0
    },
-   "skill3_jobs": null
+   "skill3_jobs": 1.0
   },
   {
    "date": "2026-11-07",
@@ -93,23 +91,23 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 51
+     "spin": 61
     },
     "early": {
      "hours": 0.0,
-     "spin": 24
+     "spin": 28
     },
     "late": {
      "hours": 0.0,
-     "spin": 83
+     "spin": 87
     }
    },
    "skill": {
-    "p_runs_out": 0.5,
+    "p_runs_out": 0.47,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 271
+     "spin": 269
     },
     "early": {
      "hours": 0.0,
@@ -117,7 +115,7 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 310
+     "spin": 304
     }
    },
    "skill3_jobs": null
@@ -138,34 +136,34 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.05,
+    "p_no_jobs": 0.07,
     "mid": {
      "hours": 0.0,
-     "spin": 120
+     "spin": 130
     },
     "early": {
      "hours": 0.0,
-     "spin": 48
+     "spin": 54
     },
     "late": {
      "hours": 0.0,
-     "spin": 215
+     "spin": 244
     }
    },
    "skill": {
-    "p_runs_out": 0.75,
+    "p_runs_out": 0.79,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 215
+     "spin": 211
     },
     "early": {
      "hours": 8.0,
-     "spin": 157
+     "spin": 152
     },
     "late": {
      "hours": 8.0,
-     "spin": 286
+     "spin": 279
     }
    },
    "skill3_jobs": null
@@ -194,31 +192,31 @@
     "p_no_jobs": 0.05,
     "mid": {
      "hours": 0.0,
-     "spin": 59
+     "spin": 52
     },
     "early": {
      "hours": 0.0,
-     "spin": 30
+     "spin": 29
     },
     "late": {
      "hours": 0.0,
-     "spin": 102
+     "spin": 98
     }
    },
    "skill": {
-    "p_runs_out": 0.34,
+    "p_runs_out": 0.35,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 286
+     "spin": 288
     },
     "early": {
      "hours": 0.0,
-     "spin": 246
+     "spin": 251
     },
     "late": {
      "hours": 0.0,
-     "spin": 315
+     "spin": 319
     }
    },
    "skill3_jobs": null
@@ -251,47 +249,42 @@
      "name": "Nocc Adriatic",
      "terminal": "EB1",
      "kind": "car ship"
-    },
-    {
-     "name": "Pavo Leader",
-     "terminal": "EB1",
-     "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 6,
+   "ships": 5,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 287
+     "spin": 302
     },
     "early": {
      "hours": 0.0,
-     "spin": 176
+     "spin": 169
     },
     "late": {
      "hours": 6.0,
-     "spin": 65
+     "spin": 66
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.05,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 45
+     "spin": 155
     },
     "early": {
      "hours": 6.0,
-     "spin": 320
+     "spin": 322
     },
     "late": {
      "hours": 8.0,
-     "spin": 196
+     "spin": 310
     }
    },
    "skill3_jobs": null
@@ -324,47 +317,42 @@
      "name": "Matson Anchorage",
      "terminal": "MATSON/WST",
      "kind": "container"
-    },
-    {
-     "name": "Cape San Juan",
-     "terminal": "T7",
-     "kind": "ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 6,
+   "ships": 5,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 6.0,
-     "spin": 80
+     "spin": 90
     },
     "early": {
      "hours": 0.0,
-     "spin": 287
+     "spin": 274
     },
     "late": {
-     "hours": 6.0,
-     "spin": 333
+     "hours": 8.0,
+     "spin": 12
     }
    },
    "skill": {
-    "p_runs_out": 0.1,
+    "p_runs_out": 0.2,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 12.0,
-     "spin": 305
+     "spin": 335
     },
     "early": {
      "hours": 12.0,
-     "spin": 244
+     "spin": 230
     },
     "late": {
      "hours": 14.0,
-     "spin": 108
+     "spin": 266
     }
    },
    "skill3_jobs": null
@@ -389,14 +377,14 @@
      "kind": "container"
     },
     {
-     "name": "Cape San Juan",
-     "terminal": "T7",
-     "kind": "ship"
-    },
-    {
      "name": "Corneille",
      "terminal": "WUT",
      "kind": "container"
+    },
+    {
+     "name": "Pavo Leader",
+     "terminal": "EB1",
+     "kind": "car ship"
     }
    ],
    "grain": null,
@@ -408,31 +396,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 323
+     "spin": 281
     },
     "early": {
      "hours": 10.0,
-     "spin": 282
+     "spin": 221
     },
     "late": {
      "hours": 16.0,
-     "spin": 253
+     "spin": 257
     }
    },
    "skill": {
     "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 22.0,
-     "spin": 45
+     "hours": 24.0,
+     "spin": 13
     },
     "early": {
      "hours": 22.0,
-     "spin": 45
+     "spin": 54
     },
     "late": {
-     "hours": 22.0,
-     "spin": 45
+     "hours": 24.0,
+     "spin": 46
     }
    },
    "skill3_jobs": null
