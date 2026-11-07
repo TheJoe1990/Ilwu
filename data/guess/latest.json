@@ -1,5 +1,5 @@
 {
- "made": "2026-11-06T17:49-08:00",
+ "made": "2026-11-06T23:16-08:00",
  "days": [
   {
    "date": "2026-11-07",
@@ -25,31 +25,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 144
+     "spin": 145
     },
     "early": {
      "hours": 0.0,
-     "spin": 109
+     "spin": 110
     },
     "late": {
      "hours": 0.0,
-     "spin": 177
+     "spin": 186
     }
    },
    "skill": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 254
+     "spin": 243
     },
     "early": {
      "hours": 0.0,
-     "spin": 231
+     "spin": 221
     },
     "late": {
      "hours": 0.0,
-     "spin": 278
+     "spin": 267
     }
    },
    "skill3_jobs": 16.0
@@ -73,31 +73,31 @@
     "p_no_jobs": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 98
+     "spin": 85
     },
     "early": {
      "hours": 0.0,
-     "spin": 47
+     "spin": 46
     },
     "late": {
      "hours": 0.0,
-     "spin": 176
+     "spin": 157
     }
    },
    "skill": {
-    "p_runs_out": 0.79,
+    "p_runs_out": 0.86,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 183
+     "spin": 171
     },
     "early": {
      "hours": 8.0,
-     "spin": 91
+     "spin": 83
     },
     "late": {
      "hours": 8.0,
-     "spin": 284
+     "spin": 277
     }
    },
    "skill3_jobs": null
@@ -107,55 +107,50 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Tongala",
-     "terminal": "T7",
-     "kind": "car ship"
-    },
-    {
      "name": "Budapest Express",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "Glovis Legend",
-     "terminal": "BLAIR",
+     "name": "Tongala",
+     "terminal": "T7",
      "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 3,
+   "ships": 2,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.07,
+    "p_no_jobs": 0.04,
     "mid": {
      "hours": 0.0,
-     "spin": 43
+     "spin": 56
     },
     "early": {
      "hours": 0.0,
-     "spin": 18
+     "spin": 30
     },
     "late": {
      "hours": 0.0,
-     "spin": 82
+     "spin": 96
     }
    },
    "skill": {
-    "p_runs_out": 0.33,
+    "p_runs_out": 0.41,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 306
+     "spin": 289
     },
     "early": {
      "hours": 0.0,
-     "spin": 264
+     "spin": 252
     },
     "late": {
      "hours": 0.0,
-     "spin": 329
+     "spin": 325
     }
    },
    "skill3_jobs": null
@@ -170,55 +165,50 @@
      "kind": "container"
     },
     {
-     "name": "Glovis Legend",
-     "terminal": "EB1",
-     "kind": "car ship"
+     "name": "Ever Strong",
+     "terminal": "PCT",
+     "kind": "container"
     },
     {
      "name": "One Fantastic",
      "terminal": "HUSKY",
      "kind": "container"
-    },
-    {
-     "name": "Ever Strong",
-     "terminal": "PCT",
-     "kind": "container"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 3,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 271
+     "spin": 249
     },
     "early": {
      "hours": 0.0,
-     "spin": 157
+     "spin": 149
     },
     "late": {
      "hours": 6.0,
-     "spin": 43
+     "spin": 31
     }
    },
    "skill": {
-    "p_runs_out": 0.07,
+    "p_runs_out": 0.09,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 8.0,
-     "spin": 34
+     "hours": 6.0,
+     "spin": 349
     },
     "early": {
      "hours": 6.0,
-     "spin": 289
+     "spin": 300
     },
     "late": {
      "hours": 8.0,
-     "spin": 262
+     "spin": 196
     }
    },
    "skill3_jobs": null
@@ -233,13 +223,13 @@
      "kind": "container"
     },
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
+     "name": "Ever Strong",
+     "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
      "kind": "container"
     },
     {
@@ -256,42 +246,47 @@
      "name": "Nocc Adriatic",
      "terminal": "T7",
      "kind": "car ship"
+    },
+    {
+     "name": "Glovis Legend",
+     "terminal": "BLAIR",
+     "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 6,
+   "ships": 7,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 6.0,
-     "spin": 98
+     "spin": 73
     },
     "early": {
      "hours": 0.0,
-     "spin": 288
+     "spin": 278
     },
     "late": {
      "hours": 6.0,
-     "spin": 303
+     "spin": 262
     }
    },
    "skill": {
-    "p_runs_out": 0.17,
+    "p_runs_out": 0.15,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 14.0,
-     "spin": 44
+     "hours": 12.0,
+     "spin": 335
     },
     "early": {
      "hours": 12.0,
-     "spin": 219
+     "spin": 206
     },
     "late": {
      "hours": 14.0,
-     "spin": 292
+     "spin": 254
     }
    },
    "skill3_jobs": null
@@ -301,13 +296,13 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
+     "name": "Ever Strong",
+     "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
      "kind": "container"
     },
     {
@@ -332,34 +327,34 @@
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.0,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 14.0,
-     "spin": 229
+     "spin": 327
     },
     "early": {
-     "hours": 10.0,
-     "spin": 279
+     "hours": 12.0,
+     "spin": 51
     },
     "late": {
      "hours": 16.0,
-     "spin": 246
+     "spin": 231
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 22.0,
-     "spin": 239
+     "hours": 24.0,
+     "spin": 9
     },
     "early": {
      "hours": 22.0,
-     "spin": 239
+     "spin": 117
     },
     "late": {
-     "hours": 22.0,
-     "spin": 239
+     "hours": 24.0,
+     "spin": 9
     }
    },
    "skill3_jobs": null
@@ -369,13 +364,13 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
+     "name": "Ever Strong",
+     "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
      "kind": "container"
     },
     {
@@ -402,32 +397,32 @@
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 18.0,
-     "spin": 141
+     "hours": 16.0,
+     "spin": 299
     },
     "early": {
      "hours": 14.0,
-     "spin": 331
+     "spin": 201
     },
     "late": {
-     "hours": 22.0,
-     "spin": 105
+     "hours": 20.0,
+     "spin": 299
     }
    },
    "skill": {
     "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 32.0,
-     "spin": 99
+     "hours": 28.0,
+     "spin": 293
     },
     "early": {
-     "hours": 32.0,
-     "spin": 99
+     "hours": 28.0,
+     "spin": 65
     },
     "late": {
-     "hours": 32.0,
-     "spin": 99
+     "hours": 30.0,
+     "spin": 252
     }
    },
    "skill3_jobs": null
