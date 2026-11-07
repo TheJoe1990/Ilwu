@@ -1,3 +1,8 @@
 date,shift,kind,hours,spin,bound,notes
 2026-10-28,day,skill3,8.0,128,exact,Form report: 8 hours 128 spin
-2026-10-31,day,skill3,3.0,0,exact,Form report: Skill 3 ran out 0 hours 99 spin
+2026-10-31,day,skill3,0.0,99,exact,Form report: Skill 3 ran out 0 hours 99 spin
+2026-10-27,day,skill3,0.0,13,at_least,Form report: a B at 0/13 got Toppick
+2026-10-29,day,skill3,16.0,52,at_least,Form report: a B at 16/52 got Strad
+2026-11-03,day,skill3,0.0,85,at_least,Form report: a B at 0/85 got Strad
+2026-11-04,day,skill3,8.0,216,at_least,Form report: a B at 8/216 got Strad
+2026-11-05,day,skill3,16.0,90,at_least,Form report: a B at 16/90 got Strad

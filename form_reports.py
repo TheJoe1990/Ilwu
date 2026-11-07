@@ -23,8 +23,14 @@ Q = {"date": "date you are reporting", "shift": "day or night", "class": "b man 
 
 def hours_spin(text):
     """'12/94', '12 hrs spin 94', '8 with a 122' -> (12.0, 94): first number is hours, second is spin; None if not two."""
-    n = re.findall(r"\d+(?:\.\d+)?", text or "")
-    return (float(n[0]), int(float(n[1]))) if len(n) >= 2 and float(n[1]) <= 400 else None
+    text = re.sub(r"skill\s*3", " ", text or "", flags=re.I)   # the "3" in "skill 3" isn't hours
+    n = re.findall(r"\d+(?:\.\d+)?", text)
+    if len(n) < 2:
+        return None
+    a, b = float(n[0]), float(n[1])
+    if a > 40 >= b:   # "85 with 0": logged hours never get that high in a week, so it's spin first
+        a, b = b, a
+    return (a, int(b)) if b <= 400 else None
 
 
 def cutoff_kind(text):
@@ -74,6 +80,18 @@ def main():
             if kind:
                 cuts.append({"date": day.isoformat(), "shift": "day", "kind": kind, "hours": c[0], "spin": c[1],
                              "bound": "exact", "notes": f"Form report: {get(r, 'cutoff')}"})
+    # Someone at regular pick who got skill 3 shows it went at least that deep (lower bound), unless the day
+    # already has a reported cutoff.
+    have = {(c["date"], c["kind"]) for c in cuts}
+    deepest = {}
+    for o in out:
+        if o["shift"] == "day" and o["pick"] == "regular" and o["hours"] != "" and cutoff_kind(o["got"]) == "skill3":
+            k = o["date"]
+            if (k, "skill3") not in have and (k not in deepest or (o["hours"], o["spin"]) > deepest[k][:2]):
+                deepest[k] = (o["hours"], o["spin"], o["got"])
+    for k, (h, s, got) in sorted(deepest.items()):
+        cuts.append({"date": k, "shift": "day", "kind": "skill3", "hours": h, "spin": s, "bound": "at_least",
+                     "notes": f"Form report: a B at {h:g}/{s} got {got}"})
     for path, data, fields in ((OUT / "form.csv", out, list(out[0]) if out else []),
                                (OUT / "form_cutoffs.csv", cuts, ["date", "shift", "kind", "hours", "spin", "bound", "notes"])):
         with open(path, "w", newline="") as f:
