@@ -57,8 +57,9 @@ def reported():
         f = HERE / "data" / "outcomes" / name
         if f.exists():
             for c in csv.DictReader(open(f)):
-                if c["shift"] == "day":
-                    out[(c["date"], c["kind"])] = (float(c["hours"]) if c["hours"] else None,
+                k = (c["date"], c["kind"])
+                if c["shift"] == "day" and not (k in out and c["bound"] == "at_least"):   # an exact cutoff beats a lower bound
+                    out[k] = (float(c["hours"]) if c["hours"] else None,
                                                    int(c["spin"]) if c["spin"] else None, c["bound"])
     return out
 
@@ -92,6 +93,11 @@ def weights(res, days, reports):
     return w
 
 
+def world_full(world, d):
+    """Weekend/holiday (OT) day? A men take more of the skill-3 jobs then (refit 2026-11-07)."""
+    return next((x["full"] for x in world["days"] if x["day"] == d), d.weekday() >= 5)
+
+
 def posted_boards():
     """{date: board ship rows} for day boards that have posted (see board_jobs.final_versions)."""
     out = {}
@@ -113,7 +119,8 @@ def guess(day, runs, boards):
     # Posted boards also give the skill-3 job count (board_jobs.py); it beat the per-ship guess in guess_backtest.py
     P = sim.load_params()
     counts = board_jobs.final_versions()
-    world["good_override"] = {d: board_jobs.count(counts[d.isoformat()])["skill3"] * P["board_skill3_share"]
+    share = lambda d: P["board_skill3_share_weekend"] if world_full(world, d) else P["board_skill3_share"]
+    world["good_override"] = {d: board_jobs.count(counts[d.isoformat()])["skill3"] * share(d)
                               for d in world["board"] if d.isoformat() in counts}
     res = sim.simulate(world, P, None, runs)
     i = len(world["days"]) - 1

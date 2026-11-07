@@ -190,13 +190,13 @@
    "basis": "board",
    "guess": [
     0.0,
-    142
+    48
    ],
    "reported": [
     0.0,
     17
    ],
-   "off_hours": 0.7
+   "off_hours": 0.2
   },
   {
    "date": "2026-11-07",

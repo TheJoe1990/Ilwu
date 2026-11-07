@@ -77,3 +77,7 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - PMA daily dispatch summaries would give a turnout count every day, but pmanet.org now serves a Cloudflare bot check, so they can't be fetched automatically.
 - Every variant still guesses Wed 10-28 at 14 hrs vs the real 8. No reports came in for Mon/Tue that week, so nothing could steer it. More form reports fix this.
 - **"Hanging" (user, 2026-10-31)** = jobs still unfilled at the end of dispatch, after A men, B men and casuals. Trucks hanging means they went through all three. The model can't predict that, so the app never says "hanging". It says a job type "makes it past every B man" (skill 3) or "makes it to casuals" (skill). In the sim, None = left after every B; "none" = no such jobs that day.
+
+## Board skill-3 share refit (2026-11-07)
+- 11 reported days (exact cutoffs plus form "I got skill 3 at H/S" lower bounds). Share of the board's skill-3 jobs that reach the B line: **0.75 weekdays, 0.4 weekends/holidays**. Total error 31.7 vs 37.1 with 1.0 for both.
+- Why weekends are lower: Sat 11-07 had 16 skill-3 jobs on the board and only 3 went to B men (the last at spin 17). A men turn out for OT and take most of them.
