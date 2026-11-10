@@ -1,17 +1,12 @@
 {
- "made": "2026-11-09T09:24-08:00",
+ "made": "2026-11-09T17:27-08:00",
  "days": [
   {
    "date": "2026-11-10",
-   "basis": "schedule",
+   "basis": "board",
    "list": [
     {
      "name": "Budapest Express",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "One Fantastic",
      "terminal": "HUSKY",
      "kind": "container"
     },
@@ -21,43 +16,43 @@
      "kind": "container"
     }
    ],
-   "grain": null,
+   "grain": 1,
    "no_work": false,
-   "ships": 3,
+   "ships": 2,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 0.0,
-     "spin": 298
+     "hours": 6.0,
+     "spin": 162
     },
     "early": {
-     "hours": 0.0,
-     "spin": 180
+     "hours": 6.0,
+     "spin": 51
     },
     "late": {
      "hours": 6.0,
-     "spin": 69
+     "spin": 286
     }
    },
    "skill": {
-    "p_runs_out": 0.13,
+    "p_runs_out": 0.24,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 6
+     "spin": 226
     },
     "early": {
-     "hours": 6.0,
-     "spin": 291
+     "hours": 8.0,
+     "spin": 148
     },
     "late": {
      "hours": 8.0,
-     "spin": 196
+     "spin": 292
     }
    },
-   "skill3_jobs": null
+   "skill3_jobs": 16.5
   },
   {
    "date": "2026-11-11",
@@ -69,14 +64,19 @@
      "kind": "container"
     },
     {
+     "name": "Ever Strong",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
      "name": "One Fantastic",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
-     "kind": "container"
+     "name": "Nocc Adriatic",
+     "terminal": "EB1",
+     "kind": "car ship"
     },
     {
      "name": "One Modern",
@@ -87,52 +87,42 @@
      "name": "Matson Anchorage",
      "terminal": "MATSON/WST",
      "kind": "container"
-    },
-    {
-     "name": "Nocc Adriatic",
-     "terminal": "T7",
-     "kind": "car ship"
-    },
-    {
-     "name": "Glovis Legend",
-     "terminal": "BLAIR",
-     "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 7,
+   "ships": 6,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 6.0,
-     "spin": 204
+     "spin": 211
     },
     "early": {
      "hours": 0.0,
-     "spin": 315
+     "spin": 306
     },
     "late": {
      "hours": 8.0,
-     "spin": 80
+     "spin": 90
     }
    },
    "skill": {
-    "p_runs_out": 0.12,
+    "p_runs_out": 0.38,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 145
+     "spin": 8
     },
     "early": {
      "hours": 12.0,
-     "spin": 326
+     "spin": 256
     },
     "late": {
      "hours": 14.0,
-     "spin": 316
+     "spin": 196
     }
    },
    "skill3_jobs": null
@@ -142,13 +132,13 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
+     "name": "Ever Strong",
+     "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
      "kind": "container"
     },
     {
@@ -157,9 +147,9 @@
      "kind": "container"
     },
     {
-     "name": "Corneille",
-     "terminal": "WUT",
-     "kind": "container"
+     "name": "Nocc Adriatic",
+     "terminal": "BLAIR",
+     "kind": "car ship"
     },
     {
      "name": "Pavo Leader",
@@ -172,35 +162,35 @@
    "ships": 5,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 16.0,
-     "spin": 23
+     "hours": 14.0,
+     "spin": 195
     },
     "early": {
      "hours": 10.0,
-     "spin": 287
+     "spin": 115
     },
     "late": {
      "hours": 16.0,
-     "spin": 269
+     "spin": 170
     }
    },
    "skill": {
-    "p_runs_out": 0.0,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 20.0,
-     "spin": 321
+     "hours": 22.0,
+     "spin": 301
     },
     "early": {
-     "hours": 20.0,
-     "spin": 321
+     "hours": 22.0,
+     "spin": 279
     },
     "late": {
-     "hours": 20.0,
-     "spin": 321
+     "hours": 22.0,
+     "spin": 301
     }
    },
    "skill3_jobs": null
@@ -210,23 +200,33 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
      "name": "Ever Strong",
      "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Corneille",
+     "name": "One Fantastic",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "One Modern",
      "terminal": "WUT",
      "kind": "container"
     },
     {
+     "name": "Glovis Legend",
+     "terminal": "BLAIR",
+     "kind": "car ship"
+    },
+    {
      "name": "R.J. Pfeiffer",
      "terminal": "MATSON/WST",
+     "kind": "container"
+    },
+    {
+     "name": "Cma Cgm Corneille",
+     "terminal": "WUT",
      "kind": "container"
     },
     {
@@ -237,38 +237,38 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 7,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 18.0,
-     "spin": 2
+     "spin": 192
     },
     "early": {
      "hours": 14.0,
-     "spin": 312
+     "spin": 271
     },
     "late": {
      "hours": 22.0,
-     "spin": 127
+     "spin": 141
     }
    },
    "skill": {
-    "p_runs_out": 0.01,
+    "p_runs_out": 0.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 28.0,
-     "spin": 112
+     "spin": 226
     },
     "early": {
-     "hours": 26.0,
-     "spin": 350
+     "hours": 28.0,
+     "spin": 226
     },
     "late": {
-     "hours": 30.0,
-     "spin": 201
+     "hours": 28.0,
+     "spin": 226
     }
    },
    "skill3_jobs": null
@@ -283,12 +283,7 @@
      "kind": "container"
     },
     {
-     "name": "Ever Strong",
-     "terminal": "PCT",
-     "kind": "container"
-    },
-    {
-     "name": "Corneille",
+     "name": "Cma Cgm Corneille",
      "terminal": "WUT",
      "kind": "container"
     },
@@ -300,38 +295,38 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
-   "pct": 1,
+   "ships": 3,
+   "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.02,
     "mid": {
      "hours": 0.0,
-     "spin": 74
+     "spin": 77
     },
     "early": {
      "hours": 0.0,
-     "spin": 47
+     "spin": 45
     },
     "late": {
      "hours": 0.0,
-     "spin": 102
+     "spin": 106
     }
    },
    "skill": {
-    "p_runs_out": 0.32,
+    "p_runs_out": 0.25,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 308
+     "spin": 305
     },
     "early": {
      "hours": 0.0,
-     "spin": 264
+     "spin": 274
     },
     "late": {
      "hours": 0.0,
-     "spin": 335
+     "spin": 334
     }
    },
    "skill3_jobs": null
@@ -341,14 +336,14 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Santa Rita Maersk",
-     "terminal": "HUSKY",
+     "name": "Cma Cgm Corneille",
+     "terminal": "WUT",
      "kind": "container"
     },
     {
-     "name": "Cape San Juan",
-     "terminal": "T7",
-     "kind": "ship"
+     "name": "Santa Rita Maersk",
+     "terminal": "HUSKY",
+     "kind": "container"
     },
     {
      "name": "Ym Mandate",
@@ -365,31 +360,31 @@
     "p_no_jobs": 0.04,
     "mid": {
      "hours": 0.0,
-     "spin": 148
+     "spin": 159
     },
     "early": {
      "hours": 0.0,
-     "spin": 79
+     "spin": 85
     },
     "late": {
      "hours": 0.0,
-     "spin": 243
+     "spin": 267
     }
    },
    "skill": {
-    "p_runs_out": 0.57,
+    "p_runs_out": 0.59,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 250
+     "spin": 254
     },
     "early": {
      "hours": 8.0,
-     "spin": 202
+     "spin": 198
     },
     "late": {
      "hours": 8.0,
-     "spin": 302
+     "spin": 307
     }
    },
    "skill3_jobs": null
@@ -398,11 +393,6 @@
    "date": "2026-11-16",
    "basis": "schedule",
    "list": [
-    {
-     "name": "Cape San Juan",
-     "terminal": "T7",
-     "kind": "ship"
-    },
     {
      "name": "Ym Mandate",
      "terminal": "WUT",
@@ -414,26 +404,26 @@
      "kind": "container"
     },
     {
-     "name": "Glorious Ace",
+     "name": "Theben",
      "terminal": "EB1",
      "kind": "car ship"
     },
     {
-     "name": "Theben",
+     "name": "Glorious Ace",
      "terminal": "EB1",
      "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 4,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.06,
+    "p_no_jobs": 0.05,
     "mid": {
      "hours": 0.0,
-     "spin": 58
+     "spin": 54
     },
     "early": {
      "hours": 0.0,
@@ -441,15 +431,15 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 110
+     "spin": 106
     }
    },
    "skill": {
-    "p_runs_out": 0.04,
+    "p_runs_out": 0.13,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 312
+     "spin": 302
     },
     "early": {
      "hours": 0.0,
@@ -457,7 +447,7 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 336
+     "spin": 325
     }
    },
    "skill3_jobs": null
