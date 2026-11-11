@@ -86,5 +86,6 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Some holidays are OT-only (work = OT pay). Others are **paid holidays**: you're paid for the day even without working it, if you work **two straight-time days** in that pay week. Weekend days and the holiday itself don't count toward the two.
 - Working a paid holiday gets the OT pay plus the holiday pay (if qualified).
 - Known paid holiday: Veterans Day (11-11). The rest of outlook.OT_DAYS isn't sorted into paid vs OT-only yet.
-- Amount assumed ~8 hrs straight time (about one weekday truck, $490) until a pay stub confirms it.
+- Amount: 8 hrs **basic** (straight-time base, same as dock/lashing; shows as "OTHER - BASIC" in the timebook), not truck pay. $470.80 since July 2026 ($454.80 before).
+- Unconfirmed (user isn't sure): B's with 1,300+ hours the prior year may get holiday pay without the two-shift requirement.
 - A holiday shift logs full hours (8 for a truck), like a weekend; already in the model.
