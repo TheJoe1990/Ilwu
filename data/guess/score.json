@@ -1,7 +1,7 @@
 {
  "summary": {
   "schedule": {
-   "days": 15,
+   "days": 16,
    "avg_off_hours": 2.3,
    "missed_not_out": 1
   },
@@ -218,7 +218,7 @@
    "basis": "board",
    "guess": [
     0.0,
-    96
+    93
    ],
    "reported": [
     0.0,
@@ -239,6 +239,20 @@
     114
    ],
    "off_hours": 6.5
+  },
+  {
+   "date": "2026-11-11",
+   "kind": "skill",
+   "basis": "schedule",
+   "guess": [
+    14.0,
+    90
+   ],
+   "reported": [
+    12.0,
+    110
+   ],
+   "off_hours": 1.9
   },
   {
    "date": "2026-10-28",
