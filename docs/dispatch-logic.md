@@ -89,3 +89,4 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 - Amount: 8 hrs **basic** (straight-time base, same as dock/lashing; shows as "OTHER - BASIC" in the timebook), not truck pay. $470.80 since July 2026 ($454.80 before).
 - Unconfirmed (user isn't sure): B's with 1,300+ hours the prior year may get holiday pay without the two-shift requirement.
 - A holiday shift logs full hours (8 for a truck), like a weekend; already in the model.
+- **Veterans Day 11-11 (observed):** huge turnout ("a ton of people"). Board had 6 skill-3 and 37 trucks. Last strad 0/114; trucks ran out ~12/110 (Thomas). The after-board guess had strads right (0/93) but said trucks would reach casuals every time. Weekday holiday OT probably draws more B's than a weekend (weekend_show_boost is applied to both). One data point; revisit after the next weekday holiday (Thanksgiving week).
