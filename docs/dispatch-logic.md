@@ -81,3 +81,10 @@ Nothing here assumes which job *you* want. Your preferences go in your own agent
 ## Board skill-3 share refit (2026-11-07)
 - 11 reported days (exact cutoffs plus form "I got skill 3 at H/S" lower bounds). Share of the board's skill-3 jobs that reach the B line: **0.75 weekdays, 0.4 weekends/holidays**. Total error 31.7 vs 37.1 with 1.0 for both.
 - Why weekends are lower: Sat 11-07 had 16 skill-3 jobs on the board and only 3 went to B men (the last at spin 17). A men turn out for OT and take most of them.
+
+## Holiday pay (rule, user 2026-11-11)
+- Some holidays are OT-only (work = OT pay). Others are **paid holidays**: you're paid for the day even without working it, if you work **two straight-time days** in that pay week. Weekend days and the holiday itself don't count toward the two.
+- Working a paid holiday gets the OT pay plus the holiday pay (if qualified).
+- Known paid holiday: Veterans Day (11-11). The rest of outlook.OT_DAYS isn't sorted into paid vs OT-only yet.
+- Amount assumed ~8 hrs straight time (about one weekday truck, $490) until a pay stub confirms it.
+- A holiday shift logs full hours (8 for a truck), like a weekend; already in the model.
