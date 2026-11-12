@@ -1,62 +1,6 @@
 {
- "made": "2026-11-12T02:56-08:00",
+ "made": "2026-11-12T10:50-08:00",
  "days": [
-  {
-   "date": "2026-11-12",
-   "basis": "board",
-   "list": [
-    {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "Ever Strong",
-     "terminal": "PCT",
-     "kind": "container"
-    },
-    {
-     "name": "Supreme Ace",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
-     "name": "Pavo Leader",
-     "terminal": "EB1",
-     "kind": "car ship"
-    },
-    {
-     "name": "Nocc Adriatic",
-     "terminal": "T7",
-     "kind": "car ship"
-    }
-   ],
-   "grain": 1,
-   "no_work": false,
-   "ships": 5,
-   "pct": 1,
-   "skill3": {
-    "p_runs_out": 0.99,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 20.0,
-     "spin": 87
-    },
-    "early": {
-     "hours": 16.0,
-     "spin": 6
-    },
-    "late": {
-     "hours": 20.0,
-     "spin": 87
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.0,
-    "p_no_jobs": 0.0
-   },
-   "skill3_jobs": 12.75
-  },
   {
    "date": "2026-11-13",
    "basis": "schedule",
@@ -107,19 +51,19 @@
    "ships": 8,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 20.0,
-     "spin": 343
+     "spin": 40
     },
     "early": {
-     "hours": 16.0,
-     "spin": 207
+     "hours": 8.0,
+     "spin": 171
     },
     "late": {
      "hours": 22.0,
-     "spin": 244
+     "spin": 207
     }
    },
    "skill": {
@@ -157,31 +101,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 86
+     "spin": 94
     },
     "early": {
      "hours": 0.0,
-     "spin": 64
+     "spin": 65
     },
     "late": {
      "hours": 0.0,
-     "spin": 118
+     "spin": 128
     }
    },
    "skill": {
-    "p_runs_out": 0.1,
+    "p_runs_out": 0.12,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 315
+     "spin": 324
     },
     "early": {
      "hours": 0.0,
-     "spin": 297
+     "spin": 304
     },
     "late": {
      "hours": 0.0,
-     "spin": 332
+     "spin": 340
     }
    },
    "skill3_jobs": null
@@ -204,47 +148,42 @@
      "name": "Cma Cgm Corneille",
      "terminal": "WUT",
      "kind": "container"
-    },
-    {
-     "name": "Ym Mandate",
-     "terminal": "WUT",
-     "kind": "container"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 3,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 196
+     "spin": 190
     },
     "early": {
      "hours": 0.0,
-     "spin": 116
+     "spin": 107
     },
     "late": {
      "hours": 0.0,
-     "spin": 296
+     "spin": 291
     }
    },
    "skill": {
-    "p_runs_out": 0.54,
+    "p_runs_out": 0.67,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 285
+     "spin": 273
     },
     "early": {
      "hours": 8.0,
-     "spin": 233
+     "spin": 227
     },
     "late": {
      "hours": 8.0,
-     "spin": 341
+     "spin": 322
     }
    },
    "skill3_jobs": null
@@ -254,60 +193,55 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Ym Mandate",
-     "terminal": "WUT",
-     "kind": "container"
-    },
-    {
      "name": "Ever Summit",
      "terminal": "PCT",
      "kind": "container"
     },
     {
-     "name": "Glorious Ace",
+     "name": "Theben",
      "terminal": "EB1",
      "kind": "car ship"
     },
     {
-     "name": "Theben",
+     "name": "Glorious Ace",
      "terminal": "EB1",
      "kind": "car ship"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 3,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 55
+     "spin": 61
     },
     "early": {
      "hours": 0.0,
-     "spin": 28
+     "spin": 30
     },
     "late": {
      "hours": 0.0,
-     "spin": 108
+     "spin": 107
     }
    },
    "skill": {
-    "p_runs_out": 0.12,
+    "p_runs_out": 0.26,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 301
+     "spin": 255
     },
     "early": {
      "hours": 0.0,
-     "spin": 277
+     "spin": 220
     },
     "late": {
      "hours": 0.0,
-     "spin": 319
+     "spin": 318
     }
    },
    "skill3_jobs": null
@@ -316,11 +250,6 @@
    "date": "2026-11-17",
    "basis": "schedule",
    "list": [
-    {
-     "name": "Ym Mandate",
-     "terminal": "WUT",
-     "kind": "container"
-    },
     {
      "name": "Ever Summit",
      "terminal": "PCT",
@@ -344,38 +273,38 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 4,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.07,
+    "p_no_jobs": 0.08,
     "mid": {
      "hours": 0.0,
-     "spin": 209
+     "spin": 208
     },
     "early": {
      "hours": 0.0,
-     "spin": 81
+     "spin": 86
     },
     "late": {
      "hours": 0.0,
-     "spin": 328
+     "spin": 332
     }
    },
    "skill": {
-    "p_runs_out": 0.07,
+    "p_runs_out": 0.16,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 121
+     "spin": 20
     },
     "early": {
      "hours": 6.0,
-     "spin": 300
+     "spin": 283
     },
     "late": {
      "hours": 8.0,
-     "spin": 209
+     "spin": 206
     }
    },
    "skill3_jobs": null
@@ -400,6 +329,11 @@
      "kind": "container"
     },
     {
+     "name": "Ym Mandate",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
      "name": "Wisdom Ace",
      "terminal": "BLAIR",
      "kind": "car ship"
@@ -412,38 +346,101 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 6,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.04,
     "mid": {
      "hours": 6.0,
-     "spin": 100
+     "spin": 99
     },
     "early": {
      "hours": 0.0,
-     "spin": 239
+     "spin": 224
     },
     "late": {
      "hours": 8.0,
-     "spin": 17
+     "spin": 32
     }
    },
    "skill": {
-    "p_runs_out": 0.06,
+    "p_runs_out": 0.04,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 171
+     "spin": 258
     },
     "early": {
-     "hours": 12.0,
-     "spin": 337
+     "hours": 14.0,
+     "spin": 217
     },
     "late": {
      "hours": 16.0,
-     "spin": 22
+     "spin": 150
+    }
+   },
+   "skill3_jobs": null
+  },
+  {
+   "date": "2026-11-19",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ever Magus",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Ym Mandate",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Maersk Sarnia",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Cape San Juan",
+     "terminal": "T7",
+     "kind": "ship"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 4,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 1.0,
+    "p_no_jobs": 0.02,
+    "mid": {
+     "hours": 8.0,
+     "spin": 136
+    },
+    "early": {
+     "hours": 6.0,
+     "spin": 87
+    },
+    "late": {
+     "hours": 12.0,
+     "spin": 156
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.02,
+    "p_no_jobs": 0.0,
+    "mid": {
+     "hours": 22.0,
+     "spin": 168
+    },
+    "early": {
+     "hours": 18.0,
+     "spin": 315
+    },
+    "late": {
+     "hours": 22.0,
+     "spin": 217
     }
    },
    "skill3_jobs": null
