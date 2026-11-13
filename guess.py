@@ -98,6 +98,22 @@ def world_full(world, d):
     return next((x["full"] for x in world["days"] if x["day"] == d), d.weekday() >= 5)
 
 
+def typical_line(lines):
+    """Median number of B men in line at each logged-hours level, over the runs: {"8": 40, ...}."""
+    if not lines:
+        return {}
+    levels = sorted({h for ln in lines for h in ln})
+    med = lambda xs: sorted(xs)[len(xs) // 2]
+    return {f"{h:g}": med([ln.get(h, 0) for ln in lines]) for h in levels}
+
+
+def people_ahead(line, hours, spin):
+    """About how many B men in `line` stand ahead of (hours, spin): everyone at lower hours, plus the share of
+    those at the same hours with a lower spin (spins run ~1-350; unknown spin = the middle)."""
+    frac = min(1.0, (spin if spin is not None else 175) / 350)
+    return sum(n for h, n in line.items() if float(h) < hours) + line.get(f"{hours:g}", 0) * frac
+
+
 def posted_boards():
     """{date: board ship rows} for day boards that have posted (see board_jobs.final_versions)."""
     out = {}
@@ -127,7 +143,7 @@ def guess(day, runs, boards):
     w = weights(res, world["days"], reported())
     if sum(w) > 0 and min(w) < 1:
         pick = random.Random(day.toordinal()).choices(range(len(w)), weights=w, k=len(w))
-        for key in ("cut_good", "cut_skill"):
+        for key in ("cut_good", "cut_skill", "line"):
             res[key][i] = [res[key][i][r] for r in pick]
     d = world["days"][i]
     ships = sim.demand(world, sim.load_params(), [dt.timedelta(0)] * len(world["vessels"]))[i]
@@ -143,7 +159,7 @@ def guess(day, runs, boards):
     return {"date": day.isoformat(), "basis": "board" if day in world["board"] else "schedule",
             "list": ship_list, "grain": grain, "no_work": d["no_work"], "ships": ships["ships"], "pct": ships["pct"],
             "skill3": summary(res["cut_good"][i]), "skill": summary(res["cut_skill"][i]),
-            "skill3_jobs": world["good_override"].get(day)}
+            "skill3_jobs": world["good_override"].get(day), "line": typical_line(res["line"][i])}
 
 
 def main():
@@ -164,7 +180,8 @@ def main():
     hp = HERE / "data" / "guess" / "history.json"
     hist = json.loads(hp.read_text()) if hp.exists() else {}
     for g in out["days"]:
-        hist.setdefault(g["date"], {})[g["basis"]] = {"made": out["made"], "skill3": g["skill3"], "skill": g["skill"]}
+        hist.setdefault(g["date"], {})[g["basis"]] = {"made": out["made"], "skill3": g["skill3"], "skill": g["skill"],
+                                                    "line": g["line"]}
     hp.write_text(json.dumps(hist, indent=1, sort_keys=True) + "\n")
     for g in out["days"]:
         s3, sk = g["skill3"], g["skill"]

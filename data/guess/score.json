@@ -1,13 +1,17 @@
 {
  "summary": {
   "schedule": {
-   "days": 18,
-   "avg_off_hours": 2.2,
+   "days": 16,
+   "avg_off_hours": 2.4,
+   "avg_off_people": 17,
+   "people_days": 13,
    "missed_not_out": 1
   },
   "board": {
-   "days": 16,
-   "avg_off_hours": 2.0,
+   "days": 14,
+   "avg_off_hours": 2.2,
+   "avg_off_people": 22,
+   "people_days": 10,
    "missed_not_out": 1
   }
  },
@@ -24,7 +28,8 @@
     28.0,
     185
    ],
-   "off_hours": -13.4
+   "off_hours": -13.4,
+   "off_people": -65
   },
   {
    "date": "2026-10-24",
@@ -90,7 +95,8 @@
     10.0,
     null
    ],
-   "off_hours": 6.0
+   "off_hours": 6.0,
+   "off_people": 26
   },
   {
    "date": "2026-10-30",
@@ -104,7 +110,8 @@
     10.0,
     null
    ],
-   "off_hours": 6.0
+   "off_hours": 6.0,
+   "off_people": 26
   },
   {
    "date": "2026-10-31",
@@ -118,7 +125,8 @@
     0.0,
     99
    ],
-   "off_hours": 0.7
+   "off_hours": 0.7,
+   "off_people": 46
   },
   {
    "date": "2026-10-31",
@@ -132,7 +140,8 @@
     0.0,
     99
    ],
-   "off_hours": -0.2
+   "off_hours": -0.2,
+   "off_people": -11
   },
   {
    "date": "2026-10-31",
@@ -168,7 +177,8 @@
     0.0,
     325
    ],
-   "off_hours": 7.6
+   "off_hours": 7.6,
+   "off_people": 56
   },
   {
    "date": "2026-11-03",
@@ -182,7 +192,8 @@
     0.0,
     325
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-11-07",
@@ -196,7 +207,8 @@
     0.0,
     17
    ],
-   "off_hours": 0.2
+   "off_hours": 0.2,
+   "off_people": 12
   },
   {
    "date": "2026-11-07",
@@ -210,7 +222,8 @@
     0.0,
     17
    ],
-   "off_hours": 0.2
+   "off_hours": 0.2,
+   "off_people": 13
   },
   {
    "date": "2026-11-11",
@@ -224,7 +237,8 @@
     0.0,
     114
    ],
-   "off_hours": -0.1
+   "off_hours": -0.1,
+   "off_people": -1
   },
   {
    "date": "2026-11-11",
@@ -238,7 +252,8 @@
     0.0,
     114
    ],
-   "off_hours": 6.5
+   "off_hours": 6.5,
+   "off_people": 32
   },
   {
    "date": "2026-11-11",
@@ -252,7 +267,8 @@
     12.0,
     110
    ],
-   "off_hours": 1.9
+   "off_hours": 1.9,
+   "off_people": 30
   },
   {
    "date": "2026-11-12",
@@ -266,7 +282,8 @@
     16.0,
     null
    ],
-   "off_hours": 4.0
+   "off_hours": 4.0,
+   "off_people": 18
   },
   {
    "date": "2026-11-12",
@@ -280,7 +297,8 @@
     16.0,
     null
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-11-13",
@@ -294,7 +312,8 @@
     16.0,
     293
    ],
-   "off_hours": 6.0
+   "off_hours": 6.0,
+   "off_people": null
   },
   {
    "date": "2026-11-13",
@@ -308,7 +327,8 @@
     16.0,
     293
    ],
-   "off_hours": 2.6
+   "off_hours": 2.6,
+   "off_people": null
   },
   {
    "date": "2026-10-28",
@@ -322,7 +342,8 @@
     8.0,
     128
    ],
-   "off_hours": 6.9
+   "off_hours": 6.9,
+   "off_people": 59
   },
   {
    "date": "2026-10-28",
@@ -336,35 +357,8 @@
     8.0,
     128
    ],
-   "off_hours": 0.7
-  },
-  {
-   "date": "2026-10-31",
-   "kind": "skill3",
-   "basis": "board",
-   "guess": [
-    0.0,
-    225
-   ],
-   "reported": [
-    0.0,
-    99
-   ],
-   "off_hours": 0.7
-  },
-  {
-   "date": "2026-10-31",
-   "kind": "skill3",
-   "basis": "schedule",
-   "guess": [
-    0.0,
-    70
-   ],
-   "reported": [
-    0.0,
-    99
-   ],
-   "off_hours": -0.2
+   "off_hours": 0.7,
+   "off_people": 4
   },
   {
    "date": "2026-10-27",
@@ -378,7 +372,8 @@
     0.0,
     13
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-10-27",
@@ -392,7 +387,8 @@
     0.0,
     13
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-10-29",
@@ -406,35 +402,8 @@
     16.0,
     52
    ],
-   "off_hours": 0.0
-  },
-  {
-   "date": "2026-11-03",
-   "kind": "skill3",
-   "basis": "board",
-   "guess": [
-    8.0,
-    249
-   ],
-   "reported": [
-    0.0,
-    85
-   ],
-   "off_hours": 0.0
-  },
-  {
-   "date": "2026-11-03",
-   "kind": "skill3",
-   "basis": "schedule",
-   "guess": [
-    0.0,
-    327
-   ],
-   "reported": [
-    0.0,
-    85
-   ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-11-04",
@@ -448,7 +417,8 @@
     8.0,
     216
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-11-04",
@@ -462,7 +432,8 @@
     8.0,
     216
    ],
-   "off_hours": -0.5
+   "off_hours": -0.5,
+   "off_people": -5
   },
   {
    "date": "2026-11-05",
@@ -476,7 +447,8 @@
     16.0,
     90
    ],
-   "off_hours": 0.0
+   "off_hours": 0.0,
+   "off_people": 0
   },
   {
    "date": "2026-11-05",
@@ -490,7 +462,8 @@
     16.0,
     90
    ],
-   "off_hours": -7.0
+   "off_hours": -7.0,
+   "off_people": -34
   }
  ]
 }

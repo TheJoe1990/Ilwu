@@ -495,7 +495,8 @@ async function scoreLine() {
   const f = (s, label) => {
     if (!s || (!s.days && !s.missed_not_out)) return `${label}: not scored yet`;
     const parts = [];
-    if (s.days) parts.push(`off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})`);
+    if (s.people_days) parts.push(`off by about ${s.avg_off_people} people in line on average (${s.people_days} day${s.people_days > 1 ? "s" : ""})`);
+    else if (s.days) parts.push(`off by ${s.avg_off_hours} hrs on average (${s.days} day${s.days > 1 ? "s" : ""})`);
     if (s.missed_not_out) parts.push(`said jobs would run out when they didn't (${s.missed_not_out} day${s.missed_not_out > 1 ? "s" : ""})`);
     return `${label}: ${parts.join("; ")}`;
   };

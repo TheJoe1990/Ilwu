@@ -181,7 +181,8 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
     res = {"good": [0] * n, "work": [0] * n, "unsk": [0] * n, "matson": [0.0] * n, "shown": 0,
            "earn": [], "worked": [], "matson_runs": [],
            # per day, per run: (hours, spin) of the last B to get a skill-3 / any skill job; None = didn't run out
-           "cut_good": [[] for _ in range(n)], "cut_skill": [[] for _ in range(n)]}
+           "cut_good": [[] for _ in range(n)], "cut_skill": [[] for _ in range(n)],
+           "line": [[] for _ in range(n)]}   # per run: {logged hours: B men in line} (for scoring in people)
     for _ in range(runs):
         dem = demand(world, P, draw_delays(world, P, rng))
         alias = rng.choice(others) if random_spin else REG
@@ -245,6 +246,10 @@ def simulate(world, P, workdays, runs, start_hours=0.0, backup=None, goal=0.0, s
                 res["shown"] += 1
             spins = d["spins"]
             avail.sort(key=lambda r: (hours[r], spins.get(swap.get(r, r), 999)))
+            line = {}
+            for r in avail:
+                line[hours[r]] = line.get(hours[r], 0) + 1
+            res["line"][i].append(line)
             # Car-ship / lashing / finishing-ship jobs are unskilled. A men may take them (car shifts with a good
             # move count per driver); each A who does leaves a skill job (truck etc.) for the B line. B men must fill
             # every skill job before any unskilled one, so the rest only go to B's after skill jobs run out.
