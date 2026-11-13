@@ -1,9 +1,9 @@
 {
- "made": "2026-11-13T08:11-08:00",
+ "made": "2026-11-13T14:31-08:00",
  "days": [
   {
    "date": "2026-11-14",
-   "basis": "schedule",
+   "basis": "board",
    "list": [
     {
      "name": "One Fantastic",
@@ -11,53 +11,63 @@
      "kind": "container"
     },
     {
+     "name": "One Modern",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Corneille",
+     "terminal": "WUT",
+     "kind": "ship"
+    },
+    {
      "name": "Santa Rita Maersk",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "Cma Cgm Corneille",
-     "terminal": "WUT",
-     "kind": "container"
+     "name": "Glovis Legend",
+     "terminal": "BLAIR",
+     "kind": "car ship"
     }
    ],
-   "grain": null,
+   "grain": 1,
    "no_work": false,
-   "ships": 3,
+   "ships": 5,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.0,
+    "p_no_jobs": 0.64,
     "mid": {
      "hours": 0.0,
-     "spin": 97
+     "spin": 9
     },
     "early": {
      "hours": 0.0,
-     "spin": 61
+     "spin": 3
     },
     "late": {
      "hours": 0.0,
-     "spin": 132
+     "spin": 17
     }
    },
    "skill": {
-    "p_runs_out": 0.1,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 328
+     "spin": 327
     },
     "early": {
      "hours": 0.0,
-     "spin": 303
+     "spin": 316
     },
     "late": {
      "hours": 0.0,
-     "spin": 337
+     "spin": 335
     }
    },
-   "skill3_jobs": null,
+   "skill3_jobs": 0.4,
    "line": {
     "0": 114
    }
@@ -88,41 +98,41 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 208
+     "spin": 334
     },
     "early": {
      "hours": 0.0,
-     "spin": 120
+     "spin": 217
     },
     "late": {
-     "hours": 0.0,
-     "spin": 316
+     "hours": 8.0,
+     "spin": 43
     }
    },
    "skill": {
-    "p_runs_out": 0.68,
+    "p_runs_out": 0.23,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 284
+     "spin": 297
     },
     "early": {
      "hours": 8.0,
-     "spin": 227
+     "spin": 261
     },
     "late": {
      "hours": 8.0,
-     "spin": 329
+     "spin": 327
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 31,
-    "8": 79,
-    "10": 6
+    "0": 30,
+    "8": 84,
+    "10": 0
    }
   },
   {
@@ -140,11 +150,6 @@
      "kind": "container"
     },
     {
-     "name": "Glorious Ace",
-     "terminal": "EB1",
-     "kind": "car ship"
-    },
-    {
      "name": "Theben",
      "terminal": "EB1",
      "kind": "car ship"
@@ -152,43 +157,43 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 3,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.0,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 85
+     "spin": 80
     },
     "early": {
      "hours": 0.0,
-     "spin": 51
+     "spin": 48
     },
     "late": {
      "hours": 0.0,
-     "spin": 136
+     "spin": 130
     }
    },
    "skill": {
-    "p_runs_out": 0.14,
+    "p_runs_out": 0.26,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 310
+     "spin": 303
     },
     "early": {
      "hours": 0.0,
-     "spin": 269
+     "spin": 282
     },
     "late": {
      "hours": 0.0,
-     "spin": 329
+     "spin": 324
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 101
+    "0": 103
    }
   },
   {
@@ -206,16 +211,6 @@
      "kind": "container"
     },
     {
-     "name": "Glorious Ace",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
-     "name": "Euphony Ace",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
      "name": "Hmm Vancouver",
      "terminal": "WUT",
      "kind": "container"
@@ -223,45 +218,45 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 3,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
+    "p_runs_out": 0.99,
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 288
+     "spin": 280
     },
     "early": {
      "hours": 0.0,
-     "spin": 170
+     "spin": 154
     },
     "late": {
      "hours": 6.0,
-     "spin": 68
+     "spin": 48
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.14,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 205
+     "spin": 109
     },
     "early": {
-     "hours": 8.0,
-     "spin": 98
+     "hours": 6.0,
+     "spin": 338
     },
     "late": {
      "hours": 8.0,
-     "spin": 220
+     "spin": 244
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 36,
-    "6": 50,
-    "8": 13
+    "6": 51,
+    "8": 14
    }
   },
   {
@@ -304,43 +299,43 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 1.0,
     "p_no_jobs": 0.03,
     "mid": {
      "hours": 6.0,
-     "spin": 90
+     "spin": 66
     },
     "early": {
      "hours": 0.0,
-     "spin": 210
+     "spin": 176
     },
     "late": {
      "hours": 8.0,
-     "spin": 115
+     "spin": 87
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.09,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 16.0,
-     "spin": 71
+     "hours": 14.0,
+     "spin": 234
     },
     "early": {
      "hours": 12.0,
-     "spin": 346
+     "spin": 208
     },
     "late": {
      "hours": 16.0,
-     "spin": 226
+     "spin": 95
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 18,
     "6": 26,
-    "8": 7,
-    "12": 35,
+    "8": 8,
+    "12": 33,
     "14": 8,
     "16": 3
    }
@@ -379,31 +374,31 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 8.0,
-     "spin": 229
+     "spin": 227
     },
     "early": {
      "hours": 6.0,
-     "spin": 99
+     "spin": 178
     },
     "late": {
      "hours": 12.0,
-     "spin": 329
+     "spin": 283
     }
    },
    "skill": {
     "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 18.0,
-     "spin": 179
+     "hours": 20.0,
+     "spin": 186
     },
     "early": {
-     "hours": 18.0,
-     "spin": 65
+     "hours": 20.0,
+     "spin": 86
     },
     "late": {
      "hours": 20.0,
-     "spin": 24
+     "spin": 343
     }
    },
    "skill3_jobs": null,
@@ -416,7 +411,7 @@
     "16": 2,
     "18": 26,
     "20": 5,
-    "22": 2,
+    "22": 3,
     "24": 1
    }
   },
@@ -445,22 +440,17 @@
      "kind": "container"
     },
     {
+     "name": "Glovis Summit",
+     "terminal": "EB1",
+     "kind": "car ship"
+    },
+    {
      "name": "Paganella Leader",
      "terminal": "BLAIR",
      "kind": "car ship"
     },
     {
      "name": "Bergamot Ace",
-     "terminal": "EB1",
-     "kind": "car ship"
-    },
-    {
-     "name": "Glovis Summit",
-     "terminal": "EB1",
-     "kind": "car ship"
-    },
-    {
-     "name": "Otello",
      "terminal": "EB1",
      "kind": "car ship"
     },
@@ -472,56 +462,56 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 9,
+   "ships": 8,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
     "p_no_jobs": 0.06,
     "mid": {
      "hours": 8.0,
-     "spin": 119
+     "spin": 49
     },
     "early": {
      "hours": 0.0,
-     "spin": 349
+     "spin": 331
     },
     "late": {
-     "hours": 14.0,
-     "spin": 4
+     "hours": 12.0,
+     "spin": 194
     }
    },
    "skill": {
-    "p_runs_out": 0.02,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 26.0,
-     "spin": 233
+     "hours": 24.0,
+     "spin": 139
     },
     "early": {
      "hours": 24.0,
-     "spin": 230
+     "spin": 139
     },
     "late": {
-     "hours": 28.0,
-     "spin": 261
+     "hours": 24.0,
+     "spin": 139
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 7,
-    "6": 10,
-    "8": 3,
+    "0": 8,
+    "6": 11,
+    "8": 4,
     "12": 14,
     "14": 4,
     "16": 2,
     "18": 18,
     "20": 4,
     "22": 2,
-    "24": 23,
-    "26": 4,
+    "24": 22,
+    "26": 3,
     "28": 1,
     "30": 2,
-    "32": 1
+    "32": 0
    }
   }
  ]
