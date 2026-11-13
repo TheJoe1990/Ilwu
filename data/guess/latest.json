@@ -1,18 +1,18 @@
 {
- "made": "2026-11-12T10:50-08:00",
+ "made": "2026-11-12T16:11-08:00",
  "days": [
   {
    "date": "2026-11-13",
-   "basis": "schedule",
+   "basis": "board",
    "list": [
-    {
-     "name": "Ever Strong",
-     "terminal": "PCT",
-     "kind": "container"
-    },
     {
      "name": "One Fantastic",
      "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "Ever Strong",
+     "terminal": "PCT",
      "kind": "container"
     },
     {
@@ -21,56 +21,51 @@
      "kind": "container"
     },
     {
-     "name": "Santa Rita Maersk",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "Glovis Legend",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
      "name": "R.J. Pfeiffer",
      "terminal": "MATSON/WST",
-     "kind": "container"
-    },
-    {
-     "name": "Cma Cgm Corneille",
-     "terminal": "WUT",
      "kind": "container"
     },
     {
      "name": "Manulani",
      "terminal": "MATSON/WST",
      "kind": "container"
+    },
+    {
+     "name": "Corneille",
+     "terminal": "WUT",
+     "kind": "ship"
+    },
+    {
+     "name": "Glovis Legend",
+     "terminal": "BLAIR",
+     "kind": "car ship"
     }
    ],
-   "grain": null,
+   "grain": 1,
    "no_work": false,
-   "ships": 8,
+   "ships": 7,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 0.94,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 20.0,
-     "spin": 40
+     "hours": 24.0,
+     "spin": 271
     },
     "early": {
-     "hours": 8.0,
-     "spin": 171
+     "hours": 22.0,
+     "spin": 107
     },
     "late": {
-     "hours": 22.0,
-     "spin": 207
+     "hours": 26.0,
+     "spin": 293
     }
    },
    "skill": {
     "p_runs_out": 0.0,
     "p_no_jobs": 0.0
    },
-   "skill3_jobs": null
+   "skill3_jobs": 18.75
   },
   {
    "date": "2026-11-14",
@@ -101,31 +96,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 94
+     "spin": 90
     },
     "early": {
      "hours": 0.0,
-     "spin": 65
+     "spin": 59
     },
     "late": {
      "hours": 0.0,
-     "spin": 128
+     "spin": 129
     }
    },
    "skill": {
-    "p_runs_out": 0.12,
+    "p_runs_out": 0.14,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 324
+     "spin": 319
     },
     "early": {
      "hours": 0.0,
-     "spin": 304
+     "spin": 283
     },
     "late": {
      "hours": 0.0,
-     "spin": 340
+     "spin": 334
     }
    },
    "skill3_jobs": null
@@ -159,31 +154,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 190
+     "spin": 206
     },
     "early": {
      "hours": 0.0,
-     "spin": 107
+     "spin": 113
     },
     "late": {
      "hours": 0.0,
-     "spin": 291
+     "spin": 300
     }
    },
    "skill": {
-    "p_runs_out": 0.67,
+    "p_runs_out": 0.69,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 273
+     "spin": 266
     },
     "early": {
      "hours": 8.0,
-     "spin": 227
+     "spin": 209
     },
     "late": {
      "hours": 8.0,
-     "spin": 322
+     "spin": 319
     }
    },
    "skill3_jobs": null
@@ -192,6 +187,11 @@
    "date": "2026-11-16",
    "basis": "schedule",
    "list": [
+    {
+     "name": "Santa Rita Maersk",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
     {
      "name": "Ever Summit",
      "terminal": "PCT",
@@ -210,38 +210,38 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 3,
+   "ships": 4,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.06,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 61
+     "spin": 76
     },
     "early": {
      "hours": 0.0,
-     "spin": 30
+     "spin": 49
     },
     "late": {
      "hours": 0.0,
-     "spin": 107
+     "spin": 124
     }
    },
    "skill": {
-    "p_runs_out": 0.26,
+    "p_runs_out": 0.17,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 255
+     "spin": 302
     },
     "early": {
      "hours": 0.0,
-     "spin": 220
+     "spin": 264
     },
     "late": {
      "hours": 0.0,
-     "spin": 318
+     "spin": 326
     }
    },
    "skill3_jobs": null
@@ -250,6 +250,11 @@
    "date": "2026-11-17",
    "basis": "schedule",
    "list": [
+    {
+     "name": "Santa Rita Maersk",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
     {
      "name": "Ever Summit",
      "terminal": "PCT",
@@ -273,26 +278,26 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 5,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.08,
+    "p_no_jobs": 0.03,
     "mid": {
      "hours": 0.0,
-     "spin": 208
+     "spin": 246
     },
     "early": {
      "hours": 0.0,
-     "spin": 86
+     "spin": 108
     },
     "late": {
-     "hours": 0.0,
-     "spin": 332
+     "hours": 6.0,
+     "spin": 29
     }
    },
    "skill": {
-    "p_runs_out": 0.16,
+    "p_runs_out": 0.11,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
@@ -300,11 +305,11 @@
     },
     "early": {
      "hours": 6.0,
-     "spin": 283
+     "spin": 300
     },
     "late": {
      "hours": 8.0,
-     "spin": 206
+     "spin": 163
     }
    },
    "skill3_jobs": null
@@ -349,35 +354,35 @@
    "ships": 6,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
-    "p_no_jobs": 0.04,
+    "p_runs_out": 0.99,
+    "p_no_jobs": 0.03,
     "mid": {
      "hours": 6.0,
-     "spin": 99
+     "spin": 194
     },
     "early": {
      "hours": 0.0,
-     "spin": 224
+     "spin": 254
     },
     "late": {
      "hours": 8.0,
-     "spin": 32
+     "spin": 176
     }
    },
    "skill": {
-    "p_runs_out": 0.04,
+    "p_runs_out": 0.02,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 258
+     "spin": 184
     },
     "early": {
-     "hours": 14.0,
-     "spin": 217
+     "hours": 12.0,
+     "spin": 351
     },
     "late": {
-     "hours": 16.0,
-     "spin": 150
+     "hours": 14.0,
+     "spin": 250
     }
    },
    "skill3_jobs": null
@@ -413,34 +418,34 @@
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.02,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 8.0,
-     "spin": 136
+     "spin": 194
     },
     "early": {
      "hours": 6.0,
-     "spin": 87
+     "spin": 180
     },
     "late": {
      "hours": 12.0,
-     "spin": 156
+     "spin": 246
     }
    },
    "skill": {
-    "p_runs_out": 0.02,
+    "p_runs_out": 0.01,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 22.0,
-     "spin": 168
+     "spin": 344
     },
     "early": {
-     "hours": 18.0,
-     "spin": 315
+     "hours": 22.0,
+     "spin": 40
     },
     "late": {
      "hours": 22.0,
-     "spin": 217
+     "spin": 344
     }
    },
    "skill3_jobs": null
