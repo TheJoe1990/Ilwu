@@ -1,77 +1,6 @@
 {
- "made": "2026-11-14T02:15-08:00",
+ "made": "2026-11-14T09:01-08:00",
  "days": [
-  {
-   "date": "2026-11-14",
-   "basis": "board",
-   "list": [
-    {
-     "name": "One Fantastic",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "One Modern",
-     "terminal": "WUT",
-     "kind": "ship"
-    },
-    {
-     "name": "Corneille",
-     "terminal": "WUT",
-     "kind": "ship"
-    },
-    {
-     "name": "Santa Rita Maersk",
-     "terminal": "HUSKY",
-     "kind": "container"
-    },
-    {
-     "name": "Glovis Legend",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    }
-   ],
-   "grain": 1,
-   "no_work": false,
-   "ships": 5,
-   "pct": 0,
-   "skill3": {
-    "p_runs_out": 1.0,
-    "p_no_jobs": 0.64,
-    "mid": {
-     "hours": 0.0,
-     "spin": 10
-    },
-    "early": {
-     "hours": 0.0,
-     "spin": 4
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 18
-    }
-   },
-   "skill": {
-    "p_runs_out": 0.05,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 0.0,
-     "spin": 341
-    },
-    "early": {
-     "hours": 0.0,
-     "spin": 333
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 347
-    }
-   },
-   "skill3_jobs": 0.4,
-   "line": {
-    "0": 113
-   }
-  },
   {
    "date": "2026-11-15",
    "basis": "schedule",
@@ -101,31 +30,31 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 306
+     "spin": 300
     },
     "early": {
      "hours": 0.0,
-     "spin": 195
+     "spin": 200
     },
     "late": {
      "hours": 8.0,
-     "spin": 33
+     "spin": 25
     }
    },
    "skill": {
-    "p_runs_out": 0.28,
+    "p_runs_out": 0.32,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 304
+     "spin": 297
     },
     "early": {
      "hours": 8.0,
-     "spin": 273
+     "spin": 269
     },
     "late": {
      "hours": 8.0,
-     "spin": 322
+     "spin": 334
     }
    },
    "skill3_jobs": null,
@@ -163,11 +92,11 @@
     },
     "early": {
      "hours": 0.0,
-     "spin": 36
+     "spin": 33
     },
     "late": {
      "hours": 0.0,
-     "spin": 71
+     "spin": 73
     }
    },
    "skill": {
@@ -175,7 +104,7 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 299
+     "spin": 295
     },
     "early": {
      "hours": 0.0,
@@ -183,7 +112,7 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 324
+     "spin": 320
     }
    },
    "skill3_jobs": null,
@@ -212,40 +141,40 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.03,
+    "p_no_jobs": 0.02,
     "mid": {
      "hours": 0.0,
-     "spin": 168
+     "spin": 164
     },
     "early": {
      "hours": 0.0,
-     "spin": 94
+     "spin": 86
     },
     "late": {
      "hours": 0.0,
-     "spin": 256
+     "spin": 242
     }
    },
    "skill": {
-    "p_runs_out": 0.24,
+    "p_runs_out": 0.29,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 6.0,
-     "spin": 339
+     "hours": 8.0,
+     "spin": 17
     },
     "early": {
      "hours": 6.0,
-     "spin": 273
+     "spin": 294
     },
     "late": {
      "hours": 8.0,
-     "spin": 84
+     "spin": 149
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 37,
-    "6": 52,
+    "0": 38,
+    "6": 51,
     "8": 13
    }
   },
@@ -293,39 +222,39 @@
     "p_no_jobs": 0.04,
     "mid": {
      "hours": 6.0,
-     "spin": 49
+     "spin": 20
     },
     "early": {
      "hours": 0.0,
-     "spin": 232
+     "spin": 189
     },
     "late": {
      "hours": 6.0,
-     "spin": 286
+     "spin": 210
     }
    },
    "skill": {
-    "p_runs_out": 0.1,
+    "p_runs_out": 0.09,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 141
+     "spin": 43
     },
     "early": {
      "hours": 12.0,
-     "spin": 323
+     "spin": 214
     },
     "late": {
      "hours": 14.0,
-     "spin": 318
+     "spin": 185
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 19,
-    "6": 28,
+    "6": 29,
     "8": 7,
-    "12": 34,
+    "12": 36,
     "14": 6,
     "16": 2
    }
@@ -364,15 +293,15 @@
     "p_no_jobs": 0.01,
     "mid": {
      "hours": 8.0,
-     "spin": 170
+     "spin": 180
     },
     "early": {
      "hours": 6.0,
-     "spin": 155
+     "spin": 121
     },
     "late": {
      "hours": 12.0,
-     "spin": 172
+     "spin": 187
     }
    },
    "skill": {
@@ -380,26 +309,26 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 20.0,
-     "spin": 294
+     "spin": 276
     },
     "early": {
      "hours": 18.0,
-     "spin": 336
+     "spin": 279
     },
     "late": {
-     "hours": 24.0,
-     "spin": 169
+     "hours": 22.0,
+     "spin": 211
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 12,
+    "0": 11,
     "6": 17,
-    "8": 5,
+    "8": 4,
     "12": 23,
     "14": 5,
     "16": 2,
-    "18": 26,
+    "18": 27,
     "20": 3,
     "22": 2,
     "24": 0
@@ -440,13 +369,13 @@
      "kind": "car ship"
     },
     {
-     "name": "Glovis Summit",
-     "terminal": "EB1",
+     "name": "Paganella Leader",
+     "terminal": "BLAIR",
      "kind": "car ship"
     },
     {
-     "name": "Paganella Leader",
-     "terminal": "BLAIR",
+     "name": "Glovis Summit",
+     "terminal": "EB1",
      "kind": "car ship"
     },
     {
@@ -464,49 +393,100 @@
     "p_no_jobs": 0.04,
     "mid": {
      "hours": 8.0,
-     "spin": 227
+     "spin": 175
     },
     "early": {
-     "hours": 6.0,
-     "spin": 42
+     "hours": 0.0,
+     "spin": 316
     },
     "late": {
      "hours": 14.0,
-     "spin": 119
+     "spin": 37
     }
    },
    "skill": {
     "p_runs_out": 0.02,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 28.0,
-     "spin": 47
+     "hours": 26.0,
+     "spin": 70
     },
     "early": {
      "hours": 24.0,
-     "spin": 168
+     "spin": 126
     },
     "late": {
-     "hours": 30.0,
-     "spin": 148
+     "hours": 26.0,
+     "spin": 233
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 8,
-    "6": 12,
+    "6": 11,
     "8": 3,
     "12": 15,
     "14": 4,
     "16": 2,
-    "18": 18,
+    "18": 19,
     "20": 4,
     "22": 2,
-    "24": 23,
+    "24": 22,
     "26": 2,
     "28": 1,
     "30": 1,
     "32": 0
+   }
+  },
+  {
+   "date": "2026-11-21",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Otello",
+     "terminal": "EB1",
+     "kind": "car ship"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 1,
+   "pct": 0,
+   "skill3": {
+    "p_runs_out": 1.0,
+    "p_no_jobs": 0.21,
+    "mid": {
+     "hours": 0.0,
+     "spin": 21
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 12
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 48
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.46,
+    "p_no_jobs": 0.0,
+    "mid": {
+     "hours": 0.0,
+     "spin": 268
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 222
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 312
+    }
+   },
+   "skill3_jobs": null,
+   "line": {
+    "0": 118
    }
   }
  ]
