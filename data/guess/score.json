@@ -1,17 +1,17 @@
 {
  "summary": {
   "schedule": {
-   "days": 16,
-   "avg_off_hours": 2.4,
-   "avg_off_people": 17,
-   "people_days": 13,
+   "days": 17,
+   "avg_off_hours": 2.3,
+   "avg_off_people": 16,
+   "people_days": 14,
    "missed_not_out": 1
   },
   "board": {
-   "days": 14,
-   "avg_off_hours": 2.2,
+   "days": 15,
+   "avg_off_hours": 2.4,
    "avg_off_people": 22,
-   "people_days": 10,
+   "people_days": 11,
    "missed_not_out": 1
   }
  },
@@ -329,6 +329,36 @@
    ],
    "off_hours": 2.6,
    "off_people": null
+  },
+  {
+   "date": "2026-11-18",
+   "kind": "skill3",
+   "basis": "board",
+   "guess": [
+    12.0,
+    115
+   ],
+   "reported": [
+    8.0,
+    13
+   ],
+   "off_hours": 4.6,
+   "off_people": 21
+  },
+  {
+   "date": "2026-11-18",
+   "kind": "skill3",
+   "basis": "schedule",
+   "guess": [
+    6.0,
+    351
+   ],
+   "reported": [
+    8.0,
+    13
+   ],
+   "off_hours": -0.1,
+   "off_people": 0
   },
   {
    "date": "2026-10-28",
