@@ -1855,50 +1855,37 @@
  "2026-11-20": {
   "schedule": {
    "line": {
-    "0": 8,
-    "12": 15,
+    "0": 7,
+    "12": 14,
     "14": 6,
     "16": 3,
     "18": 19,
     "20": 6,
     "22": 5,
-    "24": 19,
+    "24": 18,
     "26": 1,
     "28": 0,
     "30": 0,
-    "32": 0,
     "6": 11,
-    "8": 4
+    "8": 5
    },
-   "made": "2026-11-19T04:52-08:00",
+   "made": "2026-11-19T13:25-08:00",
    "skill": {
-    "early": {
-     "hours": 30.0,
-     "spin": 134
-    },
-    "late": {
-     "hours": 30.0,
-     "spin": 134
-    },
-    "mid": {
-     "hours": 30.0,
-     "spin": 134
-    },
     "p_no_jobs": 0.0,
     "p_runs_out": 0.0
    },
    "skill3": {
     "early": {
      "hours": 8.0,
-     "spin": 199
+     "spin": 135
     },
     "late": {
      "hours": 14.0,
-     "spin": 351
+     "spin": 236
     },
     "mid": {
      "hours": 14.0,
-     "spin": 92
+     "spin": 22
     },
     "p_no_jobs": 0.0,
     "p_runs_out": 1.0
@@ -1910,89 +1897,7 @@
    "line": {
     "0": 115
    },
-   "made": "2026-11-19T04:52-08:00",
-   "skill": {
-    "early": {
-     "hours": 0.0,
-     "spin": 278
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 326
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 305
-    },
-    "p_no_jobs": 0.0,
-    "p_runs_out": 0.18
-   },
-   "skill3": {
-    "early": {
-     "hours": 0.0,
-     "spin": 24
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 78
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 49
-    },
-    "p_no_jobs": 0.01,
-    "p_runs_out": 1.0
-   }
-  }
- },
- "2026-11-22": {
-  "schedule": {
-   "line": {
-    "0": 32,
-    "10": 3,
-    "8": 82
-   },
-   "made": "2026-11-19T04:52-08:00",
-   "skill": {
-    "early": {
-     "hours": 8.0,
-     "spin": 181
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 315
-    },
-    "mid": {
-     "hours": 8.0,
-     "spin": 242
-    },
-    "p_no_jobs": 0.0,
-    "p_runs_out": 0.49
-   },
-   "skill3": {
-    "early": {
-     "hours": 0.0,
-     "spin": 45
-    },
-    "late": {
-     "hours": 0.0,
-     "spin": 172
-    },
-    "mid": {
-     "hours": 0.0,
-     "spin": 101
-    },
-    "p_no_jobs": 0.17,
-    "p_runs_out": 1.0
-   }
-  }
- },
- "2026-11-23": {
-  "schedule": {
-   "line": {
-    "0": 98
-   },
-   "made": "2026-11-19T04:52-08:00",
+   "made": "2026-11-19T13:25-08:00",
    "skill": {
     "early": {
      "hours": 0.0,
@@ -2000,23 +1905,23 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 330
+     "spin": 324
     },
     "mid": {
      "hours": 0.0,
-     "spin": 317
+     "spin": 313
     },
     "p_no_jobs": 0.0,
-    "p_runs_out": 0.04
+    "p_runs_out": 0.12
    },
    "skill3": {
     "early": {
      "hours": 0.0,
-     "spin": 39
+     "spin": 29
     },
     "late": {
      "hours": 0.0,
-     "spin": 78
+     "spin": 81
     },
     "mid": {
      "hours": 0.0,
@@ -2027,44 +1932,126 @@
    }
   }
  },
- "2026-11-24": {
+ "2026-11-22": {
   "schedule": {
    "line": {
-    "0": 35,
-    "6": 54,
-    "8": 10
+    "0": 31,
+    "10": 3,
+    "8": 81
    },
-   "made": "2026-11-19T04:52-08:00",
+   "made": "2026-11-19T13:25-08:00",
    "skill": {
     "early": {
-     "hours": 6.0,
-     "spin": 268
+     "hours": 8.0,
+     "spin": 178
     },
     "late": {
      "hours": 8.0,
-     "spin": 187
+     "spin": 306
     },
     "mid": {
      "hours": 8.0,
-     "spin": 88
+     "spin": 256
     },
     "p_no_jobs": 0.0,
-    "p_runs_out": 0.04
+    "p_runs_out": 0.5
    },
    "skill3": {
     "early": {
      "hours": 0.0,
-     "spin": 103
+     "spin": 46
     },
     "late": {
      "hours": 0.0,
-     "spin": 296
+     "spin": 179
     },
     "mid": {
      "hours": 0.0,
-     "spin": 193
+     "spin": 97
     },
-    "p_no_jobs": 0.02,
+    "p_no_jobs": 0.12,
+    "p_runs_out": 1.0
+   }
+  }
+ },
+ "2026-11-23": {
+  "schedule": {
+   "line": {
+    "0": 99
+   },
+   "made": "2026-11-19T13:25-08:00",
+   "skill": {
+    "early": {
+     "hours": 0.0,
+     "spin": 281
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 323
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 306
+    },
+    "p_no_jobs": 0.0,
+    "p_runs_out": 0.05
+   },
+   "skill3": {
+    "early": {
+     "hours": 0.0,
+     "spin": 32
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 71
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 51
+    },
+    "p_no_jobs": 0.03,
+    "p_runs_out": 1.0
+   }
+  }
+ },
+ "2026-11-24": {
+  "schedule": {
+   "line": {
+    "0": 35,
+    "6": 53,
+    "8": 11
+   },
+   "made": "2026-11-19T13:25-08:00",
+   "skill": {
+    "early": {
+     "hours": 6.0,
+     "spin": 307
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 110
+    },
+    "mid": {
+     "hours": 6.0,
+     "spin": 349
+    },
+    "p_no_jobs": 0.0,
+    "p_runs_out": 0.06
+   },
+   "skill3": {
+    "early": {
+     "hours": 0.0,
+     "spin": 104
+    },
+    "late": {
+     "hours": 0.0,
+     "spin": 298
+    },
+    "mid": {
+     "hours": 0.0,
+     "spin": 198
+    },
+    "p_no_jobs": 0.03,
     "p_runs_out": 1.0
    }
   }
@@ -2075,42 +2062,56 @@
     "0": 18,
     "12": 37,
     "14": 5,
-    "16": 4,
+    "16": 5,
     "6": 27,
     "8": 6
    },
-   "made": "2026-11-19T04:52-08:00",
+   "made": "2026-11-19T13:25-08:00",
    "skill": {
     "early": {
-     "hours": 14.0,
-     "spin": 59
+     "hours": 12.0,
+     "spin": 240
     },
     "late": {
-     "hours": 16.0,
-     "spin": 252
+     "hours": 14.0,
+     "spin": 178
     },
     "mid": {
-     "hours": 14.0,
-     "spin": 350
+     "hours": 12.0,
+     "spin": 313
     },
     "p_no_jobs": 0.0,
-    "p_runs_out": 0.09
+    "p_runs_out": 0.04
    },
    "skill3": {
     "early": {
      "hours": 0.0,
-     "spin": 238
+     "spin": 241
     },
     "late": {
      "hours": 6.0,
-     "spin": 253
+     "spin": 251
     },
     "mid": {
      "hours": 6.0,
-     "spin": 53
+     "spin": 47
     },
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.02,
     "p_runs_out": 1.0
+   }
+  }
+ },
+ "2026-11-26": {
+  "schedule": {
+   "line": {},
+   "made": "2026-11-19T13:25-08:00",
+   "skill": {
+    "p_no_jobs": null,
+    "p_runs_out": null
+   },
+   "skill3": {
+    "p_no_jobs": null,
+    "p_runs_out": null
    }
   }
  }
