@@ -1,5 +1,5 @@
 {
- "made": "2026-11-23T21:22-08:00",
+ "made": "2026-11-23T21:56-08:00",
  "days": [
   {
    "date": "2026-11-24",
@@ -25,25 +25,25 @@
     "p_no_jobs": 1.0
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.02,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 300
+     "spin": 285
     },
     "early": {
      "hours": 8.0,
-     "spin": 215
+     "spin": 87
     },
     "late": {
      "hours": 8.0,
-     "spin": 315
+     "spin": 286
     }
    },
    "skill3_jobs": 0.0,
    "line": {
     "0": 34,
-    "6": 49,
+    "6": 48,
     "8": 15
    }
   },
@@ -65,31 +65,26 @@
      "name": "R.J. Pfeiffer",
      "terminal": "MATSON/WST",
      "kind": "container"
-    },
-    {
-     "name": "Ym Trophy",
-     "terminal": "HUSKY",
-     "kind": "container"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 4,
+   "ships": 3,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.03,
     "mid": {
-     "hours": 6.0,
-     "spin": 33
+     "hours": 0.0,
+     "spin": 291
     },
     "early": {
      "hours": 0.0,
-     "spin": 208
+     "spin": 161
     },
     "late": {
      "hours": 6.0,
-     "spin": 153
+     "spin": 69
     }
    },
    "skill": {
@@ -97,25 +92,25 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 165
+     "spin": 240
     },
     "early": {
-     "hours": 12.0,
-     "spin": 347
+     "hours": 14.0,
+     "spin": 110
     },
     "late": {
      "hours": 16.0,
-     "spin": 96
+     "spin": 159
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 18,
-    "6": 29,
-    "8": 4,
+    "6": 28,
+    "8": 5,
     "12": 34,
     "14": 9,
-    "16": 4
+    "16": 5
    }
   },
   {
@@ -123,8 +118,8 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Ym Trophy",
-     "terminal": "HUSKY",
+     "name": "Ym Masculinity",
+     "terminal": "WUT",
      "kind": "container"
     }
    ],
@@ -148,8 +143,8 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Ym Trophy",
-     "terminal": "HUSKY",
+     "name": "Ym Masculinity",
+     "terminal": "WUT",
      "kind": "container"
     },
     {
@@ -158,55 +153,45 @@
      "kind": "car ship"
     },
     {
-     "name": "Mol Charisma",
-     "terminal": "WUT",
-     "kind": "container"
-    },
-    {
      "name": "Manulani",
      "terminal": "MATSON/WST",
-     "kind": "container"
-    },
-    {
-     "name": "Maersk Torino",
-     "terminal": "HUSKY",
      "kind": "container"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 3,
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.0,
+    "p_no_jobs": 0.11,
     "mid": {
-     "hours": 6.0,
-     "spin": 316
+     "hours": 0.0,
+     "spin": 278
     },
     "early": {
-     "hours": 6.0,
-     "spin": 65
+     "hours": 0.0,
+     "spin": 117
     },
     "late": {
-     "hours": 8.0,
-     "spin": 323
+     "hours": 6.0,
+     "spin": 206
     }
    },
    "skill": {
-    "p_runs_out": 0.1,
+    "p_runs_out": 0.28,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 20.0,
-     "spin": 216
+     "spin": 211
     },
     "early": {
      "hours": 18.0,
-     "spin": 284
+     "spin": 273
     },
     "late": {
      "hours": 22.0,
-     "spin": 210
+     "spin": 173
     }
    },
    "skill3_jobs": null,
@@ -214,12 +199,12 @@
     "0": 11,
     "6": 17,
     "8": 4,
-    "12": 22,
-    "14": 5,
+    "12": 23,
+    "14": 4,
     "16": 2,
     "18": 26,
     "20": 6,
-    "22": 3,
+    "22": 4,
     "24": 2
    }
   },
@@ -233,14 +218,9 @@
      "kind": "container"
     },
     {
-     "name": "Mol Charisma",
-     "terminal": "WUT",
-     "kind": "container"
-    },
-    {
-     "name": "Maersk Torino",
-     "terminal": "HUSKY",
-     "kind": "container"
+     "name": "Horizon Highway",
+     "terminal": "EB1",
+     "kind": "car ship"
     },
     {
      "name": "Liberty Pride",
@@ -253,11 +233,6 @@
      "kind": "container"
     },
     {
-     "name": "Horizon Highway",
-     "terminal": "EB1",
-     "kind": "car ship"
-    },
-    {
      "name": "Matson Kodiak",
      "terminal": "MATSON/WST",
      "kind": "container"
@@ -265,43 +240,43 @@
    ],
    "grain": null,
    "no_work": false,
-   "ships": 7,
+   "ships": 5,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 68
+     "spin": 47
     },
     "early": {
      "hours": 0.0,
-     "spin": 38
+     "spin": 25
     },
     "late": {
      "hours": 0.0,
-     "spin": 104
+     "spin": 76
     }
    },
    "skill": {
-    "p_runs_out": 0.15,
+    "p_runs_out": 0.34,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 309
+     "spin": 276
     },
     "early": {
      "hours": 0.0,
-     "spin": 271
+     "spin": 241
     },
     "late": {
      "hours": 0.0,
-     "spin": 336
+     "spin": 320
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 114
+    "0": 116
    }
   },
   {
@@ -309,12 +284,7 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Mol Charisma",
-     "terminal": "WUT",
-     "kind": "container"
-    },
-    {
-     "name": "Maersk Torino",
+     "name": "Ym Trophy",
      "terminal": "HUSKY",
      "kind": "container"
     },
@@ -324,57 +294,57 @@
      "kind": "container"
     },
     {
+     "name": "Mol Charisma",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
      "name": "Horizon Highway",
      "terminal": "BLAIR",
      "kind": "car ship"
-    },
-    {
-     "name": "Ym Topmost",
-     "terminal": "HUSKY",
-     "kind": "container"
     }
    ],
    "grain": null,
    "no_work": false,
-   "ships": 5,
+   "ships": 4,
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_no_jobs": 0.04,
     "mid": {
      "hours": 0.0,
-     "spin": 264
+     "spin": 201
     },
     "early": {
      "hours": 0.0,
-     "spin": 156
+     "spin": 97
     },
     "late": {
-     "hours": 8.0,
-     "spin": 12
+     "hours": 0.0,
+     "spin": 312
     }
    },
    "skill": {
-    "p_runs_out": 0.18,
+    "p_runs_out": 0.32,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 305
+     "spin": 289
     },
     "early": {
      "hours": 8.0,
-     "spin": 254
+     "spin": 240
     },
     "late": {
      "hours": 8.0,
-     "spin": 337
+     "spin": 322
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 32,
-    "8": 77,
-    "10": 5
+    "8": 79,
+    "10": 3
    }
   },
   {
@@ -382,13 +352,13 @@
    "basis": "schedule",
    "list": [
     {
-     "name": "Maersk Torino",
+     "name": "Ym Trophy",
      "terminal": "HUSKY",
      "kind": "container"
     },
     {
-     "name": "Ym Topmost",
-     "terminal": "HUSKY",
+     "name": "Mol Charisma",
+     "terminal": "WUT",
      "kind": "container"
     },
     {
@@ -397,13 +367,13 @@
      "kind": "container"
     },
     {
-     "name": "Grand Pace",
-     "terminal": "EB1",
+     "name": "Freedom Ace",
+     "terminal": "BLAIR",
      "kind": "car ship"
     },
     {
-     "name": "Freedom Ace",
-     "terminal": "BLAIR",
+     "name": "Grand Pace",
+     "terminal": "EB1",
      "kind": "car ship"
     }
    ],
@@ -412,19 +382,19 @@
    "ships": 5,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
-    "p_no_jobs": 0.01,
+    "p_runs_out": 1.0,
+    "p_no_jobs": 0.02,
     "mid": {
      "hours": 0.0,
-     "spin": 105
+     "spin": 73
     },
     "early": {
      "hours": 0.0,
-     "spin": 66
+     "spin": 44
     },
     "late": {
      "hours": 0.0,
-     "spin": 147
+     "spin": 115
     }
    },
    "skill": {
@@ -432,15 +402,15 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 306
+     "spin": 310
     },
     "early": {
      "hours": 0.0,
-     "spin": 239
+     "spin": 295
     },
     "late": {
      "hours": 0.0,
-     "spin": 318
+     "spin": 325
     }
    },
    "skill3_jobs": null,
