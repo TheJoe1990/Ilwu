@@ -22,8 +22,8 @@ import pathlib
 import re
 
 HERE = pathlib.Path(__file__).resolve().parent
-SKILL3 = re.compile(r"(\d+)\s*(?:STRADS?|T/PICKS?|R/STACK|S/PICKS?)\b")
-TRUCK = re.compile(r"(\d+)\s*(?:TOTE\s+)?(?:HUST\.?|HT)\b")
+SKILL3 = re.compile(r"(\d+)\s*-?\s*(?:STRADS?|T/PICKS?|R/STACK|S/PICKS?)\b")
+TRUCK = re.compile(r"(\d+)\s*-?\s*(?:TOTE\s+)?(?:HUST\.?|HT)\b")   # "3 HUST", "3-HT"
 GANGS = re.compile(r"(\d+)\s*NEW\b")
 PER_GANG = {"PCT": (4, 0), "WUT": (1, 5.5), "HUSKY": (0, 6)}   # (skill 3, trucks) per new gang when not listed
 
