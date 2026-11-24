@@ -1,52 +1,6 @@
 {
- "made": "2026-11-23T21:56-08:00",
+ "made": "2026-11-24T09:32-08:00",
  "days": [
-  {
-   "date": "2026-11-24",
-   "basis": "board",
-   "list": [
-    {
-     "name": "Tourmaline Ace",
-     "terminal": "BLAIR",
-     "kind": "car ship"
-    },
-    {
-     "name": "Glovis Summit",
-     "terminal": "EB1",
-     "kind": "car ship"
-    }
-   ],
-   "grain": 0,
-   "no_work": false,
-   "ships": 2,
-   "pct": 0,
-   "skill3": {
-    "p_runs_out": null,
-    "p_no_jobs": 1.0
-   },
-   "skill": {
-    "p_runs_out": 0.02,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 8.0,
-     "spin": 285
-    },
-    "early": {
-     "hours": 8.0,
-     "spin": 87
-    },
-    "late": {
-     "hours": 8.0,
-     "spin": 286
-    }
-   },
-   "skill3_jobs": 0.0,
-   "line": {
-    "0": 34,
-    "6": 48,
-    "8": 15
-   }
-  },
   {
    "date": "2026-11-25",
    "basis": "schedule",
@@ -73,44 +27,44 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.03,
+    "p_no_jobs": 0.04,
     "mid": {
      "hours": 0.0,
-     "spin": 291
+     "spin": 260
     },
     "early": {
      "hours": 0.0,
-     "spin": 161
+     "spin": 147
     },
     "late": {
      "hours": 6.0,
-     "spin": 69
+     "spin": 49
     }
    },
    "skill": {
-    "p_runs_out": 0.07,
+    "p_runs_out": 0.1,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 240
+     "spin": 76
     },
     "early": {
-     "hours": 14.0,
-     "spin": 110
+     "hours": 12.0,
+     "spin": 313
     },
     "late": {
-     "hours": 16.0,
-     "spin": 159
+     "hours": 14.0,
+     "spin": 246
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 18,
-    "6": 28,
+    "6": 29,
     "8": 5,
     "12": 34,
-    "14": 9,
-    "16": 5
+    "14": 10,
+    "16": 3
    }
   },
   {
@@ -167,45 +121,45 @@
     "p_no_jobs": 0.11,
     "mid": {
      "hours": 0.0,
-     "spin": 278
+     "spin": 270
     },
     "early": {
      "hours": 0.0,
-     "spin": 117
+     "spin": 108
     },
     "late": {
      "hours": 6.0,
-     "spin": 206
+     "spin": 165
     }
    },
    "skill": {
-    "p_runs_out": 0.28,
+    "p_runs_out": 0.31,
     "p_no_jobs": 0.0,
     "mid": {
-     "hours": 20.0,
-     "spin": 211
+     "hours": 18.0,
+     "spin": 351
     },
     "early": {
      "hours": 18.0,
-     "spin": 273
+     "spin": 193
     },
     "late": {
      "hours": 22.0,
-     "spin": 173
+     "spin": 93
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 11,
-    "6": 17,
-    "8": 4,
+    "6": 18,
+    "8": 3,
     "12": 23,
     "14": 4,
     "16": 2,
     "18": 26,
-    "20": 6,
-    "22": 4,
-    "24": 2
+    "20": 7,
+    "22": 5,
+    "24": 1
    }
   },
   {
@@ -247,7 +201,7 @@
     "p_no_jobs": 0.06,
     "mid": {
      "hours": 0.0,
-     "spin": 47
+     "spin": 49
     },
     "early": {
      "hours": 0.0,
@@ -255,23 +209,23 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 76
+     "spin": 86
     }
    },
    "skill": {
-    "p_runs_out": 0.34,
+    "p_runs_out": 0.3,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 276
+     "spin": 288
     },
     "early": {
      "hours": 0.0,
-     "spin": 241
+     "spin": 233
     },
     "late": {
      "hours": 0.0,
-     "spin": 320
+     "spin": 326
     }
    },
    "skill3_jobs": null,
@@ -310,34 +264,34 @@
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.04,
+    "p_no_jobs": 0.02,
     "mid": {
      "hours": 0.0,
-     "spin": 201
+     "spin": 199
     },
     "early": {
      "hours": 0.0,
-     "spin": 97
+     "spin": 99
     },
     "late": {
      "hours": 0.0,
-     "spin": 312
+     "spin": 305
     }
    },
    "skill": {
-    "p_runs_out": 0.32,
+    "p_runs_out": 0.28,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 289
+     "spin": 290
     },
     "early": {
      "hours": 8.0,
-     "spin": 240
+     "spin": 221
     },
     "late": {
      "hours": 8.0,
-     "spin": 322
+     "spin": 326
     }
    },
    "skill3_jobs": null,
@@ -367,13 +321,13 @@
      "kind": "container"
     },
     {
-     "name": "Freedom Ace",
-     "terminal": "BLAIR",
+     "name": "Grand Pace",
+     "terminal": "EB1",
      "kind": "car ship"
     },
     {
-     "name": "Grand Pace",
-     "terminal": "EB1",
+     "name": "Freedom Ace",
+     "terminal": "BLAIR",
      "kind": "car ship"
     }
    ],
@@ -383,26 +337,26 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.02,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 73
+     "spin": 74
     },
     "early": {
      "hours": 0.0,
-     "spin": 44
+     "spin": 40
     },
     "late": {
      "hours": 0.0,
-     "spin": 115
+     "spin": 125
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.02,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 310
+     "spin": 325
     },
     "early": {
      "hours": 0.0,
@@ -410,12 +364,85 @@
     },
     "late": {
      "hours": 0.0,
-     "spin": 325
+     "spin": 337
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 99
+   }
+  },
+  {
+   "date": "2026-12-01",
+   "basis": "schedule",
+   "list": [
+    {
+     "name": "Ym Trophy",
+     "terminal": "HUSKY",
+     "kind": "container"
+    },
+    {
+     "name": "One Maestro",
+     "terminal": "WUT",
+     "kind": "container"
+    },
+    {
+     "name": "Grand Pace",
+     "terminal": "BLAIR",
+     "kind": "car ship"
+    },
+    {
+     "name": "Ever Match",
+     "terminal": "PCT",
+     "kind": "container"
+    },
+    {
+     "name": "Maersk Torino",
+     "terminal": "HUSKY",
+     "kind": "container"
+    }
+   ],
+   "grain": null,
+   "no_work": false,
+   "ships": 5,
+   "pct": 1,
+   "skill3": {
+    "p_runs_out": 0.99,
+    "p_no_jobs": 0.01,
+    "mid": {
+     "hours": 0.0,
+     "spin": 316
+    },
+    "early": {
+     "hours": 0.0,
+     "spin": 213
+    },
+    "late": {
+     "hours": 6.0,
+     "spin": 96
+    }
+   },
+   "skill": {
+    "p_runs_out": 0.03,
+    "p_no_jobs": 0.0,
+    "mid": {
+     "hours": 8.0,
+     "spin": 175
+    },
+    "early": {
+     "hours": 8.0,
+     "spin": 95
+    },
+    "late": {
+     "hours": 8.0,
+     "spin": 232
+    }
+   },
+   "skill3_jobs": null,
+   "line": {
+    "0": 35,
+    "6": 52,
+    "8": 11
    }
   }
  ]
