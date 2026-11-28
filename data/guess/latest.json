@@ -1,5 +1,5 @@
 {
- "made": "2026-11-27T17:54-08:00",
+ "made": "2026-11-27T19:21-08:00",
  "days": [
   {
    "date": "2026-11-28",
@@ -32,22 +32,22 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.04,
+    "p_no_jobs": 0.05,
     "mid": {
      "hours": 0.0,
-     "spin": 29
+     "spin": 27
     },
     "early": {
      "hours": 0.0,
-     "spin": 15
+     "spin": 14
     },
     "late": {
      "hours": 0.0,
-     "spin": 43
+     "spin": 44
     }
    },
    "skill": {
-    "p_runs_out": 0.2,
+    "p_runs_out": 0.21,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
@@ -55,7 +55,7 @@
     },
     "early": {
      "hours": 0.0,
-     "spin": 314
+     "spin": 313
     },
     "late": {
      "hours": 0.0,
@@ -98,39 +98,39 @@
    "pct": 1,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.03,
+    "p_no_jobs": 0.04,
     "mid": {
      "hours": 0.0,
      "spin": 213
     },
     "early": {
      "hours": 0.0,
-     "spin": 107
+     "spin": 123
     },
     "late": {
      "hours": 0.0,
-     "spin": 322
+     "spin": 330
     }
    },
    "skill": {
-    "p_runs_out": 0.49,
+    "p_runs_out": 0.48,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 275
+     "spin": 269
     },
     "early": {
      "hours": 8.0,
-     "spin": 201
+     "spin": 209
     },
     "late": {
      "hours": 8.0,
-     "spin": 325
+     "spin": 322
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 32,
+    "0": 31,
     "8": 83,
     "10": 2
    }
@@ -155,13 +155,13 @@
      "kind": "container"
     },
     {
-     "name": "Freedom Ace",
-     "terminal": "BLAIR",
+     "name": "Grand Pace",
+     "terminal": "EB1",
      "kind": "car ship"
     },
     {
-     "name": "Grand Pace",
-     "terminal": "EB1",
+     "name": "Freedom Ace",
+     "terminal": "BLAIR",
      "kind": "car ship"
     }
    ],
@@ -171,39 +171,39 @@
    "pct": 0,
    "skill3": {
     "p_runs_out": 1.0,
-    "p_no_jobs": 0.02,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 0.0,
-     "spin": 72
+     "spin": 70
     },
     "early": {
      "hours": 0.0,
-     "spin": 36
+     "spin": 40
     },
     "late": {
      "hours": 0.0,
-     "spin": 123
+     "spin": 113
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.02,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 0.0,
-     "spin": 327
+     "spin": 318
     },
     "early": {
      "hours": 0.0,
-     "spin": 309
+     "spin": 264
     },
     "late": {
      "hours": 0.0,
-     "spin": 342
+     "spin": 333
     }
    },
    "skill3_jobs": null,
    "line": {
-    "0": 97
+    "0": 98
    }
   },
   {
@@ -241,42 +241,42 @@
    "ships": 5,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 1.0,
-    "p_no_jobs": 0.01,
+    "p_runs_out": 0.99,
+    "p_no_jobs": 0.03,
     "mid": {
-     "hours": 6.0,
-     "spin": 3
+     "hours": 0.0,
+     "spin": 313
     },
     "early": {
      "hours": 0.0,
-     "spin": 223
+     "spin": 191
     },
     "late": {
      "hours": 6.0,
-     "spin": 87
+     "spin": 84
     }
    },
    "skill": {
-    "p_runs_out": 0.03,
+    "p_runs_out": 0.04,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 134
+     "spin": 88
     },
     "early": {
-     "hours": 8.0,
-     "spin": 16
+     "hours": 6.0,
+     "spin": 309
     },
     "late": {
      "hours": 8.0,
-     "spin": 231
+     "spin": 252
     }
    },
    "skill3_jobs": null,
    "line": {
     "0": 34,
-    "6": 53,
-    "8": 11
+    "6": 52,
+    "8": 10
    }
   },
   {
@@ -324,35 +324,35 @@
    "ships": 7,
    "pct": 2,
    "skill3": {
-    "p_runs_out": 0.96,
+    "p_runs_out": 0.97,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 8.0,
-     "spin": 254
+     "spin": 247
     },
     "early": {
      "hours": 6.0,
-     "spin": 287
+     "spin": 282
     },
     "late": {
      "hours": 12.0,
-     "spin": 187
+     "spin": 168
     }
    },
    "skill": {
-    "p_runs_out": 0.01,
+    "p_runs_out": 0.0,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 328
+     "spin": 227
     },
     "early": {
      "hours": 14.0,
-     "spin": 294
+     "spin": 227
     },
     "late": {
-     "hours": 16.0,
-     "spin": 194
+     "hours": 14.0,
+     "spin": 227
     }
    },
    "skill3_jobs": null,
@@ -410,36 +410,24 @@
    "ships": 7,
    "pct": 1,
    "skill3": {
-    "p_runs_out": 0.99,
+    "p_runs_out": 0.98,
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 14.0,
-     "spin": 156
+     "spin": 167
     },
     "early": {
      "hours": 8.0,
-     "spin": 291
+     "spin": 345
     },
     "late": {
-     "hours": 16.0,
-     "spin": 329
+     "hours": 18.0,
+     "spin": 50
     }
    },
    "skill": {
     "p_runs_out": 0.0,
-    "p_no_jobs": 0.0,
-    "mid": {
-     "hours": 24.0,
-     "spin": 84
-    },
-    "early": {
-     "hours": 24.0,
-     "spin": 84
-    },
-    "late": {
-     "hours": 24.0,
-     "spin": 84
-    }
+    "p_no_jobs": 0.0
    },
    "skill3_jobs": null,
    "line": {
@@ -449,9 +437,9 @@
     "12": 20,
     "14": 5,
     "16": 3,
-    "18": 26,
-    "20": 6,
-    "22": 2,
+    "18": 25,
+    "20": 5,
+    "22": 3,
     "24": 2
    }
   },
@@ -490,19 +478,19 @@
    "ships": 5,
    "pct": 0,
    "skill3": {
-    "p_runs_out": 0.99,
-    "p_no_jobs": 0.0,
+    "p_runs_out": 1.0,
+    "p_no_jobs": 0.01,
     "mid": {
      "hours": 12.0,
-     "spin": 249
+     "spin": 286
     },
     "early": {
      "hours": 8.0,
-     "spin": 74
+     "spin": 131
     },
     "late": {
      "hours": 16.0,
-     "spin": 193
+     "spin": 243
     }
    },
    "skill": {
@@ -510,15 +498,15 @@
     "p_no_jobs": 0.0,
     "mid": {
      "hours": 30.0,
-     "spin": 301
+     "spin": 298
     },
     "early": {
-     "hours": 26.0,
-     "spin": 269
+     "hours": 30.0,
+     "spin": 51
     },
     "late": {
      "hours": 30.0,
-     "spin": 301
+     "spin": 298
     }
    },
    "skill3_jobs": null,
@@ -526,17 +514,17 @@
     "0": 8,
     "6": 10,
     "8": 4,
-    "12": 13,
-    "14": 4,
+    "12": 14,
+    "14": 3,
     "16": 3,
     "18": 16,
-    "20": 4,
+    "20": 3,
     "22": 3,
-    "24": 22,
+    "24": 21,
     "26": 4,
     "28": 1,
     "30": 2,
-    "32": 1
+    "32": 2
    }
   }
  ]
